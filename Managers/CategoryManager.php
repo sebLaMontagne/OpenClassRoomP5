@@ -2,6 +2,18 @@
 
 class CategoryManager extends Manager
 {
+    public function saveCategoryTrad($lang, $category_id, $name)
+    {
+        $q = $this->_db->prepare('
+            INSERT INTO categorylocal(category_id, lang, name, isPublished)
+            VALUES(:id, :lang, :name, 0)
+        ');
+        $q->bindValue(':id', htmlspecialchars($category_id));
+        $q->bindValue(':lang', htmlspecialchars($lang));
+        $q->bindValue(':name', htmlspecialchars($name));
+        $q->execute();
+    }
+
     public function getAllCategories()
     {
         $q = $this->_db->prepare('SELECT * FROM categorylocal WHERE lang = :lang');

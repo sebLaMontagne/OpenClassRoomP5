@@ -9,6 +9,13 @@ class CategoryController extends Controller
         }
 
         $viewModel = new ViewModelCategoryTrad;
+
+        if(!empty($_POST))
+        {
+            $viewModel->saveCategoryTrad($_GET['transLang'], $_GET['id'], $_POST['categoryName']);
+            exit(header('location: traductor.'.$_GET['lang']));
+        }
+
         $viewModel->display();
     }
 }

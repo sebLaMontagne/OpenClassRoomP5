@@ -1,1 +1,22 @@
-<?php var_dump($_GET) ?>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <div class="dish_container">
+            <h3 class="mb-3"><?= $this->_strings['CATEGORY_TRAD_TRANSLATE_TITLE'] ?> (<?= $_GET['transLang'] ?>)</h3>
+            <form method="POST">
+                <label for="categoryName"><h4 class="display-4"><u><?= $this->_strings['CATEGORY_TRAD_NAME_DESCRIPTION'] ?></u></h4></label>
+                <p><input id="categoryName" class="input_trad" type="text" name="categoryName" required /></p>
+
+                <p><input type="submit" value="<?= $this->_strings['ARTICLE_TRAD_SUBMIT'] ?>" /></p>
+            </form>
+        </div>
+        
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <div class="dish_container">
+            <h3 class="mb-3"><?= $this->_strings['CATEGORY_TRAD_MODEL_TITLE'] ?> (<?= $_GET['baseLang'] ?>)</h3>
+            <h4 class="display-4"><u><?= $this->_strings['CATEGORY_TRAD_NAME_DESCRIPTION'] ?></u></h4>
+            <h4><?= $this->referenceCategory->Name() ?></h4>
+        </div>
+    </div>
+</div>

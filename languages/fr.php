@@ -273,5 +273,8 @@ $strings = [
 
     //categoryTrad
     'CATEGORY_TRAD_TITLE'                   =>  'Marre-Mitton - Traduction d\'une catégory',
+    'CATEGORY_TRAD_MODEL_TITLE'             =>  'Modèle de la catégorie',
+    'CATEGORY_TRAD_TRANSLATE_TITLE'         =>  'Traduction de la catégorie',
+    'CATEGORY_TRAD_NAME_DESCRIPTION'        =>  'Nom de la catégorie',
     
 ];

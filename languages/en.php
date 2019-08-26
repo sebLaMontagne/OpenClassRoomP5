@@ -263,11 +263,17 @@ $strings = [
     'DISH_TRAD_TRANSLATE_TITLE'             =>  'Dish Model',
     'DISH_TRAD_TITLE_DESCRIPTION'           =>  'Dish Title',
     'DISH_TRAD_STEP_DESCRIPTION'            =>  'Step',
-    
+
     //ingredientTrad
     'INGREDIENT_TRAD_TITLE'                 =>  'Marre-Mitton - Ingredient\'s translation',
+    'INGREDIENT_TRAD_MODEL_TITLE'           =>  'Ingredient\'s Model',
+    'INGREDIENT_TRAD_TRANSLATE_TITLE'       =>  'Ingredient\'s Translation',
+    'INGREDIENT_TRAD_NAME_DESCRIPTION'      =>  'Ingredient\'s Name',
 
     //categoryTrad
     'CATEGORY_TRAD_TITLE'                   =>  'Marre-Mitton - Traduction d\'une catégory',
+    'CATEGORY_TRAD_MODEL_TITLE'             =>  'Category\'s Model',
+    'CATEGORY_TRAD_TRANSLATE_TITLE'         =>  'Category\'s Translation',
+    'CATEGORY_TRAD_NAME_DESCRIPTION'        =>  'Category\'s Name',
 
 ];
