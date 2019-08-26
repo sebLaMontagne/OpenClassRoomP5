@@ -121,6 +121,32 @@ class DishManager extends Manager
         }
     }
 
+    public function saveDishTrad($lang, $dish_id, $name, $steps)
+    {
+        $q = $this->_db->prepare('
+            INSERT INTO dishlocal(dish_id, lang, name, isPublished, date)
+            VALUES(:id, :lang, :name, 0, NOW())
+        ');
+        $q->bindValue(':id', htmlspecialchars($dish_id));
+        $q->bindValue(':lang', htmlspecialchars($lang));
+        $q->bindValue(':name', htmlspecialchars($name));
+        $q->execute();
+
+        foreach($steps as $key => $value)
+        {
+            $key++;
+            $q = $this->_db->prepare('
+                INSERT INTO steplocal(dish_id, dish_step_number, lang, content)
+                VALUES(:id, :key, :lang, :content)
+            ');
+            $q->bindValue(':id', htmlspecialchars($dish_id));
+            $q->bindValue(':key', $key);
+            $q->bindValue(':lang', htmlspecialchars($lang));
+            $q->bindValue(':content', htmlspecialchars($value));
+            $q->execute();
+        }
+    }
+
     public function saveDishSteps($dishId, array $steps, $lang)
     {
         foreach($steps as $key => $value)
@@ -183,6 +209,7 @@ class DishManager extends Manager
 
         if($a = $q->fetch(PDO::FETCH_ASSOC))
         {
+            $a['id']            = $a['dish_id'];
             $a['author']        = $this->getAuthor($a['author']);
             $a['ingredients']   = $this->getDishIngredients($a['dish_id']);
             $a['steps']         = $this->getDishSteps($a['dish_id']);
@@ -194,6 +221,32 @@ class DishManager extends Manager
         }
     }
 
+    public function getDishVersion($id, $lang)
+    {
+        $q = $this->_db->prepare('
+            SELECT * FROM dish
+            INNER JOIN dishlocal
+            ON dishlocal.dish_id = dish.id
+                AND dish.id = :id
+                AND dishlocal.isPublished = 1
+                AND dishlocal.lang = :lang
+        ');
+        $q->bindValue(':id', htmlspecialchars($id));
+        $q->bindValue(':lang', htmlspecialchars($lang));
+        $q->execute();
+
+        if($a = $q->fetch(PDO::FETCH_ASSOC))
+        {
+            $a['author'] = $this->getAuthor($a['author']);
+            $a['ingredients'] = $this->getDishIngredients($a['dish_id']);
+            $a['steps'] = $this->getDishSteps($a['dish_id']);
+            $a['likes'] = $this->getLikes($a['dish_id']);
+            $a['dislikes'] = $this->getDislikes($a['dish_id']);
+            $a['comments'] = $this->getComments($a['dish_id']);
+
+            return new Dish($a);
+        }
+    }
     public function getPublishedDish($id)
     {
         $q = $this->_db->prepare('

@@ -252,10 +252,18 @@ $strings = [
 
     //articleTrad
     'ARTICLE_TRAD_TITLE'                    =>  'Marre-Mitton - Article\'s translation',
+    'ARTICLE_TRAD_MODEL_TITLE'              =>  'Article\'s Model',
+    'ARTICLE_TRAD_TRANSLATE_TITLE'          =>  'Article\'s Translation',
+    'ARTICLE_TRAD_TITLE_DESCRIPTION'        =>  'Title',
+    'ARTICLE_TRAD_CONTENT_DESCRIPTION'      =>  'Content',
+    'ARTICLE_TRAD_SUBMIT'                   =>  'Confirm translation',
 
     //dishTrad
     'DISH_TRAD_TITLE'                       =>  'Marre-Mitton - Dish\'s translation',
-
+    'DISH_TRAD_TRANSLATE_TITLE'             =>  'Dish Model',
+    'DISH_TRAD_TITLE_DESCRIPTION'           =>  'Dish Title',
+    'DISH_TRAD_STEP_DESCRIPTION'            =>  'Step',
+    
     //ingredientTrad
     'INGREDIENT_TRAD_TITLE'                 =>  'Marre-Mitton - Ingredient\'s translation',
 

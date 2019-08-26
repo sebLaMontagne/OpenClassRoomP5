@@ -257,10 +257,13 @@ $strings = [
     'ARTICLE_TRAD_TITLE_DESCRIPTION'        =>  'Titre',
     'ARTICLE_TRAD_CONTENT_DESCRIPTION'      =>  'Contenu',
     'ARTICLE_TRAD_SUBMIT'                   =>  'Confirmer la traduction',
-    'ARTICLE_TRAD_IS_SAVED'                 =>  'Traduction sauvegardée',
 
     //dishTrad
     'DISH_TRAD_TITLE'                       =>  'Marre-Mitton - Traduction d\'un plat',
+    'DISH_TRAD_MODEL_TITLE'                 =>  'Modèle du plât',
+    'DISH_TRAD_TRANSLATE_TITLE'             =>  'Traduction du plât',
+    'DISH_TRAD_TITLE_DESCRIPTION'           =>  'Titre du plât',
+    'DISH_TRAD_STEP_DESCRIPTION'            =>  'Etape',
 
     //ingredientTrad
     'INGREDIENT_TRAD_TITLE'                 =>  'Marre-Mitton - Traduction d\'un ingrédient',

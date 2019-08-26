@@ -28,8 +28,8 @@ class Dish
     public function IsPublished()   { return $this->_isPublished; }
     public function Date()          { return $this->_date; }
     public function Author()        { return $this->_author; }
-    public function Ingredient($nb) { return $this->_ingredients[$nb]; }
-    public function Step($nb)       { return $this->_steps[$nb]; }
+    public function Ingredient()    { return $this->_ingredients; }
+    public function Steps()         { return $this->_steps; }
     public function Likes()         { return $this->_likes; }
     public function Dislikes()      { return $this->_dislikes; }
     public function Comments()      { return $this->_comments; }
