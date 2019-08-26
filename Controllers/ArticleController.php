@@ -80,6 +80,15 @@ class ArticleController extends Controller
         }
 
         $viewModel = new ViewModelArticleTrad;
-        $viewModel->display();
+
+        if(!empty($_POST))
+        {
+            $viewModel->saveArticleTrad($_GET['transLang'], $_GET['id'], $_POST['articleTitle'], $_POST['articleContent']);
+            exit(header('location: traductor.'.$_GET['lang']));
+        }
+        else
+        {
+            $viewModel->display();
+        }
     }
 }

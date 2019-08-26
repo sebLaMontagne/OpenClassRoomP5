@@ -3,6 +3,13 @@ class ViewModelArticleTrad extends ViewModel
 {
     private $articleManager;
     public $referenceArticle;
+    public $isSaved;
+
+    public function saveArticleTrad($lang, $articleId, $title, $content)
+    {
+        $this->articleManager->saveArticleTrad($lang, $articleId, $title, $content);
+        $this->isSaved = true;
+    }
 
     public function __construct()
     {
@@ -12,6 +19,7 @@ class ViewModelArticleTrad extends ViewModel
 
         $this->articleManager = new ArticleManager;
 
-        $this->referenceArticle = $this->articleManager->getPublishedArticle($_GET['id'], $_GET['baseLang']);
+        $this->referenceArticle = $this->articleManager->getArticleVersion($_GET['id'], $_GET['baseLang']);
+        $this->isSaved = false;
     }
 }

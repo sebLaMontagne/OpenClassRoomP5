@@ -182,6 +182,20 @@ class ArticleManager extends Manager
         $q2->execute();
     }
 
+    public function saveArticleTrad($lang, $articleId, $title, $content)
+    {
+        $q = $this->_db->prepare('
+            INSERT INTO articlelocal(article_id, lang, title, content, isPublished, date)
+            VALUES(:id, :lang, :title, :content, 0, NOW())
+        ');
+
+        $q->bindValue(':id', htmlspecialchars($articleId));
+        $q->bindValue(':lang', htmlspecialchars($lang));
+        $q->bindValue(':content', $this->encode($content));
+        $q->bindValue(':title', htmlspecialchars($title));
+        $q->execute();
+    }
+
     public function getSimplifiedArticles()
     {
         $q = $this->_db->query('SELECT * FROM article');
@@ -203,6 +217,34 @@ class ArticleManager extends Manager
         AND articlelocal.isPublished = 1'
     );
         $q->bindValue(':id', htmlspecialchars($id));
+        $q->execute();
+
+        if($a = $q->fetch(PDO::FETCH_ASSOC))
+        {
+            $a['id']        = $a['article_id'];
+            $a['content']   = $this->decode($a['content']);
+            $a['category']  = $this->getCategory($a['category_id']);
+            $a['author']    = $this->getAuthor($a['author_id']);
+            $a['likes']     = $this->getLikes($a['article_id']);
+            $a['dislikes']  = $this->getDislikes($a['article_id']);
+            $a['comments']  = $this->getComments($a['article_id']);
+
+            return new Article($a);
+        }
+    }
+
+    public function getArticleVersion($id, $lang)
+    {
+        $q = $this->_db->prepare('
+            SELECT * FROM article
+            INNER JOIN articlelocal
+            ON articlelocal.article_id = article.id
+                AND articlelocal.article_id = :id
+                AND articlelocal.isPublished = 1
+                AND articlelocal.lang = :lang
+        ');
+        $q->bindValue(':id', htmlspecialchars($id));
+        $q->bindValue(':lang', htmlspecialchars($lang));
         $q->execute();
 
         if($a = $q->fetch(PDO::FETCH_ASSOC))
