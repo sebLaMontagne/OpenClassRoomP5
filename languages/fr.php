@@ -267,6 +267,9 @@ $strings = [
 
     //ingredientTrad
     'INGREDIENT_TRAD_TITLE'                 =>  'Marre-Mitton - Traduction d\'un ingrédient',
+    'INGREDIENT_TRAD_MODEL_TITLE'           =>  'Modèle de l\'ingrédient',
+    'INGREDIENT_TRAD_TRANSLATE_TITLE'       =>  'Traduction de l\'ingrédient',
+    'INGREDIENT_TRAD_NAME_DESCRIPTION'      =>  'Nom de l\'ingrédient',
 
     //categoryTrad
     'CATEGORY_TRAD_TITLE'                   =>  'Marre-Mitton - Traduction d\'une catégory',

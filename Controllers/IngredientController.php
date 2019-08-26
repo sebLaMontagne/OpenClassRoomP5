@@ -51,6 +51,13 @@ class IngredientController extends Controller
         }
 
         $viewModel = new ViewModelIngredientTrad;
+
+        if(!empty($_POST))
+        {
+            $viewModel->saveIngredientTrad($_GET['transLang'], $_GET['id'], $_POST['ingredientName']);
+            exit(header('location: traductor.'.$_GET['lang']));
+        }
+
         $viewModel->display();
     }
 }

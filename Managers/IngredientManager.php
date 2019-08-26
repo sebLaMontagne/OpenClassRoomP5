@@ -34,6 +34,18 @@ class IngredientManager extends Manager
         }
     }
 
+    public function saveIngredientTrad($lang, $ingredient_id, $name)
+    {
+        $q = $this->_db->prepare('
+            INSERT INTO ingredientlocal(ingredient_id, lang, name, isPublished)
+            VALUES(:id, :lang, :name, 0)
+        ');
+        $q->bindValue(':id', htmlspecialchars($ingredient_id));
+        $q->bindValue(':lang', htmlspecialchars($lang));
+        $q->bindValue(':name', htmlspecialchars($name));
+        $q->execute();
+    }
+
     public function getSimplifiedIngredients()
     {
         $q = $this->_db->query('SELECT * FROM ingredient');

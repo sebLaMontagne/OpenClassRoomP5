@@ -89,10 +89,6 @@ class DishController extends Controller
             $viewModel->saveDishTrad($_GET['transLang'], $_GET['id'], $_POST['dishName'], $_POST);
             exit(header('location: traductor.'.$_GET['lang']));
         }
-        else
-        {
-            $viewModel->display();
-        }
 
         $viewModel->display();
     }

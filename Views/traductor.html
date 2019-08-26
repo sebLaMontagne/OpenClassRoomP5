@@ -1,8 +1,11 @@
 <p><?= $this->_strings['TRADUCTOR_PRESENTATION'] ?></p>
+
+<?php if($this->articlesTrads != null) : ?>
+
 <h3><?= $this->_strings['TRADUCTOR_ARTICLES_H3'] ?></h3>
 
-<?php foreach($this->articlesTrads as $article) : ?>
-    <?php if($article['article'] != null) : ?>
+    <?php foreach($this->articlesTrads as $article) : ?>
+        <?php if($article['article'] != null) : ?>
 <div class="row">
     <a class="dish_container" href="articleTrad-<?= $article['article']->Id() ?>-<?= $article['article']->Lang() ?>--<?= $article['lang'] ?>.<?= $_GET['lang'] ?>">
         <h3><?= $article['article']->Title() ?> (-> <?= $article['lang'] ?>)</h3>
@@ -22,13 +25,16 @@
         </div>
     </a>
 </div>
-    <?php endif ?>
-<?php endforeach ?>
+        <?php endif ?>
+    <?php endforeach ?>
+<?php endif ?>
+
+<?php if($this->dishesTrads != null) : ?>
 
 <h3><?= $this->_strings['TRADUCTOR_DISHES_H3'] ?></h3>
 
-<?php foreach($this->dishesTrads as $dish) : ?>
-    <?php if($dish['dish'] != null) : ?>
+    <?php foreach($this->dishesTrads as $dish) : ?>
+        <?php if($dish['dish'] != null) : ?>
 <div class="row">
     <a class="dish_container" href="dishTrad-<?= $dish['dish']->Id() ?>-<?= $dish['dish']->Lang() ?>--<?= $dish['lang'] ?>.<?= $_GET['lang'] ?>">
         <h3><?= $dish['dish']->Name() ?> (-> <?= $dish['lang'] ?>)</h3>
@@ -60,13 +66,16 @@
         </div>
     </a>
 </div>
-    <?php endif ?>
-<?php endforeach ?>
+        <?php endif ?>
+    <?php endforeach ?>
+<?php endif ?>
+
+<?php if($this->ingredientsTrads != null) : ?>
 
 <h3><?= $this->_strings['TRADUCTOR_INGREDIENTS_H3'] ?></h3>
 
-<?php foreach($this->ingredientsTrads as $ingredient) : ?>
-    <?php if($ingredient['ingredient'] != null) : ?>
+    <?php foreach($this->ingredientsTrads as $ingredient) : ?>
+        <?php if($ingredient['ingredient'] != null) : ?>
 <div class="row">
     <a class="dish_container col-6" href="ingredientTrad-<?= $ingredient['ingredient']->Id() ?>-<?= $ingredient['ingredient']->Lang() ?>--<?= $ingredient['lang'] ?>.<?= $_GET['lang'] ?>">
 
@@ -81,17 +90,21 @@
         
     </a>
 </div>
-    <?php endif ?>
-<?php endforeach ?>
+        <?php endif ?>
+    <?php endforeach ?>
+<?php endif ?>
+
+<?php if($this->categoriesTrads != null) : ?>
 
 <h3><?= $this->_strings['TRADUCTOR_CATEGORIES_H3'] ?></h3>
 
-<?php foreach($this->categoriesTrads as $category) : ?>
-    <?php if($category['category'] != null) : ?>
+    <?php foreach($this->categoriesTrads as $category) : ?>
+        <?php if($category['category'] != null) : ?>
 <div class="row">
     <a class="dish_container" href="categoryTrad-<?= $category['category']->Id() ?>-<?= $category['category']->Lang() ?>--<?= $category['lang'] ?>.<?= $_GET['lang'] ?>">
         <h3 class="category_title"><?= $category['category']->Name() ?> (-> <?= $category['lang'] ?>)</h3>
     </a>
 </div>
-    <?php endif ?>
-<?php endforeach ?>
+        <?php endif ?>
+    <?php endforeach ?>
+<?php endif ?>
