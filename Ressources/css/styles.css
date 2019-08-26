@@ -1,0 +1,496 @@
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------STYLES UNIVERSELS-----------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+body{
+    font-family: 'Oswald', sans-serif;
+}
+
+hr{
+    margin: 1.2em 0;
+}
+
+h1{
+    margin-top: 25px;
+}
+
+button{
+    margin-top: 1em;
+}
+
+textarea{
+    width: 90%;
+    margin: 0 0 0 2%;
+}
+.navbar-brand{
+    display: block;
+    margin: 0 auto;
+}
+
+.section_main{
+    background-color: #A5E1FF;
+    text-align: center;
+    padding-bottom: 2em;
+}
+
+.section_secondary{
+    background-color: #F0EAD4;
+    padding-bottom: 2em;
+}
+
+.page{
+    min-height: 100vh;
+}
+
+.advise{
+    font-size: 1em;
+    margin-bottom: 0;
+}
+
+.display-2-columns{
+    margin-top: 2em;
+}
+
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------LIENS-----------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
+
+.link{
+    color: #483737;
+    display: block;
+}
+    .link:hover{
+        text-decoration: none;
+    }
+
+.link_language{
+    display: inline;
+}
+
+.appreciation{
+    color: black;
+}
+    .appreciation:hover{
+        color: black;
+        text-decoration: none;
+    }
+/*-------------------------------------------------NAVIGATION--------------------------------------------------------*/
+
+.nav_link{ 
+    text-align: right;
+    font-size: 1.2em;
+    transition: padding 0.5s;
+}
+    .nav_link:hover{
+        color: #483737;
+        padding-right: 5%;
+    }
+.account_link{
+    text-align: left;
+    font-size: 1.2em;
+    transition: padding 0.5s;
+    }
+    .account_link:hover{
+        color: #483737;
+        padding-left: 5%;
+    }
+
+/*-------------------------------------------------INSCRIPTION--------------------------------------------------------*/
+
+.register_link{
+    margin-top: 25px;
+    text-align: center;
+    font-size: 1.6em;
+}
+    .register_link:hover{
+        color: #971A07;
+        transition: color 0.5s;
+    }
+
+.reset_link{
+    text-align: center;
+    margin-top: 1em;
+}
+/*-------------------------------------------------HOME-LINK--------------------------------------------------------*/
+
+.home_link_container{
+    display: flex; 
+    align-items: space-around;
+}
+.home_link{
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: greenyellow;
+}
+    .home_link:hover{
+        color: black;
+        background-color: green;
+        transition: color 1s, background-color 1s;
+    }
+
+/*-------------------------------------------------DECORATIONS--------------------------------------------------------*/
+.social_link{
+    margin: 0 auto;
+    text-align: center;
+    font-size: 2em;
+}
+.icon{
+    font-size: 1.5em;
+}
+
+.link_home:before,
+.link_diet:before,
+.link_article:before,
+.link_ingredient:before,
+.link_dish:before,
+.link_dashbord:before,
+.link_mail:before,
+.link_traductor:before,
+.link_facebook:before,
+.link_twitter:before,
+.link_youtube:before,
+.link_instagram:before,
+.icon_like:before,
+.icon_like_disabled:before,
+.icon_dislike:before,
+.icon_dislike_disabled:before,
+.icon_commentary:before,
+.removeStep:before{
+    font-family: "FontAwesome";
+    display: inline-block;
+    padding-right: 5px;
+    vertical-align: middle;
+    font-weight: 900;
+}
+
+.link_home:before{
+    content: "\f015";
+}
+.link_diet:before{
+    content: "\f0ce";
+}
+.link_article:before{
+    content: "\f249";
+}
+.link_ingredient:before{
+    content: "\f094";
+}
+.link_dish:before{
+    content: "\f0f5";
+}
+.link_dashbord:before{
+    content: "\f02e"
+}
+.link_mail:before{
+    content: "\f0e0"
+}
+.link_traductor:before{
+    content: "\f1ab"
+}
+
+.link_facebook:before{
+    content: "\f09a";
+    color: #3b5998;
+}
+.link_twitter:before{
+    content: "\f099";
+    color: #00aced;
+}
+.link_youtube:before{
+    content: "\f16a";
+    color: #bb0000;
+}
+.link_instagram:before{
+    content: "\f16d";
+    color: #bc2a8d;
+}
+
+.icon_like:before{
+    content: "\f164";
+    color: blue;
+}
+.icon_like_disabled:before{
+    content: "\f164";
+    color: grey;
+}
+.icon_dislike:before{
+    content: "\f165";
+    color: red;
+}
+.icon_dislike_disabled:before{
+    content: "\f165";
+    color: grey;
+}
+.icon_commentary:before{
+    content: "\f0e6";
+    color: black;
+}
+
+.removeStep:before{
+    position: absolute;
+    top: 25%;
+    padding-left: 2px;
+    content: "\f00d";
+}
+    .removeStep:hover{
+        color: brown;
+        transition: color 0.3s;
+        cursor: pointer;
+    }
+
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------FORMULAIRES-----------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
+
+.register_form{
+    margin: 2em auto 0 auto;
+    padding: 1em;
+    border: 1px solid grey;
+    border-radius: 1em;
+}
+    .register_form input{
+        
+        margin: 5px auto;
+        width: 90%;
+        text-align: center;
+    }
+
+.dishEditor_form{
+    padding: 2em 0;
+    border: 1px black solid;
+    border-radius: 1em;
+}
+.dishEditor_input{
+    margin: 0;
+}
+.dishEditor_number{
+    width: 10%;
+}
+
+.dishEditor_unity{
+    width: 40%;
+}
+/*-------------------------------------------------INPUTS--------------------------------------------------------*/
+
+.input_search{
+    width: 100%;
+    color: grey;
+}
+
+.input_trad{
+    width: 90%;
+}
+
+.textarea_trad{
+    min-height: 450px;
+    width: 90%;
+}
+
+/*-------------------------------------------------BUTTONS--------------------------------------------------------*/
+
+.button{
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    background-color: greenyellow;
+}
+
+/*------------------------------------------------INFOBULLES-------------------------------------------------------*/
+.register_info{
+    width: 90%;
+    margin: 0 auto;
+    text-align: left;
+    display: none;
+}
+    .register_info_OK{
+        color: green;
+    }
+    .register_info_NOK{
+        color: red;
+    }
+
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------ACCOUNT----------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
+
+.account{
+    text-align: center;
+}
+.account_name{
+    color: #971A07;
+}
+.account_status{
+    color: #971A07;
+    font-size: 1.2em;
+}
+.account_avatar{
+    width: 50%;
+    margin: 0 auto;
+    display: block;
+}
+
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------DISH----------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
+
+.dish_container{
+    margin: 50px auto;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+}
+.dish_container:hover{
+    text-decoration: none;
+    background-color: rgba(255,255,255,0.2);
+    transition : color 0.5s, background-color 0.5s;
+}
+.dish_illustration{
+    width: 80%;
+    margin-bottom: 2em;
+}
+.dish_ingredient{
+    text-align: left;
+}
+.dish_ingredient_illustration{
+    float: left;
+}
+
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------ARTICLE EDITOR-------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
+
+.articleEditor_title{
+    min-width: 150px;
+    width: 50%;
+}
+.articleEditor_content{
+    height: 50vh;
+}
+.article_authorContainer{
+    height: 80px;
+}
+.article_authorAvatar{
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 2em;
+    opacity: 0.7;
+}
+.article_authorName{
+    top: -50px;
+}
+
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------DASHBOARD-------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
+
+.dashboard{
+    margin-top: 4em;
+    display: flex;
+    justify-content: space-around;
+}
+    .dashboard img{
+        margin-bottom: 2em;
+    }
+        .dashboard img:hover{
+            transform: scale(1.1);
+            transition: transform 0.5s;
+        }
+
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------BACK-------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
+
+.ingredient_button_container{
+    display: flex;
+    justify-content: space-around;
+}
+.ingredient_button{
+    display: block;
+    background: #00aced;
+    color: white;
+    padding: 0.4em;
+    margin: 1em;
+    border-radius: 1em;
+}
+    .ingredient_button:hover{
+        color: white;
+        background: #3b5998;
+        transition: background-color 1s;
+        text-decoration: none;
+    }
+
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------COMMENTARY-------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
+
+.comment{
+    margin-bottom: 1em;
+}
+
+.comment_textarea{
+    height: 100px;
+}
+
+.comment_content{
+    line-height: 80px;
+}
+
+.commentary-bound{
+    border-top: 1px dotted black;
+}
+
+.commentary-badge{
+    right: 30%;
+    top: 58%;
+    position: absolute;
+    transition: top 1s;
+}
+.title_backComments{
+    margin: 2em 0;
+}
+
+.user_title{
+    height: 80px;
+    line-height: 80px;
+    vertical-align: middle;
+}
+
+.category_title{
+    padding: 2em;
+}
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------MEDIA QUERIES-------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
+
+@media screen and (max-width: 575px)
+{
+    hr{
+        margin-bottom: 1rem;
+    }
+    
+    .navbar-brand{
+        width: 50%;
+    }
+    
+    .nav_link{
+        text-align: left;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 800px)
+{
+    .navbar-brand{
+        width: 80%;
+    }
+}
+
+@media screen and (min-width: 801px)
+{
+    .navbar-brand{
+        width: 50%;
+    }
+}

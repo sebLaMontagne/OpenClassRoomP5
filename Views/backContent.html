@@ -1,0 +1,119 @@
+<!-- Utiliser toujours l'id local !!! -->
+<p><?= $this->_strings['BACK_CONTENT_PRESENTATION'] ?></p>
+
+<!-- Affichage des ingrédients -->
+
+<?php if(!empty($this->_ingredients)) : ?>
+<h2 class="backContent_title"><?= $this->_strings['BACK_CONTENT_TITLE_INGREDIENTS'] ?></h2>
+<?php endif ?>
+
+<?php foreach($this->_ingredients as $ingredient) : ?>
+
+<div class="row">
+    <div class="dish_container col-6">
+
+        <h3><?= $ingredient->Name() ?> (<?= $ingredient->lang() ?>)</h3>
+
+        <div class="row">
+            <div class="col-12"><img class="dish_illustration" src="Ressources/img/ingredients/<?= $ingredient->Image() ?>" /></div>
+        </div>
+        
+        <p><?= $this->_strings['BACK_CONTENT_BASE_CALORIES'] ?> : <?= $ingredient->baseCalories() ?> Cal</p>
+        <p><?= $this->_strings['BACK_CONTENT_UNIT_WEIGHT'] ?> : <?= $ingredient->unitWeight() ?> g</p>
+        
+
+        <div class="ingredient_button_container">
+            <a class="ingredient_button" href="confirmIngredient-<?= $ingredient->Id() ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACK_CONTENT_CONFIRM_INGREDIENT'] ?></a>
+            <a class="ingredient_button" href="refuseIngredient-<?= $ingredient->Id() ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACK_CONTENT_DENY_INGREDIENT'] ?></a>
+        </div>
+
+    </div>
+</div>
+
+<?php endforeach ?>
+
+<!-- Affichage des repas -->
+
+<?php if(!empty($this->_dishes)) : ?>
+<h2 class="backContent_title"><?= $this->_strings['BACK_CONTENT_TITLE_DISHES'] ?></h2>
+<?php endif ?>
+
+<?php foreach($this->_dishes as $dish) : ?>
+
+<div class="row">
+    <div class="dish_container">
+        <h3><?= $dish->Name() ?> (<?= $dish->lang() ?>)</h3>
+
+    <?php if($dish->Type() == 'breakfast') : ?>
+        <h4><?= $this->_strings['DISH_EDITOR_BREAKFAST'] ?></h4>
+    <?php elseif($dish->Type() == 'starter') : ?>
+        <h4><?= $this->_strings['DISH_EDITOR_STARTER'] ?></h4>
+    <?php elseif($dish->Type() == 'mainDish-a') : ?>
+        <h4><?= $this->_strings['DISH_EDITOR_MAIN_DISH_A'] ?></h4>
+    <?php elseif($dish->Type() == 'mainDish-b') : ?>
+        <h4><?= $this->_strings['DISH_EDITOR_MAIN_DISH_B'] ?></h4>
+    <?php elseif($dish->Type() == 'dessert') : ?>
+        <h4><?= $this->_strings['DISH_EDITOR_DESSERT'] ?></h4>
+    <?php endif ?>
+
+        <div class="row">
+            <div class="col-12"><img class="dish_illustration" src="<?= 'Ressources/img/dishes/'.$dish->Image() ?>" /></div>
+        </div>
+
+        <div class="row">
+            <p class="col-12"><?= $dish->Author()->Name(); ?></p>
+        </div>
+
+        <div class="row">
+            <span class="col-4 icon icon_like"><?= $dish->Likes() ?></span>
+            <span class="col-4 icon icon_dislike"><?= $dish->Dislikes() ?></span>
+            <span class="col-4 icon icon_commentary"><?= count($dish->Comments()) ?></span>
+        </div>
+
+        <div class="ingredient_button_container">
+            <a class="ingredient_button" href="backDish-<?= $dish->Id() ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACK_CONTENT_CONSULT_DISH'] ?></a>
+            <a class="ingredient_button" href="confirmDish-<?= $dish->Id() ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACK_CONTENT_ACCEPT_DISH'] ?></a>
+            <a class="ingredient_button" href="refuseDish-<?= $dish->Id() ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACK_CONTENT_DENY_DISH'] ?></a>
+        </div>
+    </div>
+</div>
+
+<?php endforeach ?>
+
+<!-- Affichage des articles -->
+
+<?php if(!empty($this->_articles)) : ?>
+<h2 class="backContent_title"><?= $this->_strings['BACK_CONTENT_TITLE_ARTICLES'] ?></h2>
+<?php endif ?>
+
+<?php foreach($this->_articles as $article) : ?>
+
+<div class="row">
+    <div class="dish_container">
+        <h3><?= $article->Title() ?> (<?= $article->lang() ?>)</h3>
+        <h4><?= $article->Category()->Name() ?></h4>
+
+        <div class="row">
+            <div class="col-12"><img class="dish_illustration" src="Ressources/img/articles/<?= $article->Image() ?>" /></div>
+        </div>
+        <div class="row">
+            <p class="col-12"><?= $article->Author()->Name(); ?></p>
+        </div>
+
+        <div class="row">
+            <span class="col-4 icon icon_like"><?= $article->Likes() ?></span>
+            <span class="col-4 icon icon_dislike"><?= $article->Dislikes() ?></span>
+            <span class="col-4 icon icon_commentary"><?= count($article->Comments()) ?></span>
+        </div>
+
+        <div class="ingredient_button_container">
+            <a class="ingredient_button" href="backArticle-<?= $article->Id() ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACK_CONTENT_CONSULT_ARTICLE'] ?></a>
+            <a class="ingredient_button" href="confirmArticle-<?= $article->Id() ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACK_CONTENT_ACCEPT_ARTICLE'] ?></a>
+            <a class="ingredient_button" href="refuseArticle-<?= $article->Id() ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACK_CONTENT_DENY_ARTICLE'] ?></a>
+        </div>
+    </div>
+</div>
+
+<!-- Affichage des categories A FAIRE -->
+
+<?php endforeach ?>

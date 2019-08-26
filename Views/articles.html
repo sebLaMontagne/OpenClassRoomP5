@@ -1,0 +1,25 @@
+<p>Il y a actuellement <?= count($this->_articles) ?> plat(s)</p>
+
+<?php foreach($this->_articles as $article) : ?>
+
+<div class="row">
+    <a class="dish_container" href="article-<?= $article->Id() ?>.<?= $_GET['lang'] ?>">
+        <h3><?= $article->Title() ?></h3>
+        <h4><?= $article->Category()->Name() ?></h4>
+
+        <div class="row">
+            <div class="col-12"><img class="dish_illustration" src="Ressources/img/articles/<?= $article->Image() ?>" /></div>
+        </div>
+        <div class="row">
+            <p class="col-12"><?= $article->Author()->Name(); ?></p>
+        </div>
+
+        <div class="row">
+            <span class="col-4 icon icon_like"><?= $article->Likes() ?></span>
+            <span class="col-4 icon icon_dislike"><?= $article->Dislikes() ?></span>
+            <span class="col-4 icon icon_commentary"><?= count($article->Comments()) ?></span>
+        </div>
+    </a>
+</div>
+
+<?php endforeach ?>

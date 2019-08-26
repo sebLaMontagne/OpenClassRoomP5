@@ -1,0 +1,40 @@
+<p><?= $this->_strings['DASHBOARD_PRESENTATION'] ?></p>
+<p><?= $this->_strings['DASHBOARD_PRESENTATION_2'] ?></p>
+
+<div style="margin-top: 2em;">
+
+<?php if($this->_contentToCheck == 0) : ?>
+
+    <p><span class="btn btn-primary"><?= $this->_strings['DASHBOARD_NO_CONTENT_TO_CONFIRM'] ?></span></p>
+
+<?php else : ?>
+
+    <p>
+        <a class="btn btn-primary" href="backContent.<?= $_GET['lang'] ?>">
+            <?= $this->_strings['DASHBOARD_CONTENT_TO_CONFIRM'] ?>
+            <span class="badge badge-danger"><?= $this->_contentToCheck ?></span>
+        </a>
+    </p>
+
+<?php endif ?>
+</div>
+
+<div class="row dashboard">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+        <a href="backComments.<?= $_GET['lang'] ?>"><img src="Ressources/img/comments.png" /></a>
+        <span class="badge badge-danger commentary-badge"><?= $this->_unapprovedComments ?></span>
+        <p><?= $this->_strings['DASHBOARD_COMMENTS_INFO'] ?></p>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+        <a href="backUsers.<?= $_GET['lang'] ?>"><img src="Ressources/img/users.png" /></a>
+        <p><?= $this->_strings['DASHBOARD_USERS_INFO'] ?></p>
+        <span class="badge badge-danger commentary-badge"><?= $this->_users ?></span>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+        <a href="backMessages.<?= $_GET['lang'] ?>"><img src="Ressources/img/messages.png" /></a>
+        <span class="badge badge-danger commentary-badge"><?= $this->_messages ?></span>
+        <p><?= $this->_strings['DASHBOARD_CONTACTS_INFO'] ?></p>
+    </div>
+</div>

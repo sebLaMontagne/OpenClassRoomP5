@@ -1,0 +1,98 @@
+<div class="info">
+    <p><?= $this->_strings['DISH_EDITOR_DESCRIPTION'] ?></p>
+    <p><?= $this->_strings['DISH_EDITOR_DESCRIPTION_2'] ?></p>
+</div>
+
+<form method="POST" class="dishEditor_form" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-12">
+            <p class="dishEditor_input">
+                <label for="dishName"><?= $this->_strings['DISH_EDITOR_DISH_NAME'] ?></label>
+                <input id="dishName" name="dishName" type="text" required />
+            </p>
+            <p class="dishEditor_input">
+                <label for="preparationTime"><?= $this->_strings['DISH_EDITOR_DISH_TIME'] ?></label>
+                <input id="preparationTime" type="number" name="preparationTime" step="5" min="5" value="5" required /> mins
+            </p>
+            <p class="dishEditor_input">
+                <label for="shareNb"><?= $this->_strings['DISH_EDITOR_DISH_SHARES'] ?></label>
+                <input id="shareNb" type="number" name="shareNb" min="1" value="1" required />
+            </p>
+            <p>
+                <label for="dishType"><?= $this->_strings['DISH_EDITOR_DISH_TYPE'] ?> ? : </label>
+                <select name="dishType" id="dishType" required>
+                    <option value="">--<?= $this->_strings['DISH_EDITOR_DISH_TYPE'] ?> ?--</option>
+                    <option value="breakfast"><?= $this->_strings['DISH_EDITOR_BREAKFAST'] ?></option>
+                    <option value="starter"><?= $this->_strings['DISH_EDITOR_STARTER'] ?></option>
+                    <option value="mainDish-a"><?= $this->_strings['DISH_EDITOR_MAIN_DISH_A'] ?></option>
+                    <option value="mainDish-b"><?= $this->_strings['DISH_EDITOR_MAIN_DISH_B'] ?></option>
+                    <option value="dessert"><?= $this->_strings['DISH_EDITOR_DESSERT'] ?></option>
+                </select>
+            </p>
+            <p>
+                <label for="dishImage"><?= $this->_strings['DISH_IMAGE_TITLE'] ?></label>
+                <input type="file" name="dishImage" id="dishImage" accept=".jpg, .jpeg, .png, .tiff, .gif" required />
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 display-2-columns" id="ingredientsContainer">
+            <p><?= $this->_strings['DISH_INGREDIENTS_DESCRIPTION'] ?></p>
+            <div class="dishEditor_ingredient" id="ingredient1">
+                <select name="ingredient1" id="ingredientName1" required>
+                    <option value="">--<?= $this->_strings['DISH_INGREDIENTS_INFO'] ?>--</option>
+<?php foreach($this->_ingredients as $ingredient) : ?>
+                    <option value="<?= $ingredient->Id() ?>"><?= $ingredient->Name() ?></option>
+<?php endforeach ?>
+                </select>
+                <span> : </span>
+                <input class="dishEditor_number" type="number" name="quantityIngredient1" value="0" />
+                <select class="dishEditor_unity" name="ingredientUnit1" required>
+                    <option value="">--<?= $this->_strings['DISH_EDITOR_CHOOSE_UNIT'] ?>--</option>
+                    <option value="g"><?= $this->_strings['DISH_EDITOR_UNIT_GRAM'] ?></option>
+                    <option value="unité"><?= $this->_strings['DISH_EDITOR_UNIT_UNIT'] ?></option>
+                    <option value="poignée"><?= $this->_strings['DISH_EDITOR_UNIT_HANDLE'] ?></option>
+                    <option value="cuillère à soupe"><?= $this->_strings['DISH_EDITOR_UNIT_SOUP_SPOON'] ?></option>
+                    <option value="pincée"><?= $this->_strings['DISH_EDITOR_UNIT_PINCH'] ?></option>
+                </select>
+            </div>
+            
+            <button type="button" id="addIngredient"><?= $this->_strings['DISH_EDITOR_ADD_INGREDIENT'] ?></button>
+            <button type="button" id="removeIngredient" disabled><?= $this->_strings['DISH_EDITOR_REMOVE_INGREDIENT'] ?></button>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 display-2-columns" id="stepContainer">
+            <p><?= $this->_strings['DISH_EDITOR_DISH_STEP_DESCRIPTION'] ?></p>
+            <div style="position: relative" id="step1">
+                <textarea name="step1" placeholder="<?= $this->_strings['DISH_EDITOR_STEP_PLACEHOLDER'] ?>" required></textarea>          
+            </div>
+            <button type="button" id="addStep"><?= $this->_strings['DISH_EDITOR_ADD_STEP'] ?></button>
+            <button type="button" id="removeStep" disabled><?= $this->_strings['DISH_EDITOR_REMOVE_STEP'] ?></button>
+        </div>
+    </div>
+
+    <div class="row">
+        <p id="name_not_empty" class="register_info register_info_NOK">* <?= $this->_strings['DISH_EMPTY_NAME_FEEDBACK'] ?></p>
+        <p id="preparation_time_min" class="register_info register_info_NOK">* <?= $this->_strings['DISH_PREPARATION_TIME_MIN_FEEDBACK'] ?></p>
+        <p id="valid_share_number" class="register_info register_info_NOK">* <?= $this->_strings['DISH_SHARE_FEEDBACK'] ?></p>
+        <p id="valid_dish_type" class="register_info register_info_NOK">* <?= $this->_strings['DISH_TYPE_FEEDBACK'] ?></p>
+        <p id="file_is_set" class="register_info register_info_NOK">* <?= $this->_strings['DISH_EMPTY_FILE_FEEDBACK'] ?></p>
+        <p id="file_is_valid" class="register_info register_info_NOK">* <?= $this->_strings['DISH_VALID_FILE_FEEDBACK'] ?></p>
+        <p id="all_ingredients_fields_filled" class="register_info register_info_NOK">* <?= $this->_strings['DISH_INGREDIENTS_FIELDS_FEEDBACK'] ?></p>
+        <p id="all_ingredients_unities_filled" class="register_info register_info_NOK">* <?= $this->_strings['DISH_INGREDIENTS_QUANTITIES_FEEDBACK'] ?></p>
+        <p id="all_ingredients_unities_informed" class="register_info register_info_NOK">* <?= $this->_strings['DISH_INGREDIENTS_UNITIES_FEEDBACK'] ?></p> 
+        <p id="ingredient_unicity" class="register_info register_info_NOK">* <?= $this->_strings['DISH_EDITOR_UNICITY_FEEDBACK'] ?></p>
+        <p id="all_steps_filled" class="register_info register_info_NOK">* <?= $this->_strings['DISH_EDITOR_STEPS_FEEDBACK'] ?></p>      
+    </div>
+    <input id="submit" type="submit" value="<?= $this->_strings['DISH_EDITOR_SUBMIT_DISH'] ?>" disabled />
+</form>
+
+<?php if($this->_dishIsSaved) : ?>
+
+<p class="text-success"><?= $this->_strings['INGREDIENT_EDITOR_SUCCESS_1'] ?></p>
+<p class="text-success"><?= $this->_strings['INGREDIENT_EDITOR_SUCCESS_2'] ?></p>
+
+<?php endif ?>
+
+<script src="Ressources/js/dishEditor.js"></script>

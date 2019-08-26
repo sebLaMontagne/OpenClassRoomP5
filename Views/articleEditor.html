@@ -1,0 +1,27 @@
+<p><?= $this->_strings['ARTICLE_EDITOR_DESCRIPTION'] ?></p>
+<p><?= $this->_strings['ARTICLE_EDITOR_DESCRIPTION_2'] ?></p>
+
+<form method="POST" enctype="multipart/form-data">
+    <p>
+        <input class="articleEditor_title" type="text" name="title" placeholder="<?= $this->_strings['ARTICLE_EDITOR_TITLE_PLACEHOLDER'] ?>" required />
+        <select name="category" required>
+            <option value="">--<?= $this->_strings['ARTICLE_EDITOR_CATEGORY_DEFAULT'] ?>--</option>
+<?php foreach($this->_categories as $category) : ?>
+            <option value="<?= $category->Id() ?>"><?= $category->Name() ?></option>
+<?php endforeach ?>
+        </select>
+    </p>
+    <p><input type="file" name="articleImage" accept=".jpg, .jpeg, .png, .tiff, .gif" required /></p>
+    <textarea class="articleEditor_content" name="article_content"></textarea>
+    <p><input type="submit" value="<?= $this->_strings['ARTICLE_EDITOR_SUBMIT'] ?>" /></p>
+</form>
+
+<?php if($this->_articleIsSaved) : ?>
+
+<p class="text-success"><?= $this->_strings['ARTICLE_EDITOR_SUCCESS_1'] ?></p>
+<p class="text-success"><?= $this->_strings['ARTICLE_EDITOR_SUCCESS_2'] ?></p>
+
+<?php endif ?>
+
+<script src="https://cloud.tinymce.com/5/tinymce.min.js"></script>
+<script>tinymce.init({ selector:"textarea", entity_encoding : "raw"});</script>

@@ -1,0 +1,61 @@
+<hr class="commentary-bound" />
+
+<?php foreach($this->users as $user) : ?>
+
+<div class="row">
+    <div class="col-4">
+        <div class="row article_authorContainer">
+            <p class="col-12"><img class="article_authorAvatar" src="<?= 'Ressources/img/avatars/'.$user->Avatar() ?>" /></p>
+            <p class="col-12 article_authorName"><?= $user->Name() ?></p>
+        </div>
+    </div>
+    <div class="col-4">
+        <p class="user_title"><?= $user->email() ?></p>
+    </div>
+    <div class="col-4">
+
+    <?php if($user->isAdmin()) : ?>
+        <p class="user_title"><?= $this->_strings['BACKUSERS_ADMIN'] ?></p>
+    <?php else : ?>
+    <p class="user_title">
+        <?php if($user->isChief()) : ?>
+        <span><?= $this->_strings['BACKUSERS_CHIEF'] ?></span>
+        <?php else : ?>
+        <span><?= $this->_strings['BACKUSERS_GOURMET'] ?></span>
+        <?php endif ?>
+
+        <?php if($user->isBanned()) : ?>
+        <span><?= $this->_strings['BACKUSERS_BANNED'] ?></span>
+        <?php endif ?>
+    </p>
+        
+    <?php endif ?>
+    </div>
+</div>
+
+    <?php if(!$user->isAdmin()) : ?>
+
+<div class="row">
+
+    <div class="col-6">
+        <?php if($user->isChief()) : ?>
+        <a class="ingredient_button" href="demoteUser-<?= $user->Id() ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACKUSERS_DEMOTE_LINK'] ?></a>
+        <?php else : ?>
+        <a class="ingredient_button" href="promoteUser-<?= $user->Id() ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACKUSERS_PROMOTE_LINK'] ?></a>
+        <?php endif ?>
+    </div>
+
+    <div class="col-6">
+        <?php if($user->isBanned()) : ?>
+        <a class="ingredient_button" href="debanUser-<?= $user->Id() ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACKUSERS_DEBAN_LINK'] ?></a>
+        <?php else : ?>
+        <a class="ingredient_button" href="banUser-<?= $user->Id() ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACKUSERS_BAN_LINK'] ?></a>
+        <?php endif ?>
+    </div>
+</div>
+
+    <?php endif ?>
+
+<hr class="commentary-bound" />
+
+<?php endforeach ?>

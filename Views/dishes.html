@@ -1,0 +1,37 @@
+<p>Il y a actuellement <?= count($this->_dishes) ?> plat(s)</p>
+
+<?php foreach($this->_dishes as $dish) : ?>
+
+<div class="row">
+    <a class="dish_container" href="dish-<?= $dish->Id() ?>.<?= $_GET['lang'] ?>">
+        <h3><?= $dish->Name() ?></h3>
+
+    <?php if($dish->Type() == 'breakfast') : ?>
+        <h4><?= $this->_strings['DISH_EDITOR_BREAKFAST'] ?></h4>
+    <?php elseif($dish->Type() == 'starter') : ?>
+        <h4><?= $this->_strings['DISH_EDITOR_STARTER'] ?></h4>
+    <?php elseif($dish->Type() == 'mainDish-a') : ?>
+        <h4><?= $this->_strings['DISH_EDITOR_MAIN_DISH_A'] ?></h4>
+    <?php elseif($dish->Type() == 'mainDish-b') : ?>
+        <h4><?= $this->_strings['DISH_EDITOR_MAIN_DISH_B'] ?></h4>
+    <?php elseif($dish->Type() == 'dessert') : ?>
+        <h4><?= $this->_strings['DISH_EDITOR_DESSERT'] ?></h4>
+    <?php endif ?>
+
+        <div class="row">
+            <div class="col-12"><img class="dish_illustration" src="<?= 'Ressources/img/dishes/'.$dish->Image() ?>" /></div>
+        </div>
+
+        <div class="row">
+            <p class="col-12"><?= $dish->Author()->Name(); ?></p>
+        </div>
+
+        <div class="row">
+            <span class="col-4 icon icon_like"><?= $dish->Likes() ?></span>
+            <span class="col-4 icon icon_dislike"><?= $dish->Dislikes() ?></span>
+            <span class="col-4 icon icon_commentary"><?= count($dish->Comments()) ?></span>
+        </div>
+    </a>
+</div>
+
+<?php endforeach ?>

@@ -1,0 +1,34 @@
+<div class="card">
+    <div class="card-header">
+<?php if($this->message->Type() == 'Chief Promotion') : ?>
+    <?= $this->_strings['BACKMESSAGES_CHIEF_PROMOTION'] ?>
+<?php endif ?>
+    </div>
+
+    <div class="card-body">
+        <p><?= $this->message->Content() ?></p>
+        <p class="mt-5"><?= $this->message->Author()->Name() ?>
+
+<?php if($this->message->Author()->isAdmin())      :  echo '('.$this->_strings['BACKUSERS_ADMIN'].')'     ?>
+<?php elseif($this->message->Author()->isBanned()) :  echo     $this->_strings['BACKUSERS_BANNED']        ?>
+<?php elseif($this->message->Author()->isChief())  :  echo '('.$this->_strings['BACKUSERS_CHIEF'].')'     ?>
+<?php else                                         :  echo '('.$this->_strings['BACKUSERS_GOURMET'].')'   ?>
+<?php endif ?>
+
+        </p>
+        <p><?= $this->message->Author()->Email() ?></p>
+    </div>
+
+    <div class="card-footer">
+<?php if($this->message->Type() == 'Chief Promotion') : ?>
+        <a class="btn btn-primary" href="promoteUser-<?= $this->message->Author()->Id() ?>-messages-<?= $_GET['id'] ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACKUSERS_PROMOTE_LINK'] ?></a>
+<?php endif ?>
+        <a class="btn btn-danger" href="deleteMessage-<?= $_GET['id'] ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACKMESSAGE_DELETE_LINK'] ?></a>
+
+<?php if($this->message->Author()->IsBanned()) : ?>
+        <a class="btn btn-primary" href="debanUser-<?= $this->message->Author()->Id() ?>-message-<?= $_GET['id'] ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACKUSERS_DEBAN_LINK'] ?></a>
+<?php else : ?>
+        <a class="btn btn-primary" href="banUser-<?= $this->message->Author()->Id() ?>-message-<?= $_GET['id'] ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACKUSERS_BAN_LINK'] ?></a>
+<?php endif ?>
+    </div>
+</div>

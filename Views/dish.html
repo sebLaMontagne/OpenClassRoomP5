@@ -1,0 +1,125 @@
+<div class="dish_container">
+    <h2><?= $this->_dish->Name() ?></h2>
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8"><img class="dish_illustration" src="<?= 'Ressources/img/dishes/'.$this->_dish->Image() ?>" /></div>
+        <div class="col-2"></div>
+    </div>
+
+    <div class="row">
+        <p class="col-12"><?= $this->_dish->Calories().' '.$this->_strings['DISH_CAL_PER_SHARE'] ?></p>
+    </div>
+
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-4">
+            <h3><?= $this->_strings['DISH_TIME'] ?></h3>
+            <p><?= $this->_dish->Duration().' '.$this->_strings['DISH_MINUTES'] ?></p>
+        </div>
+
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-4">
+            <h3><?= $this->_strings['DISH_SHARES'] ?></h3>
+            <p><?= $this->_dish->Shares().' '.$this->_strings['DISH_SHARE'] ?></p>
+        </div>
+        <div class="col-2"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-4">
+            <h3><?= $this->_strings['DISH_INGREDIENTS_H3'] ?></h3>
+<?php foreach($this->_dish->_ingredients as $ingredient) : ?>
+            <div class="row">               
+    <?php if($ingredient->Unit() == 'g' ) : ?>
+                <p class="col-12 dish_ingredient"><img src="<?= 'Ressources/img/ingredients/'.$ingredient->Image() ?>" /> <?= $ingredient->Name().' : '.$ingredient->Quantity().' '.$this->_strings['DISH_EDITOR_UNIT_GRAM'] ?></p>
+    <?php elseif($ingredient->Unit() == 'unité') : ?>
+                <p class="col-12 dish_ingredient"><img src="<?= 'Ressources/img/ingredients/'.$ingredient->Image() ?>" /> <?= $ingredient->Quantity().' '.$ingredient->Name() ?></p>
+    <?php elseif($ingredient->Unit() == 'poignée' ) : ?>
+                <p class="col-12 dish_ingredient"><img src="<?= 'Ressources/img/ingredients/'.$ingredient->Image() ?>" /> <?= $ingredient->Name().' : '.$ingredient->Quantity().' '.$this->_strings['DISH_EDITOR_UNIT_HANDLE'] ?></p>
+    <?php elseif($ingredient->Unit() == 'cuillère à soupe' ) : ?>
+                <p class="col-12 dish_ingredient"><img class="dish_ingredient_illustration" src="<?= 'Ressources/img/ingredients/'.$ingredient->Image() ?>" /> <?= $ingredient->Name().' : '.$ingredient->Quantity().' '.$this->_strings['DISH_EDITOR_UNIT_SOUP_SPOON'] ?></p>
+    <?php elseif($ingredient->Unit() == 'pincée' ) : ?>
+                <p class="col-12 dish_ingredient"><img src="<?= 'Ressources/img/ingredients/'.$ingredient->Image() ?>" /> <?= $ingredient->Name().' : '.$ingredient->Quantity().' '.$this->_strings['DISH_EDITOR_UNIT_PINCH'] ?></p> 
+    <?php endif ?>
+            </div>
+<?php endforeach ?>
+        </div>
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-4">
+            <h3><?= $this->_strings['DISH_STEPS_H3'] ?></h3>
+<?php foreach($this->_dish->_steps as $step) : ?>
+            <p><?= $step ?></p>
+<?php endforeach ?>
+        </div>
+        <div class="col-2"></div>
+    </div>
+
+    
+<?php if(empty($_SESSION['username'])) : ?>
+    <div class="row">
+        <span class="col-2"></span>
+        <span class="col-4 icon icon_like_disabled"><?= $this->_dish->likes() ?></span>
+        <span class="col-4 icon icon_dislike_disabled"><?= $this->_dish->dislikes() ?></span>
+        <span class="col-2"></span>
+        <p class="col-12"><?= $this->_strings['DISH_CALL_1'] ?></p>
+    </div>
+</div>
+<div class="row">
+    <p class="col-12"><?= $this->_strings['DISH_CALL_2'] ?></p>
+</div>
+
+<?php else : ?>
+
+    <?php if($this->_userAppreciation == null) : ?>
+
+    <div class="row">
+        <span class="col-2"></span>
+        <a href="likeDish-<?= $_GET['id'] ?>.<?= $_GET['lang'] ?>" class="col-4 icon icon_like appreciation" title="<?= $this->_strings['DISH_LIKE_TITLE'] ?>"><?= $this->_dish->likes() ?></a>
+        <a href="dislikeDish-<?= $_GET['id'] ?>.<?= $_GET['lang'] ?>" class="col-4 icon icon_dislike appreciation" title="<?= $this->_strings['DISH_DISLIKE_TITLE'] ?>"><?= $this->_dish->dislikes() ?></a>
+        <span class="col-2"></span>
+    </div>
+
+    <?php elseif($this->_userAppreciation->IsLike() == 0) : ?>
+
+    <div class="row">
+        <span class="col-2"></span>
+        <a href="likeDish-<?= $_GET['id'] ?>.<?= $_GET['lang'] ?>" class="col-4 icon icon_like appreciation" title="<?= $this->_strings['DISH_LIKE_TITLE'] ?>"><?= $this->_dish->likes() ?></a>
+        <span class="col-4 icon icon_dislike text-success"><?= $this->_dish->dislikes() ?></span>
+        <span class="col-2"></span>
+    </div>
+
+    <?php elseif($this->_userAppreciation->IsLike() == 1) : ?>
+
+    <div class="row">
+        <span class="col-2"></span>
+        <span class="col-4 icon icon_like text-success"><?= $this->_dish->likes() ?></span>
+        <a href="dislikeDish-<?= $_GET['id'] ?>.<?= $_GET['lang'] ?>" class="col-4 icon icon_dislike appreciation" title="<?= $this->_strings['DISH_DISLIKE_TITLE'] ?>"><?= $this->_dish->dislikes() ?></a>
+        <span class="col-2"></span>
+    </div>
+
+    <?php endif ?>
+
+</div>
+
+<form method="POST" action="saveDishComment.<?= $_GET['lang'] ?>">
+    <input type="hidden" name="id" value="<?= $_GET['id'] ?>" />
+    <textarea name="content" class="comment_textarea" placeholder="<?= $this->_strings['ARTICLE_COMMENT_PLACEHOLDER'] ?>"></textarea>
+    <input type="submit" value="<?= $this->_strings['ARTICLE_COMMENT_SUBMIT'] ?>" />
+</form>
+
+<hr class="commentary-bound" />
+<p><?= count($this->_dish->comments()) ?> <?= $this->_strings['ARTICLE_COMMENT'] ?></p>
+
+    <?php foreach($this->_dish->comments() as $comment) : ?>
+
+<div class="row comment">
+    <div class="col-4">
+        <div class="row article_authorContainer">
+            <p class="col-12"><img class="article_authorAvatar" src="<?= 'Ressources/img/avatars/'.$comment->Author()->Avatar() ?>" /></p>
+            <p class="col-12 article_authorName"><?= $comment->Author()->Name() ?></p>
+        </div>
+    </div>
+    <div class="col-8 comment_content"><?= $comment->Content() ?></div>
+</div>
+
+    <?php endforeach ?>
+<?php endif ?>

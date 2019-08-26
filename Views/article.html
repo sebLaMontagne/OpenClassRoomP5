@@ -1,0 +1,84 @@
+<div class="dish_container">
+    <h2><?= $this->_article->Title() ?></h2>
+    <p><?= $this->_article->Category()->Name() ?></p>
+
+    <div class="row">
+        <p class="col-12"><img class="dish_illustration" src="<?= 'Ressources/img/articles/'.$this->_article->Image() ?>" /></p>
+        <div class="col-12"><?= $this->_article->Content() ?></div>
+    </div>
+
+    <div class="row article_authorContainer">
+        <p class="col-12"><img class="article_authorAvatar" src="<?= 'Ressources/img/avatars/'.$this->_article->Author()->Avatar() ?>" /></p>
+        <p class="col-12 article_authorName"><?= $this->_article->Author()->Name() ?></p>
+    </div>
+
+    <?php if(empty($_SESSION['username'])) : ?>
+    <div class="row">
+        <span class="col-2"></span>
+        <span class="col-4 icon icon_like_disabled"><?= $this->_article->likes() ?></span>
+        <span class="col-4 icon icon_dislike_disabled"><?= $this->_article->dislikes() ?></span>
+        <span class="col-2"></span>
+        <p class="col-12"><?= $this->_strings['DISH_CALL_1'] ?></p>
+    </div>
+</div>
+<hr class="commentary-bound" />
+<div class="row">
+    <p class="col-12"><?= $this->_strings['DISH_CALL_2'] ?></p>
+</div>
+
+<?php else : ?>
+
+    <?php if($this->_userAppreciation == null) : ?>
+
+    <div class="row">
+        <span class="col-2"></span>
+        <a href="likeArticle-<?= $_GET['id'] ?>.<?= $_GET['lang'] ?>" class="col-4 icon icon_like appreciation" title="<?= $this->_strings['DISH_LIKE_TITLE'] ?>"><?= $this->_article->likes() ?></a>
+        <a href="dislikeArticle-<?= $_GET['id'] ?>.<?= $_GET['lang'] ?>" class="col-4 icon icon_dislike appreciation" title="<?= $this->_strings['DISH_DISLIKE_TITLE'] ?>"><?= $this->_article->dislikes() ?></a>
+        <span class="col-2"></span>
+    </div>
+
+    <?php elseif($this->_userAppreciation->IsLike() == 0) : ?>
+
+    <div class="row">
+        <span class="col-2"></span>
+        <a href="likeArticle-<?= $_GET['id'] ?>.<?= $_GET['lang'] ?>" class="col-4 icon icon_like appreciation" title="<?= $this->_strings['DISH_LIKE_TITLE'] ?>"><?= $this->_article->likes() ?></a>
+        <span class="col-4 icon icon_dislike text-success"><?= $this->_article->dislikes() ?></span>
+        <span class="col-2"></span>
+    </div>
+
+    <?php elseif($this->_userAppreciation->IsLike() == 1) : ?>
+
+    <div class="row">
+        <span class="col-2"></span>
+        <span class="col-4 icon icon_like text-success"><?= $this->_article->likes() ?></span>
+        <a href="dislikeArticle-<?= $_GET['id'] ?>.<?= $_GET['lang'] ?>" class="col-4 icon icon_dislike appreciation" title="<?= $this->_strings['DISH_DISLIKE_TITLE'] ?>"><?= $this->_article->dislikes() ?></a>
+        <span class="col-2"></span>
+    </div>
+
+    <?php endif ?>
+
+</div>
+
+<form method="POST" action="saveArticleComment.<?= $_GET['lang'] ?>">
+    <input type="hidden" name="id" value="<?= $_GET['id'] ?>" />
+    <textarea name="content" class="comment_textarea" placeholder="<?= $this->_strings['ARTICLE_COMMENT_PLACEHOLDER'] ?>"></textarea>
+    <input type="submit" value="<?= $this->_strings['ARTICLE_COMMENT_SUBMIT'] ?>" />
+</form>
+
+<hr class="commentary-bound" />
+<p><?= count($this->_article->comments()) ?> <?= $this->_strings['ARTICLE_COMMENT'] ?></p>
+
+    <?php foreach($this->_article->comments() as $comment) : ?>
+
+<div class="row comment">
+    <div class="col-4">
+        <div class="row article_authorContainer">
+            <p class="col-12"><img class="article_authorAvatar" src="<?= 'Ressources/img/avatars/'.$comment->Author()->Avatar() ?>" /></p>
+            <p class="col-12 article_authorName"><?= $comment->Author()->Name() ?></p>
+        </div>
+    </div>
+    <div class="col-8 comment_content"><?= $comment->Content() ?></div>    
+</div>
+
+    <?php endforeach ?>
+<?php endif ?>

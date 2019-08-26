@@ -1,0 +1,22 @@
+<p><?= $this->_strings['MAILEDITOR_DESCRIPTION'] ?></p>
+
+<form method="POST">
+    <select id="msg_type" name="msg_type" required>
+        <option value="" disabled><?= $this->_strings['MAILEDITOR_MSG_TYPE_LABEL'] ?></option>
+        <option value="Chief Promotion"><?= $this->_strings['MAILEDITOR_MSG_TYPE_CHIEF_PROMOTION'] ?></option>
+    </select>
+    <textarea style="min-height: 150px" placeholder="<?= $this->_strings['MAILEDITOR_TEXTAREA_PLACEHOLDER'] ?>" name="msg_content"></textarea>
+    <p><input type="submit" value="<?= $this->_strings['MAILEDITOR_SUBMIT'] ?>" /></p>
+</form>
+
+<?php if($this->msgIsSaved) : ?>
+<p class="text-success my-5"><?= $this->_strings['MAILEDITOR_SEND_FEEDBACK'] ?></p>
+<?php elseif(!$this->msgIsSaved && $this->userMessages == 3) : ?>
+<p class="text-danger my-5"><?= $this->_strings['MAILEDITOR_NOT_SEND_FEEDBACK'] ?></p>
+<?php endif ?>
+
+<!-- Trouver plus d'options : -->
+<!--    Demander une nouvelle option dans l'éditeur de messages -->
+<!--    Demande de deban -->
+<!--    Demander une nouvelle catégorie -->
+<!--    Signaler un bug -->

@@ -1,0 +1,60 @@
+<div class="dish_container">
+    <h2><?= $this->_dish->Name() ?></h2>
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8"><img class="dish_illustration" src="<?= 'Ressources/img/dishes/'.$this->_dish->Image() ?>" /></div>
+        <div class="col-2"></div>
+    </div>
+
+    <div class="row">
+        <p class="col-12"><?= $this->_dish->Calories().' '.$this->_strings['DISH_CAL_PER_SHARE'] ?></p>
+    </div>
+
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-4">
+            <h3><?= $this->_strings['DISH_TIME'] ?></h3>
+            <p><?= $this->_dish->Duration().' '.$this->_strings['DISH_MINUTES'] ?></p>
+        </div>
+
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-4">
+            <h3><?= $this->_strings['DISH_SHARES'] ?></h3>
+            <p><?= $this->_dish->Shares().' '.$this->_strings['DISH_SHARE'] ?></p>
+        </div>
+        <div class="col-2"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-4">
+            <h3><?= $this->_strings['DISH_INGREDIENTS_H3'] ?></h3>
+<?php foreach($this->_dish->_ingredients as $ingredient) : ?>
+            <div class="row">               
+    <?php if($ingredient->Unit() == 'g' ) : ?>
+                <p class="col-12 dish_ingredient"><img src="<?= 'Ressources/img/ingredients/'.$ingredient->Image() ?>" /> <?= $ingredient->Name().' : '.$ingredient->Quantity().' '.$this->_strings['DISH_EDITOR_UNIT_GRAM'] ?></p>
+    <?php elseif($ingredient->Unit() == 'unité') : ?>
+                <p class="col-12 dish_ingredient"><img src="<?= 'Ressources/img/ingredients/'.$ingredient->Image() ?>" /> <?= $ingredient->Quantity().' '.$ingredient->Name() ?></p>
+    <?php elseif($ingredient->Unit() == 'poignée' ) : ?>
+                <p class="col-12 dish_ingredient"><img src="<?= 'Ressources/img/ingredients/'.$ingredient->Image() ?>" /> <?= $ingredient->Name().' : '.$ingredient->Quantity().' '.$this->_strings['DISH_EDITOR_UNIT_HANDLE'] ?></p>
+    <?php elseif($ingredient->Unit() == 'cuillère à soupe' ) : ?>
+                <p class="col-12 dish_ingredient"><img class="dish_ingredient_illustration" src="<?= 'Ressources/img/ingredients/'.$ingredient->Image() ?>" /> <?= $ingredient->Name().' : '.$ingredient->Quantity().' '.$this->_strings['DISH_EDITOR_UNIT_SOUP_SPOON'] ?></p>
+    <?php elseif($ingredient->Unit() == 'pincée' ) : ?>
+                <p class="col-12 dish_ingredient"><img src="<?= 'Ressources/img/ingredients/'.$ingredient->Image() ?>" /> <?= $ingredient->Name().' : '.$ingredient->Quantity().' '.$this->_strings['DISH_EDITOR_UNIT_PINCH'] ?></p> 
+    <?php endif ?>
+            </div>
+<?php endforeach ?>
+        </div>
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-4">
+            <h3><?= $this->_strings['DISH_STEPS_H3'] ?></h3>
+<?php foreach($this->_dish->_steps as $step) : ?>
+            <p><?= $step ?></p>
+<?php endforeach ?>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+
+<div class="ingredient_button_container">
+    <a class="ingredient_button" href="confirmDish-<?= $_GET['id'] ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACK_CONTENT_ACCEPT_DISH'] ?></a>
+    <a class="ingredient_button" href="refuseDish-<?= $_GET['id'] ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACK_CONTENT_DENY_DISH'] ?></a>
+</div>

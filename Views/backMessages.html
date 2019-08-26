@@ -1,0 +1,36 @@
+<p><?= $this->_strings['BACKMESSAGES_PRESENTATION'] ?></p>
+<table class="table table-striped my-5">
+    <thead>
+        <tr>
+            <th scope="col"><?= $this->_strings['BACKMESSAGES_NAME'] ?></th>
+            <th scope="col"><?= $this->_strings['BACKMESSAGES_OBJECT'] ?></th>
+            <th scope="col"><?= $this->_strings['BACKMESSAGES_DATE'] ?></th>
+        </tr>
+    </thead>
+    <tbody>
+<?php foreach($this->messages as $message) : ?>
+        
+        <tr>
+            <td><?= $message->Author()->Name() ?>
+    <?php if($message->Author()->isAdmin())      :  echo '('.$this->_strings['BACKUSERS_ADMIN'].')'     ?>
+    <?php elseif($message->Author()->isBanned()) :  echo     $this->_strings['BACKUSERS_BANNED']        ?>
+    <?php elseif($message->Author()->isChief())  :  echo '('.$this->_strings['BACKUSERS_CHIEF'].')'     ?>
+    <?php else                                   :  echo '('.$this->_strings['BACKUSERS_GOURMET'].')'   ?>
+    <?php endif ?>
+            </td>
+    
+            <td>
+    <?php if($message->Type() == 'Chief Promotion') : ?><?= $this->_strings['BACKMESSAGES_CHIEF_PROMOTION'] ?>
+    <?php endif ?>
+            </td>
+            
+            <td><?= $message->Date() ?></td>
+            <td><a href="backMessage-<?= $message->Id() ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACKMESSAGES_CONSULT_LINK'] ?></a></td>
+        </tr>
+        
+<?php endforeach ?>
+    </tbody>
+</table>
+
+<!-- Ajouter un moyen de trier les messages croissante / décroissante + filtre type/statuts utilisateurs -->
+<!-- Ajouter un statut au message (non-lu / lu / ...) -->

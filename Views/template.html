@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--Titre-->
+        <title><?= $title ?></title>
+        <!--logo-->
+        <link rel="icon" href="Ressources/img/logo.png" />
+        <!--Meta-->
+        <meta charset="utf-8" />
+        <!--APIs-->
+        <!--Styles-->
+        <link rel="stylesheet" href="Ressources/css/bootstrap.css" />
+        <link rel="stylesheet" href="Ressources/css/styles.css" />
+        <script src="Ressources/js/jQuery.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js"></script>
+        <script src="Ressources/js/bootstrap.js"></script>
+    </head>
+    <body class="container-fluid">
+        <div class="row page">
+            <nav class="col-xs-12 col-sm-12 col-md-3 col-lg-3 section_secondary">   
+                <a href="home.<?= $_GET['lang'] ?>"><img class="navbar-brand" src="Ressources/img/logo.png" /></a>
+                <hr />
+                    <form method="post" action="search.<?= $_GET['lang'] ?>" class="row">
+                        <p class="col-xs-12 col-sm-12 col-md-12 col-lg-8"><input type="text" class="input_search" placeholder="<?= $this->_strings['TEMPLATE_SEARCH_PLACEHOLDER'] ?>" name="search" /></p>
+                        <p class="col-xs-12 col-sm-12 col-md-12 col-lg-4"><input type="submit" value="<?= $this->_strings['TEMPLATE_SEARCH_SUBMIT'] ?>" /></p>
+                    </form>
+                <hr />
+                <p><a href="home.<?= $_GET['lang'] ?>" class="link nav_link link_home"><?= $this->_strings['TEMPLATE_HOME_LINK'] ?></a></p>
+                <p><a href="diets.<?= $_GET['lang'] ?>" class="link nav_link link_diet"><?= $this->_strings['TEMPLATE_DIETS_LINK'] ?></a></p>
+                <p><a href="articles.<?= $_GET['lang'] ?>" class="link nav_link link_article"><?= $this->_strings['TEMPLATE_ARTICLES_LINK'] ?></a></p>
+                <p><a href="dishes.<?= $_GET['lang'] ?>" class="link nav_link link_dish"><?= $this->_strings['TEMPLATE_DISHES_LINK'] ?></a></p>
+                <hr />
+                <div class="row">
+                    <a href="https://www.facebook.com/" class="col-3 social_link link_facebook" target="_blank" title="<?= $this->_strings['TEMPLATE_SOCIAL_FACEBOOK'] ?>"></a>
+                    <a href="https://twitter.com/" class="col-3 social_link link_twitter" target="_blank" title="<?= $this->_strings['TEMPLATE_SOCIAL_TWITTER'] ?>"></a>
+                    <a href="https://www.youtube.com/" class="col-3 social_link link_youtube" target="_blank" title="<?= $this->_strings['TEMPLATE_SOCIAL_YOUTUBE'] ?>"></a>
+                    <a href="https://www.instagram.com/" class="col-3 social_link link_instagram" target="_blank" title="<?= $this->_strings['TEMPLATE_SOCIAL_INSTAGRAM'] ?>"></a>
+                </div>
+                <hr />
+                <div class="text-center">
+                    <p><?= $this->_strings['TEMPLATE_LANGUAGE_DESCRIPTION'] ?></p>
+                    <p>
+                        <a class="link link_language" href="home.fr">FR</a> | 
+                        <a class="link link_language" href="home.en">EN</a>
+                    </p>
+                </div>
+                
+            </nav>
+            
+            <section class="col-xs-12 col-sm-12 col-md-6 col-lg-6 section_main">
+                <h1><?= $this->_strings['TEMPLATE_MAIN_TITLE'] ?></h1>
+                <h2><?= $this->_strings['TEMPLATE_MAIN_SUBTITLE'] ?></h2>
+                <?= $content ?>
+            </section>
+            <section class="col-xs-12 col-sm-12 col-md-3 col-lg-3 section_secondary">
+<?php if(empty($_SESSION['username'])) : ?>
+                <p><a href="register.<?= $_GET['lang'] ?>" class="link register_link"><?= $this->_strings['TEMPLATE_REGISTER_LINK'] ?></a></p>
+<?php else : ?>
+                <div class="account">
+                    <h2 class="account_name"><?= $_SESSION['username'] ?></h2>
+    <?php if($_SESSION['isAdmin']) : ?>
+                    <h3 class="account_status"><?= $this->_strings['TEMPLATE_ACCOUNT_ADMINISTRATOR'] ?></h3>  
+    <?php else : ?>
+                    <h3 class="account_status"><?= $this->_strings['TEMPLATE_ACCOUNT_GOURMET'] ?></h3>
+    <?php endif ?>
+                    <form id="newAvatarForm" method="POST" action="imageLoader.php?lang=<?= $_GET['lang'] ?>" enctype="multipart/form-data">
+                        <img class="account_avatar" src="Ressources/img/avatars/<?= $_SESSION['avatar'] ?>" />
+                        <input id="newAvatar" type="file" name="newAvatar" style="display: none" accept=".jpg, .jpeg, .png, .tiff, .gif" />
+                    </form>
+                    <nav>
+                        <!-- Conditionner l'accès aux sections en fonction des status + sécuriser l'accès dans les controllers -->
+    <?php if($_SESSION['isAdmin']) : ?>
+                        <p><a href="dashboard.<?= $_GET['lang'] ?>" class="link account_link link_dashbord"><?= $this->_strings['TEMPLATE_DASHBOARD_LINK'] ?></a></p>
+    <?php endif ?>
+                        <p><a href="mailEditor.<?= $_GET['lang'] ?>" class="link account_link link_mail"><?= $this->_strings['TEMPLATE_MAIL_EDITOR_LINK'] ?></a></p>
+                        <p><a href="ingredientEditor.<?= $_GET['lang'] ?>" class="link account_link link_ingredient"><?= $this->_strings['TEMPLATE_INGREDIENT_EDITOR_LINK'] ?></a></p>
+                        <p><a href="dishEditor.<?= $_GET['lang'] ?>" class="link account_link link_dish"><?= $this->_strings['TEMPLATE_DISH_EDITOR_LINK'] ?></a></p>
+                        <p><a href="articleEditor.<?= $_GET['lang'] ?>" class="link account_link link_article"><?= $this->_strings['TEMPLATE_ARTICLE_EDITOR_LINK'] ?></a></p>
+                        <p><a href="traductor.<?= $_GET['lang'] ?>" class="link account_link link_traductor"><?= $this->_strings['TEMPLATE_TRADUCTOR_LINK'] ?></a></p>
+                        <p><a href="logout.<?= $_GET['lang'] ?>" class="link register_link"><?= $this->_strings['TEMPLATE_DISCONNECT_LINK'] ?></a></p>
+                    </nav>
+                </div>
+<?php endif ?>
+                <hr />
+            </section>
+        </div>
+        <script src="Ressources/js/newAvatarLoader.js"></script>
+    </body>
+</html>

@@ -1,0 +1,18 @@
+<div class="dish_container">
+    <h2><?= $this->_article->Title() ?></h2>
+    <p><?= $this->_article->Category()->Name() ?></p>
+
+    <div class="row">
+        <p class="col-12"><img class="dish_illustration" src="<?= 'Ressources/img/articles/'.$this->_article->Image() ?>" /></p>
+        <div class="col-12"><?= $this->_article->Content() ?></div>
+    </div>
+
+    <div class="row">
+        <p style="width: 100%"><img class="article_authorAvatar" src="<?= 'Ressources/img/avatars/'.$this->_article->Author()->Avatar() ?>" /><?= $this->_article->Author()->Name() ?></p>
+    </div>
+</div>
+
+<div class="ingredient_button_container">
+    <a class="ingredient_button" href="confirmArticle-<?= $_GET['id'] ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACK_CONTENT_ACCEPT_ARTICLE'] ?></a>
+    <a class="ingredient_button" href="refuseArticle-<?= $_GET['id'] ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACK_CONTENT_DENY_ARTICLE'] ?></a>
+</div>

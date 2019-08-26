@@ -1,0 +1,84 @@
+<?php var_dump($this->user) ?>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 display-2-columns">
+        <p class="advise"><?= $this->_strings['REGISTER_REGISTER_DESCRIPTION'] ?></p>
+        <h2><?= $this->_strings['REGISTER_REGISTER_CALL'] ?></h2>
+        <form id="registration" class="register_form" method="POST" enctype="multipart/form-data">
+
+<?php if(isset($this->_isUsernameFree) && isset($this->_isEmailFree) && $this->_isUsernameFree && !$this->_isEmailFree) : ?>
+            <input id="registerName" type="text" name="registerName" placeholder="<?= $this->_strings['REGISTER_REGISTER_NAME_PLACEHOLDER'] ?>" required value="<?= $_POST['registerName'] ?>" />
+<?php else : ?>
+            <input id="registerName" type="text" name="registerName" placeholder="<?= $this->_strings['REGISTER_REGISTER_NAME_PLACEHOLDER'] ?>" required />
+<?php endif ?>
+            <p id="infoPseudoLength" class="register_info">* <?= $this->_strings['REGISTER_REGISTER_NAME_FEEDBACK'] ?></p>
+
+<?php if(isset($this->_isUsernameFree) && isset($this->_isEmailFree) && !$this->_isUsernameFree && $this->_isEmailFree) : ?>
+            <input id="registerEmail" type="email" name="registerEmail" placeholder="<?= $this->_strings['REGISTER_EMAIL_PLACEHOLDER'] ?>" required value="<?= $_POST['registerEmail'] ?>" />
+<?php else : ?>
+            <input id="registerEmail" type="email" name="registerEmail" placeholder="<?= $this->_strings['REGISTER_EMAIL_PLACEHOLDER'] ?>" required />
+<?php endif ?>  
+            <p id="infoValidEmail" class="register_info">* <?= $this->_strings['REGISTER_EMAIL_FEEDBACK'] ?></p>
+
+            <input id="registerPassword" type="password" name="registerPassword" placeholder="<?= $this->_strings['REGISTER_REGISTER_PASSWORD_PLACEHOLDER'] ?>" required />
+            <input id="registerPasswordConfirmation" type="password" name="registerPasswordConfirmation" placeholder="<?= $this->_strings['REGISTER_CONFIRM_PASSWORD_PLACEHOLDER'] ?>" required />
+            <!-- Continue where we left off -->
+            <p id="infoPasswordLength" class="register_info">* <?= $this->_strings['REGISTER_PASSWORD_LENGTH_FEEDBACK'] ?></p>
+            <p id="infoPasswordLowercase" class="register_info">* <?= $this->_strings['REGISTER_PASSWORD_LOWERCASE_FEEDBACK'] ?></p>
+            <p id="infoPasswordUppercase" class="register_info">* <?= $this->_strings['REGISTER_PASSWORD_UPPERCASE_FEEDBACK'] ?></p>
+            <p id="infoPasswordFigure" class="register_info">* <?= $this->_strings['REGISTER_PASSWORD_FIGURE_FEEDBACK'] ?></p>
+
+            <input id="registerAvatar" type="file" name="registerAvatar" placeholder="<?= $this->_strings['REGISTER_AVATAR_PLACEHOLDER'] ?>" required accept=".jpg, .jpeg, .png, .tiff, .gif"/>
+            <p id="infoFileSize" class="register_info">* <?= $this->_strings['REGISTER_AVATAR_SIZE_FEEDBACK'] ?></p>
+            <p id="infoFileExtension" class="register_info">* <?= $this->_strings['REGISTER_AVATAR_FORMAT_FEEDBACK'] ?></p>
+
+            <input id="confirmRegistration" type="submit" value="<?= $this->_strings['REGISTER_SUBMIT_TEXT'] ?>" disabled />
+        </form>
+
+<?php if(isset($this->_isUsernameFree) && isset($this->_isEmailFree)) : ?>
+        <div style="margin-top: 1em">
+
+        <?php if($this->_isUsernameFree) : ?>
+            <p class="text-success"><?= $this->_strings['REGISTER_AVAILABLE_NAME_FEEDBACK'] ?></p>
+        <?php elseif(!$this->_isUsernameFree) : ?>
+            <p class="text-danger"><?= $this->_strings['REGISTER_UNAVAILABLE_NAME_FEEDBACK'] ?></p>
+        <?php endif ?>
+
+        <?php if($this->_isEmailFree) : ?>
+            <p class="text-success"><?= $this->_strings['REGISTER_AVAILABLE_EMAIL_FEEDBACK'] ?></p>
+        <?php elseif(!$this->_isEmailFree) : ?>
+            <p class="text-danger"><?= $this->_strings['REGISTER_UNAVAILABLE_EMAIL_FEEDBACK'] ?></p>
+        <?php endif ?>
+
+        <?php if($this->_isUsernameFree && $this->_isEmailFree) : ?>
+            <p class="text-success"><?= $this->_strings['REGISTER_VALID_REGISTRATION_FEEDBACK'] ?></p>
+            <p class="text-success"><?= $this->_strings['REGISTER_SEND_MAIL_FEEDBACK'] ?></p>
+        <?php elseif(!$this->_isUsernameFree || !$this->_isEmailFree) : ?>
+            <p class="text-danger"><?= $this->_strings['REGISTER_INVALID_REGISTRATION_FEEDBACK'] ?></p>
+        <?php endif ?>
+        </div>
+<?php endif ?>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 display-2-columns">
+        <p class="advise"><?= $this->_strings['REGISTER_CONNECTION_DESCRIPTION'] ?></p>
+        <h2><?= $this->_strings['REGISTER_CONNECTION_CALL'] ?></h2>
+        <form id="connexion" class="register_form" method="POST">
+            <input id="connexionName" type="text" name="connectName" placeholder="<?= $this->_strings['REGISTER_REGISTER_NAME_PLACEHOLDER'] ?>" required />
+            <input id="connexionPassword" type="password" name="connectPassword" placeholder="<?= $this->_strings['REGISTER_REGISTER_PASSWORD_PLACEHOLDER'] ?>" required />
+            <input id="confirmConnexion" type="submit" value="<?= $this->_strings['REGISTER_CONNECT_TEXT'] ?>" disabled />
+        </form>
+        <a class="link reset_link" href="reset"><?= $this->_strings['REGISTER_RESET_LINK'] ?></a>
+        <div style="margin-top: 1em">
+<?php if(!isset($this->user) && !empty($_POST['connectName']) && !empty($_POST['connectPassword'])) : ?>       
+            <p class="text-danger"><?= $this->_strings['REGISTER_BAD_LOGINS_FEEDBACK'] ?></p>
+<?php elseif(isset($this->user) && !$this->user->isTriggered()) : ?>
+            <p class="text-danger"><?= $this->_strings['REGISTER_UNREGISTERED_FEEDBACK'] ?></p>
+<?php elseif(isset($this->user) && $this->user->isBanned()) : ?>
+            <p class="text-danger"><?= $this->_strings['REGISTER_BAN_FEEDBACK'] ?></p>
+<?php endif ?>
+        </div>
+    </div>
+</div>
+
+<script src="Ressources/js/register.js"></script>

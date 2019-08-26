@@ -1,0 +1,34 @@
+<div class="info">
+    <p><?= $this->_strings['INGREDIENT_EDITOR_DESCRIPTION'] ?></p>
+</div>
+
+<form method="POST" class="dishEditor_form" enctype="multipart/form-data">
+    <p>
+        <label for="ingredient_name"><?= $this->_strings['INGREDIENT_EDITOR_NAME_LABEL'] ?></label>
+        <input type="text" id="ingredient_name" name="ingredient_name" required />
+    </p>
+
+    <p>
+        <label for="ingredient_calories"><?= $this->_strings['INGREDIENT_EDITOR_CALORIES_LABEL'] ?></label>
+        <input type="number" id="ingredient_calories" name="ingredient_calories" min="0" max="999" required />
+    </p>
+
+    <p>
+        <label for="ingredient_unit_weight"><?= $this->_strings['INGREDIENT_EDITOR_UNIT_LABEL'] ?></label>
+        <input type="number" id="ingredient_unit_weight" name="ingredient_unit_weight" min="0" max="999" required />
+    </p>
+
+    <p>
+        <label for="ingredient_image"><?= $this->_strings['INGREDIENT_EDITOR_IMAGE_LABEL'] ?></label>
+        <input type="file" id="ingredient_image" name="ingredient_image" accept=".jpg, .jpeg, .png, .tiff, .gif" required />
+    </p>
+
+    <p><input type="submit" value="<?= $this->_strings['INGREDIENT_EDITOR_SUBMIT'] ?>" /></p>
+</form>
+
+<?php if($this->_ingredientIsSaved) : ?>
+
+<p class="text-success"><?= $this->_strings['INGREDIENT_EDITOR_SUCCESS_1'] ?></p>
+<p class="text-success"><?= $this->_strings['INGREDIENT_EDITOR_SUCCESS_2'] ?></p>
+
+<?php endif ?>

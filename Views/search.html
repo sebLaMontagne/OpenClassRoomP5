@@ -1,0 +1,44 @@
+<?php if(empty($this->_searchResults)) : ?>
+
+<p>Aucun résultat de recherche</p>
+
+<?php else : ?>
+
+<p><?= count($this->_searchResults) ?> résultat(s) de recherche</p>
+
+    <?php foreach($this->_searchResults as $searchResult) : ?>
+
+<div class="row">
+    <a class="dish_container" href="dish.<?= $_GET['lang'] ?>-<?= $searchResult->Id() ?>">
+        <h3><?= $searchResult->Name() ?></h3>
+
+    <?php if($searchResult->Type() == 'breakfast') : ?>
+        <h4><?= $this->_strings['DISH_EDITOR_BREAKFAST'] ?></h4>
+    <?php elseif($searchResult->Type() == 'starter') : ?>
+        <h4><?= $this->_strings['DISH_EDITOR_STARTER'] ?></h4>
+    <?php elseif($searchResult->Type() == 'mainDish-a') : ?>
+        <h4><?= $this->_strings['DISH_EDITOR_MAIN_DISH_A'] ?></h4>
+    <?php elseif($searchResult->Type() == 'mainDish-b') : ?>
+        <h4><?= $this->_strings['DISH_EDITOR_MAIN_DISH_B'] ?></h4>
+    <?php elseif($searchResult->Type() == 'dessert') : ?>
+        <h4><?= $this->_strings['DISH_EDITOR_DESSERT'] ?></h4>
+    <?php endif ?>
+
+        <div class="row">
+            <div class="col-12"><img class="dish_illustration" src="<?= 'Ressources/img/dishes/'.$searchResult->Image() ?>" /></div>
+        </div>
+
+        <div class="row">
+            <p class="col-12"><?= $searchResult->Author()->Name(); ?></p>
+        </div>
+
+        <div class="row">
+            <span class="col-4 icon icon_like"><?= $searchResult->Likes() ?></span>
+            <span class="col-4 icon icon_dislike"><?= $searchResult->Dislikes() ?></span>
+            <span class="col-4 icon icon_commentary"><?= $searchResult->Comments() ?></span>
+        </div>
+    </a>
+</div>
+
+    <?php endforeach ?>
+<?php endif ?>

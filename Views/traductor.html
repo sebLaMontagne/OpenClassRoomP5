@@ -1,0 +1,97 @@
+<p><?= $this->_strings['TRADUCTOR_PRESENTATION'] ?></p>
+<h3><?= $this->_strings['TRADUCTOR_ARTICLES_H3'] ?></h3>
+
+<?php foreach($this->articlesTrads as $article) : ?>
+    <?php if($article['article'] != null) : ?>
+<div class="row">
+    <a class="dish_container" href="articleTrad-<?= $article['article']->Id() ?>-<?= $article['article']->Lang() ?>--<?= $article['lang'] ?>.<?= $_GET['lang'] ?>">
+        <h3><?= $article['article']->Title() ?> (-> <?= $article['lang'] ?>)</h3>
+        <h4><?= $article['article']->Category()->Name() ?></h4>
+
+        <div class="row">
+            <div class="col-12"><img class="dish_illustration" src="Ressources/img/articles/<?= $article['article']->Image() ?>" /></div>
+        </div>
+        <div class="row">
+            <p class="col-12"><?= $article['article']->Author()->Name(); ?></p>
+        </div>
+
+        <div class="row">
+            <span class="col-4 icon icon_like"><?= $article['article']->Likes() ?></span>
+            <span class="col-4 icon icon_dislike"><?= $article['article']->Dislikes() ?></span>
+            <span class="col-4 icon icon_commentary"><?= count($article['article']->Comments()) ?></span>
+        </div>
+    </a>
+</div>
+    <?php endif ?>
+<?php endforeach ?>
+
+<h3><?= $this->_strings['TRADUCTOR_DISHES_H3'] ?></h3>
+
+<?php foreach($this->dishesTrads as $dish) : ?>
+    <?php if($dish['dish'] != null) : ?>
+<div class="row">
+    <a class="dish_container" href="dishTrad-<?= $dish['dish']->Id() ?>-<?= $dish['dish']->Lang() ?>--<?= $dish['lang'] ?>.<?= $_GET['lang'] ?>">
+        <h3><?= $dish['dish']->Name() ?> (-> <?= $dish['lang'] ?>)</h3>
+
+        <?php if($dish['dish']->Type() == 'breakfast') : ?>
+        <h4><?= $this->_strings['DISH_EDITOR_BREAKFAST'] ?></h4>
+        <?php elseif($dish['dish']->Type() == 'starter') : ?>
+        <h4><?= $this->_strings['DISH_EDITOR_STARTER'] ?></h4>
+        <?php elseif($dish['dish']->Type() == 'mainDish-a') : ?>
+        <h4><?= $this->_strings['DISH_EDITOR_MAIN_DISH_A'] ?></h4>
+        <?php elseif($dish['dish']->Type() == 'mainDish-b') : ?>
+        <h4><?= $this->_strings['DISH_EDITOR_MAIN_DISH_B'] ?></h4>
+        <?php elseif($dish['dish']->Type() == 'dessert') : ?>
+        <h4><?= $this->_strings['DISH_EDITOR_DESSERT'] ?></h4>
+        <?php endif ?>
+
+        <div class="row">
+            <div class="col-12"><img class="dish_illustration" src="<?= 'Ressources/img/dishes/'.$dish['dish']->Image() ?>" /></div>
+        </div>
+
+        <div class="row">
+            <p class="col-12"><?= $dish['dish']->Author()->Name(); ?></p>
+        </div>
+
+        <div class="row">
+            <span class="col-4 icon icon_like"><?= $dish['dish']->Likes() ?></span>
+            <span class="col-4 icon icon_dislike"><?= $dish['dish']->Dislikes() ?></span>
+            <span class="col-4 icon icon_commentary"><?= count($dish['dish']->Comments()) ?></span>
+        </div>
+    </a>
+</div>
+    <?php endif ?>
+<?php endforeach ?>
+
+<h3><?= $this->_strings['TRADUCTOR_INGREDIENTS_H3'] ?></h3>
+
+<?php foreach($this->ingredientsTrads as $ingredient) : ?>
+    <?php if($ingredient['ingredient'] != null) : ?>
+<div class="row">
+    <a class="dish_container col-6" href="ingredientTrad-<?= $ingredient['ingredient']->Id() ?>-<?= $ingredient['ingredient']->Lang() ?>--<?= $ingredient['lang'] ?>.<?= $_GET['lang'] ?>">
+
+        <h3><?= $ingredient['ingredient']->Name() ?> (-> <?= $ingredient['lang'] ?>)</h3>
+
+        <div class="row">
+            <div class="col-12"><img class="dish_illustration" src="Ressources/img/ingredients/<?= $ingredient['ingredient']->Image() ?>" /></div>
+        </div>
+        
+        <p><?= $this->_strings['BACK_CONTENT_BASE_CALORIES'] ?> : <?= $ingredient['ingredient']->baseCalories() ?> Cal</p>
+        <p><?= $this->_strings['BACK_CONTENT_UNIT_WEIGHT'] ?> : <?= $ingredient['ingredient']->unitWeight() ?> g</p>
+        
+    </a>
+</div>
+    <?php endif ?>
+<?php endforeach ?>
+
+<h3><?= $this->_strings['TRADUCTOR_CATEGORIES_H3'] ?></h3>
+
+<?php foreach($this->categoriesTrads as $category) : ?>
+    <?php if($category['category'] != null) : ?>
+<div class="row">
+    <a class="dish_container" href="categoryTrad-<?= $category['category']->Id() ?>-<?= $category['category']->Lang() ?>--<?= $category['lang'] ?>.<?= $_GET['lang'] ?>">
+        <h3 class="category_title"><?= $category['category']->Name() ?> (-> <?= $category['lang'] ?>)</h3>
+    </a>
+</div>
+    <?php endif ?>
+<?php endforeach ?>

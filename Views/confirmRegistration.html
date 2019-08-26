@@ -1,0 +1,7 @@
+<?php if($user != null) : ?>        
+    <?php if($user->isTriggered() == 0) : ?>
+<p><?= $this->_strings['CONFIRM_ACCOUNT_ACTIVATION'] ?></p>
+    <?php else : ?>
+<p><?= $this->_strings['CONFIRM_ACCOUNT_ALREADY_ACTIVATED'] ?></p>
+    <?php endif ?>
+<?php endif ?>
