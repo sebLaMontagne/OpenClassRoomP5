@@ -414,6 +414,38 @@ class DishManager extends Manager
         return $dishes;
     }
     
+    public function getMostRecentDishes()
+    {
+        $q = $this->_db->prepare('
+            SELECT * FROM dish
+            INNER JOIN dishlocal
+            ON dishlocal.dish_id = dish.id
+                AND dishlocal.isPublished = 1
+                AND dishlocal.lang = :lang
+            ORDER BY dishlocal.date DESC
+            LIMIT 0,3
+        ');
+
+        $q->bindValue(':lang', $_GET['lang']);
+        $q->execute();
+
+        $dishes = [];
+
+        while($a = $q->fetch(PDO::FETCH_ASSOC))
+        {
+            $a['author'] = $this->getAuthor($a['author']);
+            $a['ingredients'] = $this->getDishIngredients($a['dish_id']);
+            $a['steps'] = $this->getDishSteps($a['dish_id']);
+            $a['likes'] = $this->getLikes($a['dish_id']);
+            $a['dislikes'] = $this->getDislikes($a['dish_id']);
+            $a['comments'] = $this->getComments($a['dish_id']);
+
+            $dishes[] = new Dish($a);
+        }
+
+        return $dishes;
+    }
+
     //refaire pour faire entrer le paramètre id dans la fonction
     public function getDishSteps($id)
     {

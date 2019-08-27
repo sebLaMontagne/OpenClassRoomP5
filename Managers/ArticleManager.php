@@ -396,6 +396,38 @@ class ArticleManager extends Manager
         }
     }
 
+    public function getMostRecentArticles()
+    {
+        $q = $this->_db->prepare('
+            SELECT * FROM article
+            INNER JOIN articlelocal
+            ON articlelocal.article_id = article.id
+                AND articlelocal.isPublished = 1
+                AND articlelocal.lang = :lang
+            ORDER BY articlelocal.date DESC
+            LIMIT 0,3
+        ');
+
+        $q->bindValue(':lang', $_GET['lang']);
+        $q->execute();
+
+        $articles = [];
+
+        while($a = $q->fetch(PDO::FETCH_ASSOC))
+        {
+            $a['content']   = $this->decode($a['content']);
+            $a['category']  = $this->getCategory($a['category_id']);
+            $a['author']    = $this->getAuthor($a['author_id']);
+            $a['likes']     = $this->getLikes($a['article_id']);
+            $a['dislikes']  = $this->getDislikes($a['article_id']);
+            $a['comments']  = $this->getComments($a['article_id']);
+
+            $articles[] = new Article($a);
+        }
+
+        return $articles;
+    }
+
     public function confirmArticle($id)
     {
         $q = $this->_db->prepare('UPDATE articlelocal SET isPublished = 1 WHERE id = :id');
