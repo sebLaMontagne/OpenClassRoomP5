@@ -30,6 +30,19 @@ class CategoryManager extends Manager
         return $categories;
     }
 
+    public function getAllUnpublishedCategories()
+    {
+        $q = $this->_db->query('SELECT * FROM categorylocal WHERE isPublished = 0');
+
+        $categories = [];
+
+        while($a = $q->fetch(PDO::FETCH_ASSOC))
+        {
+            $categories[] = new Category($a); 
+        }
+        return $categories;
+    }
+
     public function getSimplifiedCategories()
     {
         $q = $this->_db->query('SELECT * FROM category');
@@ -76,6 +89,55 @@ class CategoryManager extends Manager
         else
         {
             return false;
+        }
+    }
+
+    public function confirmCategory($id)
+    {
+        $q = $this->_db->prepare('UPDATE categorylocal SET isPublished = 1 WHERE id = :id');
+        $q->bindValue(':id', htmlspecialchars($id));
+        $q->execute();
+    }
+
+    public function refuseCategory($id)
+    {
+        //on récupère l'id de la catégorie
+        $q = $this->_db->prepare('SELECT category_id FROM categorylocal WHERE id = :id');
+        $q->bindValue(':id', htmlspecialchars($id));
+        $q->execute();
+
+        $category_id = $q->fetch()[0];
+
+        //on compte s'il y a plus d'une version de la catégorie à partir de l'id de la catégorie.
+        $q = $this->_db->prepare('SELECT COUNT(id) FROM categorylocal WHERE category_id = :id');
+        $q->bindValue(':id', $category_id);
+        $q->execute();
+
+        $versions = $q->fetch()[0];
+
+        //si oui, il s'agit d'une traduction, on supprime la categorylocal sans toucher à la category
+        if($versions > 1)
+        {
+            $q = $this->_db->prepare('
+                DELETE FROM categorylocal
+                WHERE id = :id
+            ');
+            $q->bindValue(':id', $id);
+            $q->execute();
+        }
+        //si non, il s'agit de la category, on supprime le categorylocal et la category
+        else
+        {
+            //supression de la catégorie
+            $q = $this->_db->prepare('
+                DELETE category, categorylocal
+                FROM category
+                INNER JOIN categorylocal
+                ON categorylocal.category_id = :id
+                WHERE category.id = :id
+            ');
+            $q->bindValue(':id', $category_id);
+            $q->execute();
         }
     }
 }

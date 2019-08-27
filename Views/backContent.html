@@ -5,10 +5,8 @@
 
 <?php if(!empty($this->_ingredients)) : ?>
 <h2 class="backContent_title"><?= $this->_strings['BACK_CONTENT_TITLE_INGREDIENTS'] ?></h2>
-<?php endif ?>
 
-<?php foreach($this->_ingredients as $ingredient) : ?>
-
+    <?php foreach($this->_ingredients as $ingredient) : ?>
 <div class="row">
     <div class="dish_container col-6">
 
@@ -29,17 +27,15 @@
 
     </div>
 </div>
-
-<?php endforeach ?>
+    <?php endforeach ?>
+<?php endif ?>
 
 <!-- Affichage des repas -->
 
 <?php if(!empty($this->_dishes)) : ?>
 <h2 class="backContent_title"><?= $this->_strings['BACK_CONTENT_TITLE_DISHES'] ?></h2>
-<?php endif ?>
 
-<?php foreach($this->_dishes as $dish) : ?>
-
+    <?php foreach($this->_dishes as $dish) : ?>
 <div class="row">
     <div class="dish_container">
         <h3><?= $dish->Name() ?> (<?= $dish->lang() ?>)</h3>
@@ -77,17 +73,15 @@
         </div>
     </div>
 </div>
-
-<?php endforeach ?>
+    <?php endforeach ?>
+<?php endif ?>
 
 <!-- Affichage des articles -->
 
 <?php if(!empty($this->_articles)) : ?>
 <h2 class="backContent_title"><?= $this->_strings['BACK_CONTENT_TITLE_ARTICLES'] ?></h2>
-<?php endif ?>
 
-<?php foreach($this->_articles as $article) : ?>
-
+    <?php foreach($this->_articles as $article) : ?>
 <div class="row">
     <div class="dish_container">
         <h3><?= $article->Title() ?> (<?= $article->lang() ?>)</h3>
@@ -113,7 +107,23 @@
         </div>
     </div>
 </div>
+    <?php endforeach ?>
+<?php endif ?>
 
-<!-- Affichage des categories A FAIRE -->
+<!-- Affichage des categories -->
 
-<?php endforeach ?>
+<?php if(!empty($this->_categories)) : ?>
+<h2 class="backContent_title"><?= $this->_strings['BACK_CONTENT_TITLE_CATEGORIES'] ?></h2>
+
+    <?php foreach($this->_categories as $category) : ?>
+<div class="row">
+    <div class="dish_container">
+        <h3 class="category_title"><?= $category->Name() ?> (<?= $category->Lang() ?>)</h3>
+        <div class="ingredient_button_container">
+            <a class="ingredient_button" href="confirmCategory-<?= $category->Id() ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACK_CONTENT_ACCEPT_CATEGORY'] ?></a>
+            <a class="ingredient_button" href="refuseCategory-<?= $category->Id() ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACK_CONTENT_DENY_CATEGORY'] ?></a>
+        </div>
+    </div>
+</div>
+    <?php endforeach ?>
+<?php endif ?>

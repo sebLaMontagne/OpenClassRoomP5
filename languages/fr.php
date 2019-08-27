@@ -183,6 +183,7 @@ $strings = [
     'BACK_CONTENT_TITLE_INGREDIENTS'        =>  'Ingrédients à confirmer',
     'BACK_CONTENT_TITLE_DISHES'             =>  'Plats à confirmer',
     'BACK_CONTENT_TITLE_ARTICLES'           =>  'Articles à confirmer',
+    'BACK_CONTENT_TITLE_CATEGORIES'         =>  'Catégories à confirmer',
     'BACK_CONTENT_CONFIRM_INGREDIENT'       =>  'Confirmer l\'ingrédient',
     'BACK_CONTENT_DENY_INGREDIENT'          =>  'Refuser l\'ingrédient',
     'BACK_CONTENT_BASE_CALORIES'            =>  'Calories pour 100g',
@@ -193,6 +194,8 @@ $strings = [
     'BACK_CONTENT_CONSULT_ARTICLE'          =>  'Consulter l\'article',
     'BACK_CONTENT_ACCEPT_ARTICLE'           =>  'Accepter l\'article',
     'BACK_CONTENT_DENY_ARTICLE'             =>  'Refuser l\'article',
+    'BACK_CONTENT_ACCEPT_CATEGORY'          =>  'Accepter la catégorie',
+    'BACK_CONTENT_DENY_CATEGORY'            =>  'Refuser la catégorie',
 
     //traductor
     'TRADUCTOR_TITLE'                       =>  'Marre-Mitton - Liste des contenus à traduire',

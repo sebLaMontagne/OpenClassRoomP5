@@ -8,6 +8,7 @@ class ViewModelDashboard extends ViewModel
     private $commentManager;
     private $userManager;
     private $messageManager;
+    private $categoryManager;
 
     public $_contentToCheck;
     public $_unapprovedComments;
@@ -26,10 +27,12 @@ class ViewModelDashboard extends ViewModel
         $this->commentManager       = new CommentManager;
         $this->userManager          = new UserManager;
         $this->messageManager       = new MessageManager;
+        $this->categoryManager      = new CategoryManager;
 
         $this->_contentToCheck      = count($this->ingredientManager->getAllUnpublishedIngredients());
         $this->_contentToCheck     += count($this->dishManager->getAllUnpublishedDishes());
         $this->_contentToCheck     += count($this->articleManager->getAllUnpublishedArticles());
+        $this->_contentToCheck     += count($this->categoryManager->getAllUnpublishedCategories());
 
         $this->_unapprovedComments  = count($this->commentManager->getAllComments());
 

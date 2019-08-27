@@ -18,4 +18,28 @@ class CategoryController extends Controller
 
         $viewModel->display();
     }
+
+    public function confirmCategory()
+    {
+        if($_SESSION['isAdmin'] != 1 || empty($_GET['id']))
+        {
+            exit(header('location: javascript://history.go(-1)'));
+        }
+
+        $viewModel = new ViewModelBackCategory;
+        $viewModel->confirmCategory($_GET['id']);
+        exit(header('location: backContent.'.$_GET['lang']));
+    }
+
+    public function refuseCategory()
+    {
+        if($_SESSION['isAdmin'] != 1 || empty($_GET['id']))
+        {
+            exit(header('location: javascript://history.go(-1)'));
+        }
+
+        $viewModel = new ViewModelBackCategory;
+        $viewModel->refuseCategory($_GET['id']);
+        exit(header('location: backContent.'.$_GET['lang']));
+    }
 }
