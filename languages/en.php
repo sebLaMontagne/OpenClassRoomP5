@@ -169,6 +169,8 @@ $strings = [
 
     //search
     'SEARCH_TITLE'                          =>  'Search results',
+    'SEARCH_NO_RESULTS'                     =>  'No Search result',
+    'SEARCH_DESCRIPTION'                    =>  'search result(s)',
 
     //dashboard
     'DASHBOARD_TITLE'                       =>  'Marre-mitton - Dashboard',

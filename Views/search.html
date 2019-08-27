@@ -1,44 +1,64 @@
-<?php if(empty($this->_searchResults)) : ?>
+<?php if(empty($this->_articlesResults) && empty($this->_dishesResults)) : ?>
 
-<p>Aucun résultat de recherche</p>
+<p><?= $this->_strings['SEARCH_NO_RESULTS'] ?></p>
 
 <?php else : ?>
 
-<p><?= count($this->_searchResults) ?> résultat(s) de recherche</p>
+<p><?= $this->resultsCount ?> <?= $this->_strings['SEARCH_DESCRIPTION'] ?></p>
 
-    <?php foreach($this->_searchResults as $searchResult) : ?>
-
+    <?php foreach($this->_dishesResults as $dish) : ?>
 <div class="row">
-    <a class="dish_container" href="dish.<?= $_GET['lang'] ?>-<?= $searchResult->Id() ?>">
-        <h3><?= $searchResult->Name() ?></h3>
+    <a class="dish_container" href="dish-<?= $dish->Id() ?>.<?= $_GET['lang'] ?>">
+        <h3><?= $dish->Name() ?></h3>
 
-    <?php if($searchResult->Type() == 'breakfast') : ?>
+    <?php if($dish->Type() == 'breakfast') : ?>
         <h4><?= $this->_strings['DISH_EDITOR_BREAKFAST'] ?></h4>
-    <?php elseif($searchResult->Type() == 'starter') : ?>
+    <?php elseif($dish->Type() == 'starter') : ?>
         <h4><?= $this->_strings['DISH_EDITOR_STARTER'] ?></h4>
-    <?php elseif($searchResult->Type() == 'mainDish-a') : ?>
+    <?php elseif($dish->Type() == 'mainDish-a') : ?>
         <h4><?= $this->_strings['DISH_EDITOR_MAIN_DISH_A'] ?></h4>
-    <?php elseif($searchResult->Type() == 'mainDish-b') : ?>
+    <?php elseif($dish->Type() == 'mainDish-b') : ?>
         <h4><?= $this->_strings['DISH_EDITOR_MAIN_DISH_B'] ?></h4>
-    <?php elseif($searchResult->Type() == 'dessert') : ?>
+    <?php elseif($dish->Type() == 'dessert') : ?>
         <h4><?= $this->_strings['DISH_EDITOR_DESSERT'] ?></h4>
     <?php endif ?>
 
         <div class="row">
-            <div class="col-12"><img class="dish_illustration" src="<?= 'Ressources/img/dishes/'.$searchResult->Image() ?>" /></div>
+            <div class="col-12"><img class="dish_illustration" src="<?= 'Ressources/img/dishes/'.$dish->Image() ?>" /></div>
         </div>
 
         <div class="row">
-            <p class="col-12"><?= $searchResult->Author()->Name(); ?></p>
+            <p class="col-12"><?= $dish->Author()->Name(); ?></p>
         </div>
 
         <div class="row">
-            <span class="col-4 icon icon_like"><?= $searchResult->Likes() ?></span>
-            <span class="col-4 icon icon_dislike"><?= $searchResult->Dislikes() ?></span>
-            <span class="col-4 icon icon_commentary"><?= $searchResult->Comments() ?></span>
+            <span class="col-4 icon icon_like"><?= $dish->Likes() ?></span>
+            <span class="col-4 icon icon_dislike"><?= $dish->Dislikes() ?></span>
+            <span class="col-4 icon icon_commentary"><?= count($dish->Comments()) ?></span>
         </div>
     </a>
 </div>
+    <?php endforeach ?>
 
+    <?php foreach($this->_articlesResults as $article) : ?>
+<div class="row">
+    <a class="dish_container" href="article-<?= $article->Id() ?>.<?= $_GET['lang'] ?>">
+        <h3><?= $article->Title() ?></h3>
+        <h4><?= $article->Category()->Name() ?></h4>
+
+        <div class="row">
+            <div class="col-12"><img class="dish_illustration" src="Ressources/img/articles/<?= $article->Image() ?>" /></div>
+        </div>
+        <div class="row">
+            <p class="col-12"><?= $article->Author()->Name(); ?></p>
+        </div>
+
+        <div class="row">
+            <span class="col-4 icon icon_like"><?= $article->Likes() ?></span>
+            <span class="col-4 icon icon_dislike"><?= $article->Dislikes() ?></span>
+            <span class="col-4 icon icon_commentary"><?= count($article->Comments()) ?></span>
+        </div>
+    </a>
+</div>
     <?php endforeach ?>
 <?php endif ?>

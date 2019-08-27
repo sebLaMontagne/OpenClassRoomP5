@@ -38,6 +38,7 @@ $strings = [
     //dishes
     'DISHES_TITLE'                          =>  'Marre-Mitton - Liste des plats',
     //notFound
+
     'NOTFOUND_TITLE'                        =>  'Page inexistante',
     'NOTFOUND_CONTENT'                      =>  'Cette page n\'existe pas',
 
@@ -169,6 +170,8 @@ $strings = [
     
     //search
     'SEARCH_TITLE'                          =>  'Résultats de recherche',
+    'SEARCH_NO_RESULTS'                     =>  'Aucun résultat de recherche',
+    'SEARCH_DESCRIPTION'                    =>  'résultat(s) de recherche',
 
     //dashboard
     'DASHBOARD_TITLE'                       =>  'Marre-mitton - Tableau de bord',

@@ -3,11 +3,18 @@
 class ViewModelSearch extends ViewModel
 {
     private $dishManager;
-    public $_searchResults;
+    private $articleManager;
+
+    public $_dishesResults;
+    public $_articlesResults;
+    public $resultsCount;
 
     public function getResults()
     {
-        $this->_searchResults = $this->dishManager->searchDish($_POST['search']);
+        $this->_dishesResults = $this->dishManager->searchDishes($_POST['search']);
+        $this->_articlesResults = $this->articleManager->searchArticles($_POST['search']);
+
+        $this->resultsCount = count($this->_dishesResults) + count($this->_articlesResults);
     }
 
     public function __construct()
@@ -17,5 +24,6 @@ class ViewModelSearch extends ViewModel
         $this->_view        =   'Views/search.html';
 
         $this->dishManager = new DishManager;
+        $this->articleManager = new ArticleManager;
     }
 }

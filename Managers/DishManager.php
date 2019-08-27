@@ -52,18 +52,17 @@ class DishManager extends Manager
         return $comments;
     }
 
-    public function searchDish($search)
+    public function searchDishes($search)
     {
-        // cassé... à refaire
         $q = $this->_db->prepare('
-            SELECT * FROM dishlocal
-            INNER JOIN dish
+            SELECT * FROM dish
+            INNER JOIN dishlocal
                 ON dish.id = dishlocal.dish_id 
             WHERE dishlocal.lang = :lang 
                 AND name LIKE :search
                 AND dishlocal.isPublished = 1'
         );
-        
+
         $q->bindValue(':lang', $_GET['lang']);
         $q->bindValue(':search', '%'.htmlspecialchars($search).'%');
         $q->execute();
@@ -73,9 +72,12 @@ class DishManager extends Manager
         while($a = $q->fetch(PDO::FETCH_ASSOC))
         {
             $a['author'] = $this->getAuthor($a['author']);
-            $a['likes'] = $this->getLikes($a['id']);
-            $a['dislikes'] = $this->getDislikes($a['id']);
-            $a['comments'] = $this->getComments($a['id']);
+            $a['ingredients'] = $this->getDishIngredients($a['dish_id']);
+            $a['steps'] = $this->getDishSteps($a['dish_id']);
+            $a['likes'] = $this->getLikes($a['dish_id']);
+            $a['dislikes'] = $this->getDislikes($a['dish_id']);
+            $a['comments'] = $this->getComments($a['dish_id']);
+
             $results[] = new Dish($a);
         }
 

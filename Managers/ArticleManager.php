@@ -164,6 +164,39 @@ class ArticleManager extends Manager
         }
     }
 
+    public function searchArticles($search)
+    {
+        // cassé... à refaire
+        $q = $this->_db->prepare('
+            SELECT * FROM article
+            INNER JOIN articlelocal
+                ON article.id = articlelocal.article_id 
+            WHERE articlelocal.lang = :lang 
+                AND title LIKE :search
+                AND articlelocal.isPublished = 1'
+        );
+        
+        $q->bindValue(':lang', $_GET['lang']);
+        $q->bindValue(':search', '%'.htmlspecialchars($search).'%');
+        $q->execute();
+
+        $results = [];
+        
+        while($a = $q->fetch(PDO::FETCH_ASSOC))
+        {
+            $a['content']   = $this->decode($a['content']);
+            $a['category']  = $this->getCategory($a['category_id']);
+            $a['author']    = $this->getAuthor($a['author_id']);
+            $a['likes']     = $this->getLikes($a['article_id']);
+            $a['dislikes']  = $this->getDislikes($a['article_id']);
+            $a['comments']  = $this->getComments($a['article_id']);
+            
+            $results[] = new Article($a);
+        }
+
+        return $results;
+    }
+
     public function saveArticle($category, $author, $title, $content, $image)
     {
         $q1 = $this->_db->prepare('INSERT INTO article(category_id, author_id, image) VALUES(:category, :author, :image)');
