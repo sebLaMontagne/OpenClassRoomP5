@@ -2,6 +2,20 @@
 
 class CategoryManager extends Manager
 {
+    public function saveCategory($name)
+    {
+        $this->_db->query('INSERT INTO category(id) VALUES (DEFAULT)');
+
+        $q = $this->_db->prepare('
+            INSERT INTO categorylocal(category_id, lang, name, isPublished)
+            VALUES (:id, :lang, :name, 0)
+        ');
+        $q->bindValue(':id', $this->_db->lastInsertId());
+        $q->bindValue(':lang', $_GET['lang']);
+        $q->bindValue(':name', htmlspecialchars($name));
+        $q->execute();
+    }
+
     public function saveCategoryTrad($lang, $category_id, $name)
     {
         $q = $this->_db->prepare('

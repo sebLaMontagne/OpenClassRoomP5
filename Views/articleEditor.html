@@ -16,11 +16,19 @@
     <p><input type="submit" value="<?= $this->_strings['ARTICLE_EDITOR_SUBMIT'] ?>" /></p>
 </form>
 
-<?php if($this->_articleIsSaved) : ?>
+<form method="POST">
+    <label for="newCategoryName"><p><?= $this->_strings['CATEGORY_EDITOR_DESCRIPTION'] ?></p></label>
+    <input id="newCategoryName" name="newCategoryName" type="text" />
+    <input type="submit" value="<?= $this->_strings['CATEGORY_EDITOR_SUBMIT'] ?>" />
+</form>
 
+<?php if($this->_articleIsSaved) : ?>
 <p class="text-success"><?= $this->_strings['ARTICLE_EDITOR_SUCCESS_1'] ?></p>
 <p class="text-success"><?= $this->_strings['ARTICLE_EDITOR_SUCCESS_2'] ?></p>
+<?php endif ?>
 
+<?php if($this->_categoryIsSaved) : ?>
+<p class="text-success"><?= $this->_strings['ARTICLE_EDITOR_SUCCESS_3'] ?></p>
 <?php endif ?>
 
 <script src="https://cloud.tinymce.com/5/tinymce.min.js"></script>

@@ -140,10 +140,13 @@ $strings = [
     'ARTICLE_EDITOR_DESCRIPTION'            =>  'Bienvenue sur l\'éditeur d\'articles',
     'ARTICLE_EDITOR_DESCRIPTION_2'          =>  'Ici, vous pouvez créer des articles qui seront lus par les autres gourmets',
     'ARTICLE_EDITOR_TITLE_PLACEHOLDER'      =>  'Entrez le titre de votre article',
-    'ARTICLE_EDITOR_CATEGORY_DEFAULT'       =>  'Choissisez une catégorie pour votre article',
+    'ARTICLE_EDITOR_CATEGORY_DEFAULT'       =>  'Choisissez une catégorie pour votre article',
     'ARTICLE_EDITOR_SUBMIT'                 =>  'Publier',
     'ARTICLE_EDITOR_SUCCESS_1'              =>  'L\'article a été enregistré avec succès',
     'ARTICLE_EDITOR_SUCCESS_2'              =>  'Un modérateur va rapidement l\'évaluer',
+    'ARTICLE_EDITOR_SUCCESS_3'              =>  'Catégorie enregistrée avec succès',
+    'CATEGORY_EDITOR_DESCRIPTION'           =>  'Vous pouvez soumettre une nouvelle catégorie : ',
+    'CATEGORY_EDITOR_SUBMIT'                =>  'Soumettre la catégorie',
 
     //articles
     'ARTICLES_TITLE'                        =>  'Marre-Mitton - Liste des articles',
@@ -151,7 +154,7 @@ $strings = [
     //article
     'ARTICLE_COMMENT'                       =>  'commentaire(s)',
     'ARTICLE_COMMENT_PLACEHOLDER'           =>  'Ecrire un commentaire',
-    'ARTICLE_COMMENT_SUBMIT'                 =>  'Soumettre le commentaire',
+    'ARTICLE_COMMENT_SUBMIT'                =>  'Soumettre le commentaire',
 
     //ingredientEditor
     'INGREDIENT_EDITOR_TITLE'               =>  'Marre-Mitton - Editeur d\'ingredients',
@@ -159,7 +162,7 @@ $strings = [
     'INGREDIENT_EDITOR_NAME_LABEL'          =>  'Entrez le nom de l\'ingrédient : ',
     'INGREDIENT_EDITOR_CALORIES_LABEL'      =>  'Entrez le nombre de Calories pour 100g d\'ingredient : ',
     'INGREDIENT_EDITOR_UNIT_LABEL'          =>  'Entrez le poids à l\'unité de l\'ingrédient (le poids d\'1 litre dans le cas d\'un liquide) : ',
-    'INGREDIENT_EDITOR_IMAGE_LABEL'         =>  'Choissisez une illustration pour votre ingrédient : ',
+    'INGREDIENT_EDITOR_IMAGE_LABEL'         =>  'Choisissez une illustration pour votre ingrédient : ',
     'INGREDIENT_EDITOR_SUBMIT'              =>  'Soumettre l\'ingredient',
     'INGREDIENT_EDITOR_SUCCESS_1'           =>  'L\'ingrédient a été enregistré avec succès',
     'INGREDIENT_EDITOR_SUCCESS_2'           =>  'Un modérateur va rapidement l\'évaluer',

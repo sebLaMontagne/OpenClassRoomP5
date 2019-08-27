@@ -144,6 +144,9 @@ $strings = [
     'ARTICLE_EDITOR_SUBMIT'                 =>  'Publish',
     'ARTICLE_EDITOR_SUCCESS_1'              =>  'The article has been successfully registered',
     'ARTICLE_EDITOR_SUCCESS_2'              =>  'A moderator will quickly evaluate it',
+    'ARTICLE_EDITOR_SUCCESS_3'              =>  'The category has been successfully registered',
+    'CATEGORY_EDITOR_DESCRIPTION'           =>  'You can submit a new category : ',
+    'CATEGORY_EDITOR_SUBMIT'                =>  'Submit category',
 
     //articles
     'ARTICLES_TITLE'                        =>  'Marre-Mitton - Articles list',

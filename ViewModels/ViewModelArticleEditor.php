@@ -4,6 +4,8 @@ class ViewModelArticleEditor extends ViewModel
 {
     public $_categories;
     public $_articleIsSaved;
+    public $_categoryIsSaved;
+
     private $_fileNewName;
     private $categoryManager;
     private $articleManager;
@@ -30,6 +32,12 @@ class ViewModelArticleEditor extends ViewModel
         $this->_articleIsSaved = true;
     }
 
+    public function saveCategory()
+    {
+        $this->categoryManager->saveCategory($_POST['newCategoryName']);
+        $this->_categoryIsSaved = true;
+    }
+
     public function __construct()
     {
         include('constantes.php');
@@ -46,6 +54,7 @@ class ViewModelArticleEditor extends ViewModel
 
         $this->_categories = $this->categoryManager->getAllCategories();
         $this->_articleIsSaved = false;
+        $this->_categoryIsSaved = false;
 
     }
 }

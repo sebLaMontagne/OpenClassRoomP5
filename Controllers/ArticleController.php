@@ -10,10 +10,14 @@ class ArticleController extends Controller
         }
 
         $viewModel = new ViewModelArticleEditor;
-
-        if(!empty($_POST) && !empty($_FILES))
+        
+        if(!empty($_POST['category']) && !empty($_POST['title']) && !empty($_POST['article_content']) && !empty($_FILES))
         {
             $viewModel->saveArticle();
+        }
+        elseif(!empty($_POST['newCategoryName']))
+        {
+            $viewModel->saveCategory();
         }
         $viewModel->display();
     }
