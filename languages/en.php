@@ -40,6 +40,8 @@ $strings = [
 
     //dishes
     'DISHES_TITLE'                          =>  'Marre-Mitton - Dishes List',
+    'DISHES_DESCRIPTION_1'                  =>  'There is ',
+    'DISHES_DESCRIPTION_2'                  =>  'dish(es)',
 
     //notFound
     'NOTFOUND_TITLE'                        =>  'Page not found',
@@ -153,11 +155,14 @@ $strings = [
 
     //articles
     'ARTICLES_TITLE'                        =>  'Marre-Mitton - Articles list',
+    'ARTICLES_DESCRIPTION_2'                =>  'article(s)',
 
     //article
     'ARTICLE_COMMENT'                       =>  'commentaire(s)',
     'ARTICLE_COMMENT_PLACEHOLDER'           =>  'Write a comment',
-    'ARTICLE_COMMENT_SUBMIT'                 =>  'Submit the comment',
+    'ARTICLE_COMMENT_SUBMIT'                =>  'Submit the comment',
+    'ARTICLE_BAN_INFO_1'                    =>  '* You can not comment anymore because of ban',
+    'ARTICLE_BAN_INFO_2'                    =>  '* You can request your deban by sending a message',
 
     //ingredientEditor
     'INGREDIENT_EDITOR_TITLE'               =>  'Marre-Mitton - Ingredient Editor',

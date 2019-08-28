@@ -1,5 +1,3 @@
-<?php var_dump($this->user) ?>
-
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 display-2-columns">
         <p class="advise"><?= $this->_strings['REGISTER_REGISTER_DESCRIPTION'] ?></p>
@@ -22,7 +20,6 @@
 
             <input id="registerPassword" type="password" name="registerPassword" placeholder="<?= $this->_strings['REGISTER_REGISTER_PASSWORD_PLACEHOLDER'] ?>" required />
             <input id="registerPasswordConfirmation" type="password" name="registerPasswordConfirmation" placeholder="<?= $this->_strings['REGISTER_CONFIRM_PASSWORD_PLACEHOLDER'] ?>" required />
-            <!-- Continue where we left off -->
             <p id="infoPasswordLength" class="register_info">* <?= $this->_strings['REGISTER_PASSWORD_LENGTH_FEEDBACK'] ?></p>
             <p id="infoPasswordLowercase" class="register_info">* <?= $this->_strings['REGISTER_PASSWORD_LOWERCASE_FEEDBACK'] ?></p>
             <p id="infoPasswordUppercase" class="register_info">* <?= $this->_strings['REGISTER_PASSWORD_UPPERCASE_FEEDBACK'] ?></p>
@@ -74,8 +71,6 @@
             <p class="text-danger"><?= $this->_strings['REGISTER_BAD_LOGINS_FEEDBACK'] ?></p>
 <?php elseif(isset($this->user) && !$this->user->isTriggered()) : ?>
             <p class="text-danger"><?= $this->_strings['REGISTER_UNREGISTERED_FEEDBACK'] ?></p>
-<?php elseif(isset($this->user) && $this->user->isBanned()) : ?>
-            <p class="text-danger"><?= $this->_strings['REGISTER_BAN_FEEDBACK'] ?></p>
 <?php endif ?>
         </div>
     </div>

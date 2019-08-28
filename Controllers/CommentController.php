@@ -27,7 +27,7 @@ class CommentController extends Controller
 
     public function backComments()
     {
-        if(empty($_SESSION['id']))
+        if($_SESSION['isAdmin'] != 1)
         {
             exit(header('location: home.'.$_GET['lang']));
         }

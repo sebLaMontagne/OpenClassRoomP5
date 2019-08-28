@@ -29,11 +29,12 @@ class ViewModelRegister extends ViewModel
     {
         $this->user = $this->userManager->getUserByLogins($_POST['connectName'], $_POST['connectPassword']);
 
-        if(isset($this->user) && $this->user->isTriggered() && !$this->user->isBanned())
+        if(isset($this->user) && $this->user->isTriggered())
         {
             $_SESSION['username']       = $this->user->name();
             $_SESSION['id']             = $this->user->id();
             $_SESSION['avatar']         = $this->user->avatar();
+            $_SESSION['isBanned']       = $this->user->isBanned();
             $_SESSION['isAdmin']        = $this->user->isAdmin();
             $_SESSION['isCooker']       = $this->user->isCooker();
             $_SESSION['isWriter']       = $this->user->isWriter();

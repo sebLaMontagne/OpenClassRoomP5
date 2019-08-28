@@ -4,7 +4,7 @@ class IngredientController extends Controller
 {
     public function IngredientEditor()
     {
-        if($_SESSION['username'] == '')
+        if($_SESSION['isAdmin'] != 1 || $_SESSION['isCooker'] != 1)
         {
             exit(header("location:javascript://history.go(-1)"));
         }
@@ -21,7 +21,7 @@ class IngredientController extends Controller
 
     public function confirmIngredient()
     {
-        if($_SESSION['username'] == '' || empty($_GET['id']))
+        if($_SESSION['isAdmin'] != 1 || empty($_GET['id']))
         {
             exit(header('location: javascript://history.go(-1)'));
         }
@@ -33,7 +33,7 @@ class IngredientController extends Controller
 
     public function refuseIngredient()
     {
-        if($_SESSION['username'] == '' || empty($_GET['id']))
+        if($_SESSION['isAdmin'] != 1 || empty($_GET['id']))
         {
             exit(header('location: javascript://history.go(-1)'));
         }
@@ -45,7 +45,7 @@ class IngredientController extends Controller
 
     public function ingredientTrad()
     {
-        if($_SESSION['isAdmin'] != 1)
+        if($_SESSION['isAdmin'] != 1 || $_SESSION['isTranslator'] != 1)
         {
             exit(header('location: javascript://history.go(-1)'));
         }

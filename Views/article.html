@@ -59,11 +59,20 @@
 
 </div>
 
+<?php if($_SESSION['isBanned']) : ?>
+
+<p class="text-danger"><?= $this->_strings['ARTICLE_BAN_INFO_1'] ?></p>
+<p class="text-danger"><?= $this->_strings['ARTICLE_BAN_INFO_2'] ?></p>
+
+<?php else : ?>
+
 <form method="POST" action="saveArticleComment.<?= $_GET['lang'] ?>">
     <input type="hidden" name="id" value="<?= $_GET['id'] ?>" />
     <textarea name="content" class="comment_textarea" placeholder="<?= $this->_strings['ARTICLE_COMMENT_PLACEHOLDER'] ?>"></textarea>
     <input type="submit" value="<?= $this->_strings['ARTICLE_COMMENT_SUBMIT'] ?>" />
 </form>
+
+<?php endif ?>
 
 <hr class="commentary-bound" />
 <p><?= count($this->_article->comments()) ?> <?= $this->_strings['ARTICLE_COMMENT'] ?></p>

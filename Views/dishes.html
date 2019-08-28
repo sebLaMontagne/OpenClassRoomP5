@@ -1,4 +1,4 @@
-<p>Il y a actuellement <?= count($this->_dishes) ?> plat(s)</p>
+<p><?= $this->_strings['DISHES_DESCRIPTION_1'] ?> <?= count($this->_dishes) ?> <?= $this->_strings['DISHES_DESCRIPTION_2'] ?></p>
 
 <?php foreach($this->_dishes as $dish) : ?>
 

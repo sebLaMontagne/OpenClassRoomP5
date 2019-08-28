@@ -22,7 +22,7 @@ class DishController extends Controller
 
     public function dishEditor()
     {
-        if($_SESSION['id'] == '')
+        if($_SESSION['isAdmin'] != 1 || $_SESSION['isCooker'] != 1)
         {
             exit(header("location:javascript://history.go(-1)"));
         }
@@ -77,7 +77,7 @@ class DishController extends Controller
 
     public function dishTrad()
     {
-        if($_SESSION['isAdmin'] != 1)
+        if($_SESSION['isAdmin'] != 1 || $_SESSION['isTranslator'] != 1)
         {
             exit(header('location: javascript://history.go(-1)'));
         }

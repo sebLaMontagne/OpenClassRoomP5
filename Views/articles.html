@@ -1,5 +1,4 @@
-<p>Il y a actuellement <?= count($this->_articles) ?> plat(s)</p>
-
+<p><?= $this->_strings['DISHES_DESCRIPTION_1'] ?> <?= count($this->_articles) ?> <?= $this->_strings['ARTICLES_DESCRIPTION_2'] ?></p>
 <?php foreach($this->_articles as $article) : ?>
 
 <div class="row">

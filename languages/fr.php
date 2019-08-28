@@ -40,6 +40,9 @@ $strings = [
 
     //dishes
     'DISHES_TITLE'                          =>  'Marre-Mitton - Liste des plats',
+    'DISHES_DESCRIPTION_1'                  =>  'Il y a actuellement',
+    'DISHES_DESCRIPTION_2'                  =>  'plat(s)',
+
     //notFound
 
     'NOTFOUND_TITLE'                        =>  'Page inexistante',
@@ -78,7 +81,6 @@ $strings = [
     'REGISTER_RESET_LINK'                   =>  'J\'ai oublié mes identifiants !',
     'REGISTER_BAD_LOGINS_FEEDBACK'          =>  'Identifiants incorrects',
     'REGISTER_UNREGISTERED_FEEDBACK'        =>  'Utilisateur non activé',
-    'REGISTER_BAN_FEEDBACK'                 =>  'Utilisateur banni',
 
     //confirmRegistration
     'CONFIRM_ACCOUNT_TITLE'                 =>  'MarreMitton - Confirmation d\'inscription',
@@ -154,11 +156,14 @@ $strings = [
 
     //articles
     'ARTICLES_TITLE'                        =>  'Marre-Mitton - Liste des articles',
+    'ARTICLES_DESCRIPTION_2'                =>  'article(s)',
 
     //article
     'ARTICLE_COMMENT'                       =>  'commentaire(s)',
     'ARTICLE_COMMENT_PLACEHOLDER'           =>  'Ecrire un commentaire',
     'ARTICLE_COMMENT_SUBMIT'                =>  'Soumettre le commentaire',
+    'ARTICLE_BAN_INFO_1'                    =>  '* Vous ne pouvez plus commenter pour cause de bannissement',
+    'ARTICLE_BAN_INFO_2'                    =>  '* Vous pouvez demander votre débannissement en envoyant un message',
 
     //ingredientEditor
     'INGREDIENT_EDITOR_TITLE'               =>  'Marre-Mitton - Editeur d\'ingredients',

@@ -69,7 +69,7 @@ class UserController extends Controller
 
     public function dashboard()
     {
-        if($_SESSION['username'] == '' && $_SESSION['isAdmin'] != 1)
+        if($_SESSION['isAdmin'] != 1)
         {
             exit(header("location:javascript://history.go(-1)"));
         }

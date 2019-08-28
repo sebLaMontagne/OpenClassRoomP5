@@ -39,7 +39,7 @@ class DefaultController extends Controller
 
     public function traductor()
     {
-        if(empty($_SESSION['username']))
+        if($_SESSION['isdmin'] != 1 || $_SESSION['isTranslator'] != 1)
         {
             exit(header('location: javascript://history.go(-1)'));
         }
