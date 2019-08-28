@@ -3,7 +3,13 @@
 <form method="POST">
     <select id="msg_type" name="msg_type" required>
         <option value="" disabled><?= $this->_strings['MAILEDITOR_MSG_TYPE_LABEL'] ?></option>
-        <option value="Chief Promotion"><?= $this->_strings['MAILEDITOR_MSG_TYPE_CHIEF_PROMOTION'] ?></option>
+        <option value="Add new value"><?= $this->_strings['MAILEDITOR_MSG_TYPE_NEW_VALUE'] ?></option>
+        <option value="Cooker Promotion"><?= $this->_strings['MAILEDITOR_MSG_TYPE_COOKER_PROMOTION'] ?></option>
+        <option value="Writer Promotion"><?= $this->_strings['MAILEDITOR_MSG_TYPE_WRITER_PROMOTION'] ?></option>
+        <option value="Translator Promotion"><?= $this->_strings['MAILEDITOR_MSG_TYPE_TRANSLATOR_PROMOTION'] ?></option>
+<?php if($_SESSION['isBanned']) : ?>
+        <option value="Deban"><?= $this->_strings['MAILEDITOR_MSG_TYPE_DEBAN'] ?></option>
+<?php endif ?>
     </select>
     <textarea style="min-height: 150px" placeholder="<?= $this->_strings['MAILEDITOR_TEXTAREA_PLACEHOLDER'] ?>" name="msg_content"></textarea>
     <p><input type="submit" value="<?= $this->_strings['MAILEDITOR_SUBMIT'] ?>" /></p>
@@ -20,3 +26,5 @@
 <!--    Demande de deban -->
 <!--    Demander une nouvelle catégorie -->
 <!--    Signaler un bug -->
+
+<!-- Pour le ban, juste restraindre à empêcher de commenter -->

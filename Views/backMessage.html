@@ -1,7 +1,13 @@
 <div class="card">
     <div class="card-header">
-<?php if($this->message->Type() == 'Chief Promotion') : ?>
-    <?= $this->_strings['BACKMESSAGES_CHIEF_PROMOTION'] ?>
+<?php if($this->message->Type() == 'Cooker Promotion') : ?>
+        <p><?= $this->_strings['BACKMESSAGES_COOKER_PROMOTION'] ?></p>
+<?php elseif($this->message->Type() == 'Writer Promotion') : ?>
+        <p><?= $this->_strings['BACKMESSAGES_WRITER_PROMOTION'] ?></p>
+<?php elseif($this->message->Type() == 'Translator Promotion') : ?>
+        <p><?= $this->_strings['BACKMESSAGES_TRANSLATOR_PROMOTION'] ?></p>
+<?php elseif($this->message->Type() == 'Deban') : ?>
+        <p><?= $this->_strings['BACKMESSAGES_DEBAN'] ?></p>
 <?php endif ?>
     </div>
 
@@ -9,10 +15,12 @@
         <p><?= $this->message->Content() ?></p>
         <p class="mt-5"><?= $this->message->Author()->Name() ?>
 
-<?php if($this->message->Author()->isAdmin())      :  echo '('.$this->_strings['BACKUSERS_ADMIN'].')'     ?>
-<?php elseif($this->message->Author()->isBanned()) :  echo     $this->_strings['BACKUSERS_BANNED']        ?>
-<?php elseif($this->message->Author()->isChief())  :  echo '('.$this->_strings['BACKUSERS_CHIEF'].')'     ?>
-<?php else                                         :  echo '('.$this->_strings['BACKUSERS_GOURMET'].')'   ?>
+<?php if($this->message->Author()->isAdmin())          :  echo '('.$this->_strings['BACKUSERS_ADMIN'].')'       ?>
+<?php elseif($this->message->Author()->isBanned())     :  echo '('.$this->_strings['BACKUSERS_BANNED'].')'      ?>
+<?php elseif($this->message->Author()->isCooker())     :  echo '('.$this->_strings['BACKUSERS_COOKER'].')'      ?>
+<?php elseif($this->message->Author()->isWriter())     :  echo '('.$this->_strings['BACKUSERS_WRITER'].')'      ?>
+<?php elseif($this->message->Author()->isTranslator()) :  echo '('.$this->_strings['BACKUSERS_TRANSLATOR'].')'  ?>
+<?php else                                             :  echo '('.$this->_strings['BACKUSERS_GOURMET'].')'     ?>
 <?php endif ?>
 
         </p>
@@ -20,9 +28,14 @@
     </div>
 
     <div class="card-footer">
-<?php if($this->message->Type() == 'Chief Promotion') : ?>
-        <a class="btn btn-primary" href="promoteUser-<?= $this->message->Author()->Id() ?>-messages-<?= $_GET['id'] ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACKUSERS_PROMOTE_LINK'] ?></a>
+<?php if($this->message->Type() == 'Cooker Promotion') : ?>
+        <a class="btn btn-primary" href="promoteCooker-<?= $this->message->Author()->Id() ?>-messages-<?= $_GET['id'] ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACKUSERS_PROMOTE_LINK'] ?></a>
+<?php elseif($this->message->Type() == 'Writer Promotion') : ?>
+        <a class="btn btn-primary" href="promoteWriter-<?= $this->message->Author()->Id() ?>-messages-<?= $_GET['id'] ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACKUSERS_PROMOTE_LINK'] ?></a>
+<?php elseif($this->message->Type() == 'Translator Promotion') : ?>
+        <a class="btn btn-primary" href="promoteTranslator-<?= $this->message->Author()->Id() ?>-messages-<?= $_GET['id'] ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACKUSERS_PROMOTE_LINK'] ?></a>
 <?php endif ?>
+
         <a class="btn btn-danger" href="deleteMessage-<?= $_GET['id'] ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACKMESSAGE_DELETE_LINK'] ?></a>
 
 <?php if($this->message->Author()->IsBanned()) : ?>

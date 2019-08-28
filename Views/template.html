@@ -59,7 +59,14 @@
                 <div class="account">
                     <h2 class="account_name"><?= $_SESSION['username'] ?></h2>
     <?php if($_SESSION['isAdmin']) : ?>
-                    <h3 class="account_status"><?= $this->_strings['TEMPLATE_ACCOUNT_ADMINISTRATOR'] ?></h3>  
+                    <h3 class="account_status"><?= $this->_strings['TEMPLATE_ACCOUNT_ADMINISTRATOR'] ?></h3> 
+                    <!-- Voir comment combiner les titres proprement -->
+    <?php elseif($_SESSION['isCooker']) : ?>
+                    <h3 class="account_status"><?= $this->_strings['TEMPLATE_ACCOUNT_COOKER'] ?></h3>
+    <?php elseif($_SESSION['isWriter']) : ?>
+                    <h3 class="account_status"><?= $this->_strings['TEMPLATE_ACCOUNT_WRITER'] ?></h3>
+    <?php elseif($_SESSION['isTranslator']) : ?>
+                    <h3 class="account_status"><?= $this->_strings['TEMPLATE_ACCOUNT_TRANSLATOR'] ?></h3>
     <?php else : ?>
                     <h3 class="account_status"><?= $this->_strings['TEMPLATE_ACCOUNT_GOURMET'] ?></h3>
     <?php endif ?>
@@ -68,15 +75,38 @@
                         <input id="newAvatar" type="file" name="newAvatar" style="display: none" accept=".jpg, .jpeg, .png, .tiff, .gif" />
                     </form>
                     <nav>
-                        <!-- Conditionner l'accès aux sections en fonction des status + sécuriser l'accès dans les controllers -->
+
     <?php if($_SESSION['isAdmin']) : ?>
+
                         <p><a href="dashboard.<?= $_GET['lang'] ?>" class="link account_link link_dashbord"><?= $this->_strings['TEMPLATE_DASHBOARD_LINK'] ?></a></p>
+
     <?php endif ?>
-                        <p><a href="mailEditor.<?= $_GET['lang'] ?>" class="link account_link link_mail"><?= $this->_strings['TEMPLATE_MAIL_EDITOR_LINK'] ?></a></p>
+
+    <!--  -->
+
+    <?php if($_SESSION['isAdmin'] || $_SESSION['isCooker']) : ?>
+
                         <p><a href="ingredientEditor.<?= $_GET['lang'] ?>" class="link account_link link_ingredient"><?= $this->_strings['TEMPLATE_INGREDIENT_EDITOR_LINK'] ?></a></p>
                         <p><a href="dishEditor.<?= $_GET['lang'] ?>" class="link account_link link_dish"><?= $this->_strings['TEMPLATE_DISH_EDITOR_LINK'] ?></a></p>
+    <?php endif ?>
+    
+    <!--  -->
+
+    <?php if($_SESSION['isAdmin'] || $_SESSION['isWriter']) : ?>
+
                         <p><a href="articleEditor.<?= $_GET['lang'] ?>" class="link account_link link_article"><?= $this->_strings['TEMPLATE_ARTICLE_EDITOR_LINK'] ?></a></p>
+
+    <?php endif ?>
+    
+    <!--  -->
+
+    <?php if($_SESSION['isAdmin'] || $_SESSION['isTranslator']) : ?>
+
                         <p><a href="traductor.<?= $_GET['lang'] ?>" class="link account_link link_traductor"><?= $this->_strings['TEMPLATE_TRADUCTOR_LINK'] ?></a></p>
+
+    <?php endif ?>
+
+                        <p><a href="mailEditor.<?= $_GET['lang'] ?>" class="link account_link link_mail"><?= $this->_strings['TEMPLATE_MAIL_EDITOR_LINK'] ?></a></p>
                         <p><a href="logout.<?= $_GET['lang'] ?>" class="link register_link"><?= $this->_strings['TEMPLATE_DISCONNECT_LINK'] ?></a></p>
                     </nav>
                 </div>

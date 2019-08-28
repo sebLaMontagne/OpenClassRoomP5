@@ -23,8 +23,8 @@ class UserManager extends Manager
             }while(!$this->isTokenFree($token));
 
             $q = $this->_db->prepare('
-                INSERT INTO     user (name, email, password, avatar, token, isTriggered, isChief)
-                VALUES          (:name, :email, :password, :avatar, :token, 0, 0)');
+                INSERT INTO     user (name, email, password, avatar, token, isTriggered, isBanned, isAdmin, isCooker, isWriter, isTranslator)
+                VALUES          (:name, :email, :password, :avatar, :token, 0, 0, 0, 0, 0, 0)');
               
             $q->bindValue(':name', htmlspecialchars($name));
             $q->bindValue(':email', htmlspecialchars($email));
@@ -38,10 +38,6 @@ class UserManager extends Manager
             $header.= "MIME-Version: 1.0\n";
             $header.= "Content-Type: text/html;";
             mail($email, 'validation de compte', '<html><head></head><body><p>Voici votre lien d\'activation : <a href="http://localhost/P5Local/confirmRegister.'.$lang.'-'.$token.'">activer</a></p></body></html>', $header);
-        }
-        else
-        {
-            throw new Exception('Invalid parameters');
         }
     }
 
@@ -182,16 +178,44 @@ class UserManager extends Manager
         return $q->fetch()[0];
     }
 
-    public function promoteUser($id)
+    public function promoteCooker($id)
     {
-        $q = $this->_db->prepare('UPDATE user SET isChief = 1 WHERE id = :id');
+        $q = $this->_db->prepare('UPDATE user SET isCooker = 1 WHERE id = :id');
         $q->bindValue(':id', htmlspecialchars($id));
         $q->execute();
     }
 
-    public function demoteUser($id)
+    public function demoteCooker($id)
     {
-        $q = $this->_db->prepare('UPDATE user SET isChief = 0 WHERE id = :id');
+        $q = $this->_db->prepare('UPDATE user SET isCooker = 0 WHERE id = :id');
+        $q->bindValue(':id', htmlspecialchars($id));
+        $q->execute();
+    }
+
+    public function promoteWriter($id)
+    {
+        $q = $this->_db->prepare('UPDATE user SET isWriter = 1 WHERE id = :id');
+        $q->bindValue(':id', htmlspecialchars($id));
+        $q->execute();
+    }
+
+    public function demoteWriter($id)
+    {
+        $q = $this->_db->prepare('UPDATE user SET isWriter = 0 WHERE id = :id');
+        $q->bindValue(':id', htmlspecialchars($id));
+        $q->execute();
+    }
+
+    public function promoteTranslator($id)
+    {
+        $q = $this->_db->prepare('UPDATE user SET isTranslator = 1 WHERE id = :id');
+        $q->bindValue(':id', htmlspecialchars($id));
+        $q->execute();
+    }
+
+    public function demoteTranslator($id)
+    {
+        $q = $this->_db->prepare('UPDATE user SET isTranslator = 0 WHERE id = :id');
         $q->bindValue(':id', htmlspecialchars($id));
         $q->execute();
     }

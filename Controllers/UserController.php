@@ -89,7 +89,7 @@ class UserController extends Controller
         $viewModel->display();
     }
 
-    public function promoteUser()
+    public function promoteCooker()
     {
         if($_SESSION['isAdmin'] != 1)
         {
@@ -97,7 +97,7 @@ class UserController extends Controller
         }
 
         $viewModel = new ViewModelBackUsers;
-        $viewModel->promoteUser($_GET['id']);
+        $viewModel->promoteCooker($_GET['id']);
 
         if($_GET['return'] == 'messages')
         {
@@ -110,7 +110,7 @@ class UserController extends Controller
         }
     }
 
-    public function demoteUser()
+    public function demoteCooker()
     {
         if($_SESSION['isAdmin'] != 1)
         {
@@ -118,7 +118,73 @@ class UserController extends Controller
         }
 
         $viewModel = new ViewModelBackUsers;
-        $viewModel->demoteUser($_GET['id']);
+        $viewModel->demoteCooker($_GET['id']);
+        exit(header('location: backUsers.'.$_GET['lang']));
+    }
+
+    public function promoteWriter()
+    {
+        if($_SESSION['isAdmin'] != 1)
+        {
+            exit(header('location: javascript://history.go(-1)'));
+        }
+
+        $viewModel = new ViewModelBackUsers;
+        $viewModel->promoteWriter($_GET['id']);
+
+        if($_GET['return'] == 'messages')
+        {
+            $viewModel->deleteMessage($_GET['message']);
+            exit(header('location: backMessages.'.$_GET['lang']));
+        }
+        else
+        {
+            exit(header('location: backUsers.'.$_GET['lang']));
+        }
+    }
+
+    public function demoteWriter()
+    {
+        if($_SESSION['isAdmin'] != 1)
+        {
+            exit(header('location: javascript://history.go(-1)'));
+        }
+
+        $viewModel = new ViewModelBackUsers;
+        $viewModel->demoteWriter($_GET['id']);
+        exit(header('location: backUsers.'.$_GET['lang']));
+    }
+
+    public function promoteTranslator()
+    {
+        if($_SESSION['isAdmin'] != 1)
+        {
+            exit(header('location: javascript://history.go(-1)'));
+        }
+
+        $viewModel = new ViewModelBackUsers;
+        $viewModel->promoteTranslator($_GET['id']);
+
+        if($_GET['return'] == 'messages')
+        {
+            $viewModel->deleteMessage($_GET['message']);
+            exit(header('location: backMessages.'.$_GET['lang']));
+        }
+        else
+        {
+            exit(header('location: backUsers.'.$_GET['lang']));
+        }
+    }
+
+    public function demoteTranslator()
+    {
+        if($_SESSION['isAdmin'] != 1)
+        {
+            exit(header('location: javascript://history.go(-1)'));
+        }
+
+        $viewModel = new ViewModelBackUsers;
+        $viewModel->demoteTranslator($_GET['id']);
         exit(header('location: backUsers.'.$_GET['lang']));
     }
 

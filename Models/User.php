@@ -8,8 +8,10 @@ class User
     private $_avatar;
     private $_isTriggered;
     private $_isAdmin;
-    private $_isChief;
     private $_isBanned;
+    private $_isCooker;
+    private $_isWriter;
+    private $_isTranslator;
 
     public function id()            { return $this->_id; }
     public function name()          { return $this->_name; }
@@ -17,8 +19,10 @@ class User
     public function avatar()        { return $this->_avatar; }
     public function isTriggered()   { return $this->_isTriggered; }
     public function isAdmin()       { return $this->_isAdmin; }
-    public function isChief()       { return $this->_isChief; }
     public function isBanned()      { return $this->_isBanned; }
+    public function isCooker()      { return $this->_isCooker; }
+    public function isWriter()      { return $this->_isWriter; }
+    public function isTranslator()  { return $this->_isTranslator; }
 
     private function setId($id)
     {
@@ -31,7 +35,6 @@ class User
             throw new Exception('The send id is not a numeric value');
         }
     }
-
     private function setName($name)
     {
         if(is_string($name) && strlen($name) > 5)
@@ -43,7 +46,6 @@ class User
             throw new Exception('Invalid username');
         }
     }
-
     private function setEmail($email)
     {
         if(filter_var($email, FILTER_VALIDATE_EMAIL))
@@ -51,7 +53,6 @@ class User
             $this->_email = $email;
         }
     }
-
     private function setAvatar($avatar)
     {
         if(preg_match('@(.*?)\.(jpg|jpeg|gif|tiff|png)@', $avatar))
@@ -63,7 +64,6 @@ class User
             throw new Exception('Invalid avatar format');
         }
     }
-
     private function setIsTriggered($isTriggered)
     {
         if($isTriggered == 0 || $isTriggered == 1)
@@ -75,7 +75,6 @@ class User
             throw new Exception('The "isTriggered" attribute must be a boolean value');
         }
     }
-
     private function setIsAdmin($isAdmin)
     {
         if($isAdmin == 0 || $isAdmin == 1)
@@ -87,19 +86,6 @@ class User
             throw new Exception('The "isAdmin" attribute must be a boolean value');
         }
     }
-
-    private function setIsChief($isChief)
-    {
-        if($isChief == 0 || $isChief == 1)
-        {
-            $this->_isChief = $isChief;
-        }
-        else
-        {
-            throw new Exception('The "isAdmin" attribute must be a boolean value');
-        }
-    }
-
     private function setIsBanned($isBanned)
     {
         if($isBanned == 0 || $isBanned == 1)
@@ -109,6 +95,27 @@ class User
         else
         {
             throw new Exception('The "isAdmin" attribute must be a boolean value');
+        }
+    }
+    private function setIsCooker($data)
+    {
+        if(preg_match('@^(0|1)$@', $data))
+        {
+            $this->_isCooker = $data;
+        }
+    }
+    private function setIsWriter($data)
+    {
+        if(preg_match('@^(0|1)$@', $data))
+        {
+            $this->_isWriter = $data;
+        }
+    }
+    private function setIsTranslator($data)
+    {
+        if(preg_match('@^(0|1)$@', $data))
+        {
+            $this->_isTranslator = $data;
         }
     }
 

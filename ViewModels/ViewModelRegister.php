@@ -31,10 +31,14 @@ class ViewModelRegister extends ViewModel
 
         if(isset($this->user) && $this->user->isTriggered() && !$this->user->isBanned())
         {
-            $_SESSION['username'] = $this->user->name();
-            $_SESSION['isAdmin'] = $this->user->isAdmin();
-            $_SESSION['avatar'] = $this->user->avatar();
-            $_SESSION['id'] = $this->user->id();
+            $_SESSION['username']       = $this->user->name();
+            $_SESSION['id']             = $this->user->id();
+            $_SESSION['avatar']         = $this->user->avatar();
+            $_SESSION['isAdmin']        = $this->user->isAdmin();
+            $_SESSION['isCooker']       = $this->user->isCooker();
+            $_SESSION['isWriter']       = $this->user->isWriter();
+            $_SESSION['isTranslator']   = $this->user->isTranslator();
+        
             exit(header('Location: home.'.$_GET['lang']));
         }
         $this->_title = $this->_strings['REGISTER_CONNECT_TITLE'];

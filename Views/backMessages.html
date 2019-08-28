@@ -12,15 +12,21 @@
         
         <tr>
             <td><?= $message->Author()->Name() ?>
-    <?php if($message->Author()->isAdmin())      :  echo '('.$this->_strings['BACKUSERS_ADMIN'].')'     ?>
-    <?php elseif($message->Author()->isBanned()) :  echo     $this->_strings['BACKUSERS_BANNED']        ?>
-    <?php elseif($message->Author()->isChief())  :  echo '('.$this->_strings['BACKUSERS_CHIEF'].')'     ?>
-    <?php else                                   :  echo '('.$this->_strings['BACKUSERS_GOURMET'].')'   ?>
+    <?php if($message->Author()->isAdmin())          :  echo '('.$this->_strings['BACKUSERS_ADMIN'].')'         ?>
+    <?php elseif($message->Author()->isBanned())     :  echo '('.$this->_strings['BACKUSERS_BANNED'].')'        ?>
+    <?php elseif($message->Author()->isCooker())     :  echo '('.$this->_strings['BACKUSERS_COOKER'].')'        ?>
+    <?php elseif($message->Author()->isWriter())     :  echo '('.$this->_strings['BACKUSERS_WRITER'].')'        ?>
+    <?php elseif($message->Author()->isTranslator()) :  echo '('.$this->_strings['BACKUSERS_TRANSLATOR'].')'    ?>
+    <?php else                                       :  echo '('.$this->_strings['BACKUSERS_GOURMET'].')'       ?>
     <?php endif ?>
             </td>
     
             <td>
-    <?php if($message->Type() == 'Chief Promotion') : ?><?= $this->_strings['BACKMESSAGES_CHIEF_PROMOTION'] ?>
+    <?php if($message->Type() == 'Add new value')            : ?><?= $this->_strings['BACKMESSAGES_NEW_VALUE']              ?>
+    <?php elseif($message->Type() == 'Cooker Promotion')     : ?><?= $this->_strings['BACKMESSAGES_COOKER_PROMOTION']       ?>
+    <?php elseif($message->Type() == 'Writer Promotion')     : ?><?= $this->_strings['BACKMESSAGES_WRITER_PROMOTION']       ?>
+    <?php elseif($message->Type() == 'Translator Promotion') : ?><?= $this->_strings['BACKMESSAGES_TRANSLATOR_PROMOTION']   ?>
+    <?php elseif($message->Type() == 'Deban')                : ?><?= $this->_strings['BACKMESSAGES_DEBAN']                  ?>
     <?php endif ?>
             </td>
             

@@ -6,14 +6,34 @@ class ViewModelBackUsers extends ViewModel
     private $userManager;
     private $messageManager;
 
-    public function promoteUser($id)
+    public function promoteCooker($id)
     {
-        $this->userManager->promoteUser($id);
+        $this->userManager->promoteCooker($id);
     }
 
-    public function demoteUser($id)
+    public function demoteCooker($id)
     {
-        $this->userManager->demoteUser($id);
+        $this->userManager->demoteCooker($id);
+    }
+
+    public function promoteWriter($id)
+    {
+        $this->userManager->promoteWriter($id);
+    }
+
+    public function demoteWriter($id)
+    {
+        $this->userManager->demoteWriter($id);
+    }
+
+    public function promoteTranslator($id)
+    {
+        $this->userManager->promoteTranslator($id);
+    }
+
+    public function demoteTranslator($id)
+    {
+        $this->userManager->demoteTranslator($id);
     }
 
     public function banUser($id)

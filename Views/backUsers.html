@@ -18,8 +18,12 @@
         <p class="user_title"><?= $this->_strings['BACKUSERS_ADMIN'] ?></p>
     <?php else : ?>
     <p class="user_title">
-        <?php if($user->isChief()) : ?>
-        <span><?= $this->_strings['BACKUSERS_CHIEF'] ?></span>
+        <?php if($user->isCooker()) : ?>
+        <span><?= $this->_strings['BACKUSERS_COOKER'] ?></span>
+        <?php elseif($user->isWriter()) : ?>
+        <span><?= $this->_strings['BACKUSERS_WRITER'] ?></span>
+        <?php elseif($user->isTranslator()) : ?>
+        <span><?= $this->_strings['BACKUSERS_TRANSLATOR'] ?></span>
         <?php else : ?>
         <span><?= $this->_strings['BACKUSERS_GOURMET'] ?></span>
         <?php endif ?>
@@ -37,15 +41,31 @@
 
 <div class="row">
 
-    <div class="col-6">
-        <?php if($user->isChief()) : ?>
-        <a class="ingredient_button" href="demoteUser-<?= $user->Id() ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACKUSERS_DEMOTE_LINK'] ?></a>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
+        <?php if($user->isCooker()) : ?>
+        <a class="ingredient_button" href="demoteCooker-<?= $user->Id() ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACKUSERS_DEMOTE_COOKER_LINK'] ?></a>
         <?php else : ?>
-        <a class="ingredient_button" href="promoteUser-<?= $user->Id() ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACKUSERS_PROMOTE_LINK'] ?></a>
+        <a class="ingredient_button" href="promoteCooker-<?= $user->Id() ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACKUSERS_PROMOTE_COOKER_LINK'] ?></a>
         <?php endif ?>
     </div>
 
-    <div class="col-6">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
+        <?php if($user->isWriter()) : ?>
+        <a class="ingredient_button" href="demoteWriter-<?= $user->Id() ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACKUSERS_DEMOTE_WRITER_LINK'] ?></a>
+        <?php else : ?>
+        <a class="ingredient_button" href="promoteWriter-<?= $user->Id() ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACKUSERS_PROMOTE_WRITER_LINK'] ?></a>
+        <?php endif ?>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
+        <?php if($user->isTranslator()) : ?>
+        <a class="ingredient_button" href="demoteTranslator-<?= $user->Id() ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACKUSERS_DEMOTE_TRANSLATOR_LINK'] ?></a>
+        <?php else : ?>
+        <a class="ingredient_button" href="promoteTranslator-<?= $user->Id() ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACKUSERS_PROMOTE_TRANSLATOR_LINK'] ?></a>
+        <?php endif ?>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
         <?php if($user->isBanned()) : ?>
         <a class="ingredient_button" href="debanUser-<?= $user->Id() ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACKUSERS_DEBAN_LINK'] ?></a>
         <?php else : ?>
