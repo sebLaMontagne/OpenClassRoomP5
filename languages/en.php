@@ -179,6 +179,8 @@ $strings = [
     'SEARCH_TITLE'                          =>  'Search results',
     'SEARCH_NO_RESULTS'                     =>  'No Search result',
     'SEARCH_DESCRIPTION'                    =>  'search result(s)',
+    'SEARCH_ARTICLE_TITLE'                  =>  'Article',
+    'SEARCH_DISH_TITLE'                     =>  'Dish',
 
     //dashboard
     'DASHBOARD_TITLE'                       =>  'Marre-mitton - Dashboard',
@@ -253,7 +255,10 @@ $strings = [
     'MAILEDITOR_TITLE'                      =>  'Marre-Mitton - Send a message',
     'MAILEDITOR_DESCRIPTION'                =>  'Here you can send a message to the administrators who will answer you as soon as possible',
     'MAILEDITOR_MSG_TYPE_LABEL'             =>  'Message\'s type : ',
-    'MAILEDITOR_MSG_TYPE_CHIEF_PROMOTION'   =>  'Promotion to chief title',
+    'MAILEDITOR_MSG_TYPE_COOKER_PROMOTION'  =>  'Promotion to cooker title',
+    'MAILEDITOR_MSG_TYPE_WRITER_PROMOTION'  =>  'Promotion to writer title',
+    'MAILEDITOR_MSG_TYPE_TRANSLATOR_PROMOTION'  =>  'Promotion to translator title',
+    'MAILEDITOR_MSG_TYPE_OTHER'             =>  'Other',
     'MAILEDITOR_SUBMIT'                     =>  'Send',
     'MAILEDITOR_SEND_FEEDBACK'              =>  'Message successfully send',
     'MAILEDITOR_NOT_SEND_FEEDBACK'          =>  'You have reached the message limit that you can send (max 3). Wait for administrators to finish your previous queries',

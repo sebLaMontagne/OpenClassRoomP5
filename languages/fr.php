@@ -180,6 +180,8 @@ $strings = [
     'SEARCH_TITLE'                          =>  'Résultats de recherche',
     'SEARCH_NO_RESULTS'                     =>  'Aucun résultat de recherche',
     'SEARCH_DESCRIPTION'                    =>  'résultat(s) de recherche',
+    'SEARCH_ARTICLE_TITLE'                  =>  'Article',
+    'SEARCH_DISH_TITLE'                     =>  'Plat',
 
     //dashboard
     'DASHBOARD_TITLE'                       =>  'Marre-mitton - Tableau de bord',
@@ -254,7 +256,10 @@ $strings = [
     'MAILEDITOR_TITLE'                      =>  'Marre-Mitton - Envoyer un message',
     'MAILEDITOR_DESCRIPTION'                =>  'Ici, vous pouvez envoyer un message aux administrateurs qui vous répondront dans les meilleurs délais',
     'MAILEDITOR_MSG_TYPE_LABEL'             =>  'Nature du message : ',
-    'MAILEDITOR_MSG_TYPE_CHIEF_PROMOTION'   =>  'Promotion au titre de chef',
+    'MAILEDITOR_MSG_TYPE_COOKER_PROMOTION'  =>  'Promotion au titre de chef',
+    'MAILEDITOR_MSG_TYPE_WRITER_PROMOTION'  =>  'Promotion au titre d\'écrivain',
+    'MAILEDITOR_MSG_TYPE_TRANSLATOR_PROMOTION'  =>  'Promotion au titre de traducteur',
+    'MAILEDITOR_MSG_TYPE_OTHER'             =>  'Autre',
     'MAILEDITOR_SUBMIT'                     =>  'Envoyer',
     'MAILEDITOR_SEND_FEEDBACK'              =>  'Message envoyé avec succès',
     'MAILEDITOR_NOT_SEND_FEEDBACK'          =>  'Vous avez atteint la limite de messages que vous pouvez envoyer (max. 3). Attendez que les administrateurs finissent vos précédentes requêtes',

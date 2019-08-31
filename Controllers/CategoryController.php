@@ -3,7 +3,7 @@ class CategoryController extends Controller
 {
     public function categoryTrad()
     {
-        if($_SESSION['isAdmin'] != 1 || $_SESSION['isTranslator'] != 1)
+        if(!$_SESSION['isAdmin'] && !$_SESSION['isTranslator'])
         {
             exit(header('location: javascript://history.go(-1)'));
         }

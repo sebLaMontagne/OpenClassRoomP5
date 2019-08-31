@@ -9,6 +9,7 @@
     <?php foreach($this->_dishesResults as $dish) : ?>
 <div class="row">
     <a class="dish_container" href="dish-<?= $dish->Id() ?>.<?= $_GET['lang'] ?>">
+        <h3><u><?= $this->_strings['SEARCH_DISH_TITLE'] ?></u></h3>
         <h3><?= $dish->Name() ?></h3>
 
     <?php if($dish->Type() == 'breakfast') : ?>
@@ -43,6 +44,7 @@
     <?php foreach($this->_articlesResults as $article) : ?>
 <div class="row">
     <a class="dish_container" href="article-<?= $article->Id() ?>.<?= $_GET['lang'] ?>">
+        <h3><u><?= $this->_strings['SEARCH_ARTICLE_TITLE'] ?></u></h3>
         <h3><?= $article->Title() ?></h3>
         <h4><?= $article->Category()->Name() ?></h4>
 
@@ -50,7 +52,7 @@
             <div class="col-12"><img class="dish_illustration" src="Ressources/img/articles/<?= $article->Image() ?>" /></div>
         </div>
         <div class="row">
-            <p class="col-12"><?= $article->Author()->Name(); ?></p>
+            <p class="col-12"><?= $article->Author()->Name() ?></p>
         </div>
 
         <div class="row">

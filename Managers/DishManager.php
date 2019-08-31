@@ -335,6 +335,7 @@ class DishManager extends Manager
             INNER JOIN dishLocal 
             ON dish.id = dishlocal.dish_id 
             WHERE dishlocal.isPublished = 1
+            AND dishlocal.lang = :lang
         ');
         $q->bindValue(':lang', $_GET['lang']);
         $q->execute();

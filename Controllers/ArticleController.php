@@ -4,7 +4,7 @@ class ArticleController extends Controller
 {
     public function articleEditor()
     {
-        if($_SESSION['isAdmin'] != 1 || $_SESSION['isWriter'] != 1)
+        if(!$_SESSION['isAdmin'] && !$_SESSION['isWriter'])
         {
             exit(header("location:javascript://history.go(-1)"));
         }
@@ -54,7 +54,7 @@ class ArticleController extends Controller
 
     public function confirmArticle()
     {
-        if($_SESSION['isAdmin'] != 1 || $_SESSION['isWriter'] != 1 || empty($_GET['id']))
+        if($_SESSION['isAdmin'] != 1 || empty($_GET['id']))
         {
             exit(header('location: javascript://history.go(-1)'));
         }
@@ -78,7 +78,7 @@ class ArticleController extends Controller
 
     public function articleTrad()
     {
-        if($_SESSION['isAdmin'] != 1 || $_SESSION['isTranslator'] != 1)
+        if(!$_SESSION['isAdmin'] && !$_SESSION['isTranslator'])
         {
             exit(header('location: javascript://history.go(-1)'));
         }

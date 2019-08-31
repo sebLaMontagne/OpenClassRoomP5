@@ -4,7 +4,7 @@ class IngredientController extends Controller
 {
     public function IngredientEditor()
     {
-        if($_SESSION['isAdmin'] != 1 || $_SESSION['isCooker'] != 1)
+        if(!$_SESSION['isAdmin'] && !$_SESSION['isCooker'])
         {
             exit(header("location:javascript://history.go(-1)"));
         }
@@ -45,7 +45,7 @@ class IngredientController extends Controller
 
     public function ingredientTrad()
     {
-        if($_SESSION['isAdmin'] != 1 || $_SESSION['isTranslator'] != 1)
+        if(!$_SESSION['isAdmin'] && !$_SESSION['isTranslator'])
         {
             exit(header('location: javascript://history.go(-1)'));
         }
