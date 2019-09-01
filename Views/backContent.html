@@ -12,13 +12,77 @@
 
         <h3><?= $ingredient->Name() ?> (<?= $ingredient->lang() ?>)</h3>
 
+        <hr class="commentary-bound" />
+
         <div class="row">
             <div class="col-12"><img class="dish_illustration" src="Ressources/img/ingredients/<?= $ingredient->Image() ?>" /></div>
         </div>
         
+        <!-- Infos sur les catégories d'ingrédients -->
+
+        <hr class="commentary-bound" />
+
+        <p class="ingredient_category"><?= $this->_strings['BACK_CONTENT_INGREDIENT_CATEGORY'] ?>
+        <?php if($ingredient->isPoultry()) : ?> 
+            <span class="text-success"><?= $this->_strings['BACK_CONTENT_INGREDIENT_CATEGORY_YES'] ?></span> 
+        <?php else : ?>
+            <span class="text-danger"><?= $this->_strings['BACK_CONTENT_INGREDIENT_CATEGORY_NO'] ?></span> 
+        <?php endif ?>
+            <span><?= $this->_strings['BACK_CONTENT_INGREDIENT_POULTRY'] ?></span>
+        </p>
+
+        <p class="ingredient_category"><?= $this->_strings['BACK_CONTENT_INGREDIENT_CATEGORY'] ?> 
+        <?php if($ingredient->isFish()) : ?> 
+            <span class="text-success"><?= $this->_strings['BACK_CONTENT_INGREDIENT_CATEGORY_YES'] ?></span> 
+        <?php else : ?>
+            <span class="text-danger"><?= $this->_strings['BACK_CONTENT_INGREDIENT_CATEGORY_NO'] ?></span> 
+        <?php endif ?>
+            <span><?= $this->_strings['BACK_CONTENT_INGREDIENT_FISH'] ?></span>
+        </p>
+
+        <p class="ingredient_category"><?= $this->_strings['BACK_CONTENT_INGREDIENT_CATEGORY'] ?> 
+        <?php if($ingredient->isSeaFood()) : ?> 
+            <span class="text-success"><?= $this->_strings['BACK_CONTENT_INGREDIENT_CATEGORY_YES_2'] ?></span> 
+            <?php else : ?>
+            <span class="text-danger"><?= $this->_strings['BACK_CONTENT_INGREDIENT_CATEGORY_NO_2'] ?></span> 
+            <?php endif ?>
+            <span><?= $this->_strings['BACK_CONTENT_INGREDIENT_SEAFOOD'] ?></span>
+        </p>
+
+        <p class="ingredient_category"><?= $this->_strings['BACK_CONTENT_INGREDIENT_CATEGORY'] ?> 
+        <?php if($ingredient->isFromAnimal()) : ?> 
+            <span class="text-success"><?= $this->_strings['BACK_CONTENT_INGREDIENT_CATEGORY_YES_2'] ?></span> 
+            <?php else : ?>
+            <span class="text-danger"><?= $this->_strings['BACK_CONTENT_INGREDIENT_CATEGORY_NO_2'] ?></span> 
+            <?php endif ?>
+            <span><?= $this->_strings['BACK_CONTENT_INGREDIENT_FROM_ANIMAL'] ?></span>
+        </p>
+
+        <p class="ingredient_category"><?= $this->_strings['BACK_CONTENT_INGREDIENT_CATEGORY'] ?> 
+        <?php if($ingredient->isFruit()) : ?> 
+            <span class="text-success"><?= $this->_strings['BACK_CONTENT_INGREDIENT_CATEGORY_YES_2'] ?></span> 
+            <?php else : ?>
+            <span class="text-danger"><?= $this->_strings['BACK_CONTENT_INGREDIENT_CATEGORY_NO_2'] ?></span> 
+            <?php endif ?>
+            <span><?= $this->_strings['BACK_CONTENT_INGREDIENT_FRUIT'] ?></span>
+        </p>
+
+        <p class="ingredient_category"><?= $this->_strings['BACK_CONTENT_INGREDIENT_CATEGORY'] ?> 
+            <?php if($ingredient->isVegetable()) : ?> 
+                <span class="text-success"><?= $this->_strings['BACK_CONTENT_INGREDIENT_CATEGORY_YES_2'] ?></span> 
+                <?php else : ?>
+                <span class="text-danger"><?= $this->_strings['BACK_CONTENT_INGREDIENT_CATEGORY_NO_2'] ?></span> 
+                <?php endif ?>
+                <span><?= $this->_strings['BACK_CONTENT_INGREDIENT_VEGETABLES'] ?></span>
+            </p>
+
+        <hr class="commentary-bound" />
+        <!-- Infos chiffrées -->
+
         <p><?= $this->_strings['BACK_CONTENT_BASE_CALORIES'] ?> : <?= $ingredient->baseCalories() ?> Cal</p>
         <p><?= $this->_strings['BACK_CONTENT_UNIT_WEIGHT'] ?> : <?= $ingredient->unitWeight() ?> g</p>
         
+        <hr class="commentary-bound" />
 
         <div class="ingredient_button_container">
             <a class="ingredient_button" href="confirmIngredient-<?= $ingredient->Id() ?>.<?= $_GET['lang'] ?>"><?= $this->_strings['BACK_CONTENT_CONFIRM_INGREDIENT'] ?></a>

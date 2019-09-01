@@ -212,6 +212,18 @@ $strings = [
     'BACK_CONTENT_ACCEPT_CATEGORY'          =>  'Accept category',
     'BACK_CONTENT_DENY_CATEGORY'            =>  'Refuse catégory',
 
+    'BACK_CONTENT_INGREDIENT_CATEGORY'      =>  'This',
+    'BACK_CONTENT_INGREDIENT_CATEGORY_YES'  =>  'is',
+    'BACK_CONTENT_INGREDIENT_CATEGORY_NO'   =>  'is not',
+    'BACK_CONTENT_INGREDIENT_CATEGORY_YES_2'=>  'comes from',
+    'BACK_CONTENT_INGREDIENT_CATEGORY_NO_2' =>  'doesn\'t comes from',
+    'BACK_CONTENT_INGREDIENT_POULTRY'       =>  'poultry',
+    'BACK_CONTENT_INGREDIENT_FISH'          =>  'fish',
+    'BACK_CONTENT_INGREDIENT_SEAFOOD'       =>  'seafood',
+    'BACK_CONTENT_INGREDIENT_FROM_ANIMAL'   =>  'an animal',
+    'BACK_CONTENT_INGREDIENT_FRUIT'         =>  'a fruit',
+    'BACK_CONTENT_INGREDIENT_VEGETABLES'    =>  'a vegetable',
+    
     //traductor
     'TRADUCTOR_TITLE'                       =>  'Marre-Mitton - List of contents to translate',
     'TRADUCTOR_SELECT_LANG'                 =>  'Select the language of the content to be translated',

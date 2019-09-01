@@ -11,6 +11,13 @@ class Ingredient
     private $_unit_weight;
     private $_calories;
 
+    private $_isPoultry;
+    private $_isFish;
+    private $_isSeaFood;
+    private $_isFromAnimal;
+    private $_isFruit;
+    private $_isVegetable;
+
     public function Id()            { return $this->_id; }
     public function Name()          { return $this->_name; }
     public function Lang()          { return $this->_lang; }
@@ -20,6 +27,12 @@ class Ingredient
     public function Unit()          { return $this->_unit; }
     public function UnitWeight()    { return $this->_unit_weight; }
     public function Calories()      { return $this->_calories; }
+    public function IsPoultry()     { return $this->_isPoultry; }
+    public function IsFish()        { return $this->_isFish; }
+    public function IsSeaFood()     { return $this->_isSeaFood; }
+    public function IsFromAnimal()  { return $this->_isFromAnimal; }
+    public function IsFruit()       { return $this->_isFruit; }
+    public function IsVegetable()   { return $this->_isVegetable; }
 
     private function setId($value)
     {
@@ -69,6 +82,48 @@ class Ingredient
         if(preg_match('@^[0-9]+$@', $value))
         {
             $this->_unit_weight = $value;
+        }
+    }
+    private function setIsPoultry($data)
+    {
+        if(preg_match('@^(0|1)$@', $data))
+        {
+            $this->_isPoultry = $data;
+        }
+    }
+    private function setIsFish($data)
+    {
+        if(preg_match('@^(0|1)$@', $data))
+        {
+            $this->_isFish = $data;
+        }
+    }
+    private function setIsSeaFood($data)
+    {
+        if(preg_match('@^(0|1)$@', $data))
+        {
+            $this->_isSeaFood = $data;
+        }
+    }
+    private function setIsFromAnimal($data)
+    {
+        if(preg_match('@^(0|1)$@', $data))
+        {
+            $this->_isFromAnimal = $data;
+        }
+    }
+    private function setIsFruit($data)
+    {
+        if(preg_match('@^(0|1)$@', $data))
+        {
+            $this->_isFruit = $data;
+        }
+    }
+    private function setIsVegetable($data)
+    {
+        if(preg_match('@^(0|1)$@', $data))
+        {
+            $this->_isVegetable = $data;
         }
     }
 

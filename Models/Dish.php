@@ -18,6 +18,13 @@ class Dish
     private $_comments;
     private $_calories;
 
+    private $_isPoultry;
+    private $_isFish;
+    private $_isSeaFood;
+    private $_isFromAnimal;
+    private $_isFruit;
+    private $_isVegetable;
+
     public function Id()            { return $this->_id; }
     public function Name()          { return $this->_name; }
     public function Lang()          { return $this->_lang; }

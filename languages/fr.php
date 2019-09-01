@@ -212,6 +212,18 @@ $strings = [
     'BACK_CONTENT_DENY_ARTICLE'             =>  'Refuser l\'article',
     'BACK_CONTENT_ACCEPT_CATEGORY'          =>  'Accepter la catégorie',
     'BACK_CONTENT_DENY_CATEGORY'            =>  'Refuser la catégorie',
+    
+    'BACK_CONTENT_INGREDIENT_CATEGORY'      =>  'Ceci',
+    'BACK_CONTENT_INGREDIENT_CATEGORY_YES'  =>  'est',
+    'BACK_CONTENT_INGREDIENT_CATEGORY_NO'   =>  'n\'est pas',
+    'BACK_CONTENT_INGREDIENT_CATEGORY_YES_2'=>  'provient',
+    'BACK_CONTENT_INGREDIENT_CATEGORY_NO_2' =>  'ne provient pas',
+    'BACK_CONTENT_INGREDIENT_POULTRY'       =>  'de la volaille',
+    'BACK_CONTENT_INGREDIENT_FISH'          =>  'du poisson',
+    'BACK_CONTENT_INGREDIENT_SEAFOOD'       =>  'de fruits de mer',
+    'BACK_CONTENT_INGREDIENT_FROM_ANIMAL'   =>  'd\'un animal',
+    'BACK_CONTENT_INGREDIENT_FRUIT'         =>  'de fruit(s)',
+    'BACK_CONTENT_INGREDIENT_VEGETABLES'    =>  'de légume(s)',
 
     //traductor
     'TRADUCTOR_TITLE'                       =>  'Marre-Mitton - Liste des contenus à traduire',
