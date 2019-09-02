@@ -41,6 +41,12 @@ class Dish
     public function Dislikes()      { return $this->_dislikes; }
     public function Comments()      { return $this->_comments; }
     public function Calories()      { return $this->_calories; }
+    public function IsPoultry()     { return $this->_isPoultry; }
+    public function IsFish()        { return $this->_isFish; }
+    public function IsSeaFood()     { return $this->_isSeaFood; }
+    public function IsFromAnimal()  { return $this->_isFromAnimal; }
+    public function IsFruit()       { return $this->_isFruit; }
+    public function IsVegetable()   { return $this->_isVegetable; }
 
     private function setId($id)
     {
@@ -178,6 +184,79 @@ class Dish
         $this->_calories = round($this->_calories);
     }
 
+    private function setIsPoultry()
+    {
+        $this->_isPoultry = 0;
+        foreach($this->_ingredients as $ingredient)
+        {
+            if($ingredient->IsPoultry())
+            {
+                $this->_isPoultry = 1;
+                break;
+            }
+        }
+    }
+    private function setIsFish()
+    {
+        $this->_isFish = 0;
+        foreach($this->_ingredients as $ingredient)
+        {
+            if($ingredient->IsFish())
+            {
+                $this->_isFish = 1;
+                break;
+            }
+        }
+    }
+    private function setIsSeaFood()
+    {
+        $this->_isSeaFood = 0;
+        foreach($this->_ingredients as $ingredient)
+        {
+            if($ingredient->IsSeaFood())
+            {
+                $this->_isSeaFood = 1;
+                break;
+            }
+        }
+    }
+    private function setIsFromAnimal()
+    {
+        $this->_isFromAnimal = 0;
+        foreach($this->_ingredients as $ingredient)
+        {
+            if($ingredient->IsFromAnimal())
+            {
+                $this->_isFromAnimal = 1;
+                break;
+            }
+        }
+    }
+    private function setIsFruit()
+    {
+        $this->_isFruit = 0;
+        foreach($this->_ingredients as $ingredient)
+        {
+            if($ingredient->IsFruit())
+            {
+                $this->_isFruit = 1;
+                break;
+            }
+        }
+    }
+    private function setIsVegetable()
+    {
+        $this->_isVegetable = 0;
+        foreach($this->_ingredients as $ingredient)
+        {
+            if($ingredient->IsVegetable())
+            {
+                $this->_isVegetable = 1;
+                break;
+            }
+        }
+    }
+
     private function hydrate(array $data)
     {
         foreach($data as $key => $value)
@@ -196,6 +275,13 @@ class Dish
         if(!empty($this->_ingredients))
         {
             $this->setCalories();
+
+            $this->setIsPoultry();
+            $this->setIsFish();
+            $this->setIsSeaFood();
+            $this->setIsFromAnimal();
+            $this->setIsFruit();
+            $this->setIsVegetable();
         }
     }
 }
