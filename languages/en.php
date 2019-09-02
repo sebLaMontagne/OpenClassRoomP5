@@ -126,6 +126,8 @@ $strings = [
     'DISH_INGREDIENTS_UNITIES_FEEDBACK'     =>  'You must give a mesure unit for the quantities of ingredients',
     'DISH_EDITOR_UNICITY_FEEDBACK'          =>  'You can only choose an ingredient once',
     'DISH_EDITOR_STEPS_FEEDBACK'            =>  'You must fill in all the cooking steps of the dish',
+    'DISH_EDITOR_SUCCESS_1'                 =>  'The dish has been successfully registered',
+    'DISH_EDITOR_SUCCESS_2'                 =>  'A moderator will quickly evaluate it',
 
     //dish
     'DISH_TIME'                             =>  'Cooking time',

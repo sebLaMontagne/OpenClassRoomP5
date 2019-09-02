@@ -318,6 +318,7 @@ class DishManager extends Manager
 
         if($a = $q->fetch(PDO::FETCH_ASSOC))
         {
+            $a['id'] = $a['dish_id'];
             $a['author'] = $this->getAuthor($a['author']);
             $a['ingredients'] = $this->getDishIngredients($a['dish_id']);
             $a['steps'] = $this->getDishSteps($a['dish_id']);

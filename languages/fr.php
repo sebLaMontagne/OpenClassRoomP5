@@ -127,6 +127,8 @@ $strings = [
     'DISH_INGREDIENTS_UNITIES_FEEDBACK'     =>  'Vous devez remplir les unités de mesure pour les quantités d\'ingrédients',
     'DISH_EDITOR_UNICITY_FEEDBACK'          =>  'Vous ne pouvez pas choisir deux fois le même ingrédient',
     'DISH_EDITOR_STEPS_FEEDBACK'            =>  'Vous devez renseigner toutes les étapes de préparation du plat',
+    'DISH_EDITOR_SUCCESS_1'                 =>  'Le plat a été enregistré avec succès',
+    'DISH_EDITOR_SUCCESS_2'                 =>  'Un modérateur va rapidement l\'évaluer',
 
     //dish
     'DISH_TIME'                             =>  'Temps de préparation',
