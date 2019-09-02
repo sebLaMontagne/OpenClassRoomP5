@@ -26,7 +26,21 @@ class ViewModelIngredientEditor extends ViewModel
     public function saveIngredient()
     {
         $this->saveImage();
-        $this->ingredientManager->saveIngredient($this->_fileNewName, $_POST['ingredient_calories'], $_POST['ingredient_unit_weight'], $_GET['lang'], $_POST['ingredient_name']);
+
+        $this->ingredientManager->saveIngredient(
+            $this->_fileNewName, 
+            $_POST['ingredient_calories'], 
+            $_POST['ingredient_unit_weight'], 
+            $_GET['lang'], 
+            $_POST['ingredient_name'], 
+            $_POST['ingredient_isPoultry'],
+            $_POST['ingredient_isFish'],
+            $_POST['ingredient_isSeaFood'],
+            $_POST['ingredient_isFromAnimal'],
+            $_POST['ingredient_isFruit'],
+            $_POST['ingredient_isVegetable']
+        );
+
         $this->_ingredientIsSaved = true;
     }
     

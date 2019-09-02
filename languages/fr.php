@@ -175,6 +175,14 @@ $strings = [
     'INGREDIENT_EDITOR_SUBMIT'              =>  'Soumettre l\'ingredient',
     'INGREDIENT_EDITOR_SUCCESS_1'           =>  'L\'ingrédient a été enregistré avec succès',
     'INGREDIENT_EDITOR_SUCCESS_2'           =>  'Un modérateur va rapidement l\'évaluer',
+    'INGREDIENT_EDITOR_IS_POULTRY'          =>  'L\'ingrédient est-il de la volaille ?',
+    'INGREDIENT_EDITOR_IS_FISH'             =>  'L\'ingrédient est-il du poisson ?',
+    'INGREDIENT_EDITOR_IS_SEAFOOD'          =>  'L\'ingrédient est-il un fruit de mer ?',
+    'INGREDIENT_EDITOR_IS_FROM_ANIMAL'      =>  'L\'ingrédient provient-il d\'un animal ou d\'un de ses dérivés ?',
+    'INGREDIENT_EDITOR_IS_FRUIT'            =>  'L\'ingrédient est-il un fruit ou d\'un de ses dérivés ?',
+    'INGREDIENT_EDITOR_IS_VEGETABLE'        =>  'L\'ingrédient est-il un légume ou un de ses dérivés ?',
+    'INGREDIENT_EDITOR_YES'                 =>  'Oui',
+    'INGREDIENT_EDITOR_NO'                  =>  'Non',
     
     //search
     'SEARCH_TITLE'                          =>  'Résultats de recherche',

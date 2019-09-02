@@ -23,6 +23,58 @@
         <input type="file" id="ingredient_image" name="ingredient_image" accept=".jpg, .jpeg, .png, .tiff, .gif" required />
     </p>
 
+    <hr class="commentary-bound" />
+
+    <p><?= $this->_strings['INGREDIENT_EDITOR_IS_POULTRY'] ?></p>
+    <p>
+        <label for="isPoultry"><?= $this->_strings['INGREDIENT_EDITOR_YES'] ?></label>
+        <input type="radio" id="isPoultry" name="ingredient_isPoultry" value="1" required />
+        <label for="isNotPoultry"><?= $this->_strings['INGREDIENT_EDITOR_NO'] ?></label>
+        <input type="radio" id="isNotPoultry" name="ingredient_isPoultry" value="0" required />
+    </p>
+
+    <p><?= $this->_strings['INGREDIENT_EDITOR_IS_FISH'] ?></p>
+    <p>
+        <label for="isFish"><?= $this->_strings['INGREDIENT_EDITOR_YES'] ?></label>
+        <input type="radio" id="isFish" name="ingredient_isFish" value="1" required />
+        <label for="isNotFish"><?= $this->_strings['INGREDIENT_EDITOR_NO'] ?></label>
+        <input type="radio" id="isNotFish" name="ingredient_isFish" value="0" required />
+    </p>
+
+    <p><?= $this->_strings['INGREDIENT_EDITOR_IS_SEAFOOD'] ?></p>
+    <p>
+        <label for="isSeaFood"><?= $this->_strings['INGREDIENT_EDITOR_YES'] ?></label>
+        <input type="radio" id="isSeaFood" name="ingredient_isSeaFood" value="1" required />
+        <label for="isNotSeaFood"><?= $this->_strings['INGREDIENT_EDITOR_NO'] ?></label>
+        <input type="radio" id="isNotSeaFood" name="ingredient_isSeaFood" value="0" required />
+    </p>
+
+    <p><?= $this->_strings['INGREDIENT_EDITOR_IS_FROM_ANIMAL'] ?></p>
+    <p>
+        <label for="isFromAnimal"><?= $this->_strings['INGREDIENT_EDITOR_YES'] ?></label>
+        <input type="radio" id="isFromAnimal" name="ingredient_isFromAnimal" value="1" required />
+        <label for="isNotFromAnimal"><?= $this->_strings['INGREDIENT_EDITOR_NO'] ?></label>
+        <input type="radio" id="isNotFromAnimal" name="ingredient_isFromAnimal" value="0" required />
+    </p>
+
+    <p><?= $this->_strings['INGREDIENT_EDITOR_IS_FRUIT'] ?></p>
+    <p>
+        <label for="isFruit"><?= $this->_strings['INGREDIENT_EDITOR_YES'] ?></label>
+        <input type="radio" id="isFruit" name="ingredient_isFruit" value="1" required />
+        <label for="isNotFruit"><?= $this->_strings['INGREDIENT_EDITOR_NO'] ?></label>
+        <input type="radio" id="isNotFruit" name="ingredient_isFruit" value="0" required />
+    </p>
+
+    <p><?= $this->_strings['INGREDIENT_EDITOR_IS_VEGETABLE'] ?></p>
+    <p>
+        <label for="isVegetable"><?= $this->_strings['INGREDIENT_EDITOR_YES'] ?></label>
+        <input type="radio" id="isVegetable" name="ingredient_isVegetable" value="1" required />
+        <label for="isNotVegetable"><?= $this->_strings['INGREDIENT_EDITOR_NO'] ?></label>
+        <input type="radio" id="isNotVegetable" name="ingredient_isVegetable" value="0" required />
+    </p>
+        
+    <hr class="commentary-bound" />
+    
     <p><input type="submit" value="<?= $this->_strings['INGREDIENT_EDITOR_SUBMIT'] ?>" /></p>
 </form>
 

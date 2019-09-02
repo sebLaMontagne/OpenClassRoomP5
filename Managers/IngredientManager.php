@@ -2,13 +2,22 @@
 
 class IngredientManager extends Manager
 {
-    public function saveIngredient($image, $baseCalories, $unitWeight, $lang, $name)
+    public function saveIngredient($image, $baseCalories, $unitWeight, $lang, $name, $isPoultry, $isFish, $isSeaFood, $isFromAnimal, $isFruit, $isVegatable)
     {
-        $q = $this->_db->prepare('INSERT INTO ingredient(image, base_calories, unit_weight) VALUES(:image, :calories, :weight)');
+        $q = $this->_db->prepare('
+            INSERT INTO ingredient(image, base_calories, unit_weight, isPoultry, isFish, isSeafood, isFromAnimal, isFruit, isVegetable) 
+            VALUES(:image, :calories, :weight, :isPoultry, :isFish, :isSeafood, :isFromAnimal, :isFruit, :isVegetable)
+        ');
 
         $q->bindValue(':image', htmlspecialchars($image));
         $q->bindValue(':calories', htmlspecialchars($baseCalories));
         $q->bindValue(':weight', htmlspecialchars($unitWeight));
+        $q->bindValue(':isPoultry', htmlspecialchars($isPoultry));
+        $q->bindValue(':isFish', htmlspecialchars($isFish));
+        $q->bindValue(':isSeafood', htmlspecialchars($isSeaFood));
+        $q->bindValue(':isFromAnimal', htmlspecialchars($isFromAnimal));
+        $q->bindValue(':isFruit', htmlspecialchars($isFruit));
+        $q->bindValue(':isVegetable', htmlspecialchars($isVegatable));
         $q->execute();
 
         $q2 = $this->_db->prepare('INSERT INTO ingredientlocal(ingredient_id, lang, name, isPublished) VALUES(:id, :lang, :name, 0)');
