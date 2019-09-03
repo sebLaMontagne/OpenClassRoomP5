@@ -92,4 +92,16 @@ class DishController extends Controller
 
         $viewModel->display();
     }
+
+    public function diets()
+    {
+        $viewModel = new ViewModelDiets;
+        $viewModel->display();
+    }
+
+    public function diet()
+    {
+        $viewModel = new ViewModelDiet;
+        $viewModel->display();
+    }
 }

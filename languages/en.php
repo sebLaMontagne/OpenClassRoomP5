@@ -329,4 +329,33 @@ $strings = [
     'CATEGORY_TRAD_TRANSLATE_TITLE'         =>  'Category\'s Translation',
     'CATEGORY_TRAD_NAME_DESCRIPTION'        =>  'Category\'s Name',
 
+    //diets
+    'DIETS_TITLE'                           =>  'Marre-Mitton - Régimes',
+    'DIETS_PRESENTATION'                    =>  'Here you can select a tailored diet for the week.',
+    'DIETS_GENDER_QUESTION'                 =>  'Are you male or female ?',
+    'DIETS_MALE_ANSWER'                     =>  'male',
+    'DIETS_FEMALE_ANSWER'                   =>  'female',
+    'DIETS_TYPE_QUESTION'                   =>  'Select your type of diet:',
+    'DIETS_TYPE_NORMAL'                     =>  'Usual diet',
+    'DIETS_TYPE_VEGETARIAN'                 =>  'Vegetarian diet',
+    'DIETS_TYPE_VEGAN'                      =>  'Vegan diet',
+    'DIETS_TYPE_PESCO_VEGETARIAN'           =>  'Pesco-vegetarian diet',
+    'DIETS_TYPE_POLLOTARIAN'                =>  'Pollotarian diet',
+    'DIETS_TYPE_RESTRICTION'                =>  'Energy-restricted diet',
+    'DIETS_TYPE_LOW_CALORIES'               =>  'Low-calorie diet',
+    'DIETS_NORMAL_FEEDBACK'                 =>  'The default diet. We eat everything in the limit of 2500 calories for men and 2000 calories for women per day.',
+    'DIETS_VEGETARIAN_FEEDBACK'             =>  'The vegetarian diet excludes the consumption of animal flesh while still allowing the consumption of animal by-products such as eggs or honey.',
+    'DIETS_VEGAN_FEEDBACK'                  =>  'The vegan diet is identical to the vegetarian diet, with the exception that it excludes the consumption of animal by-products',
+    'DIETS_PESCO_VEGETARIAN_FEEDBACK'       =>  'The peso-vegetarian diet is identical to the vegetarian diet except it allows the consumption of fish',
+    'DIETS_POLLOTARIAN_FEEDBACK'            =>  'The pollotarian diet is identical to the vegetarian diet except it allows the consumption of poultry',
+    'DIETS_RESTRICTION_FEEDBACK'            =>  'The energy-restricted diet allows you to eat anything but up to 600 calories for 2 days of the week',
+    'DIETS_LOW_CALORIES_FEEDBACK'           =>  'The low-calorie diet can eat anything up to 800 calories a day.',
+    'DIETS_SUBMIT'                          =>  'Create diet',
+
+    //diet
+    'DIET_TITLE'                            =>  'Marre-Mitton - Diet',
+
+    //dietTemplate
+    'DIET_TEMPLATE_HOME_LINK'               =>  'Return to home',
+    'DIET_TEMPLATE_DOWNLOAD_LINK'           =>  'Download the diet in PDF format',
 ];

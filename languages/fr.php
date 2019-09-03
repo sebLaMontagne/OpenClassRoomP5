@@ -326,9 +326,38 @@ $strings = [
     'INGREDIENT_TRAD_NAME_DESCRIPTION'      =>  'Nom de l\'ingrédient',
 
     //categoryTrad
-    'CATEGORY_TRAD_TITLE'                   =>  'Marre-Mitton - Traduction d\'une catégory',
+    'CATEGORY_TRAD_TITLE'                   =>  'Marre-Mitton - Traduction d\'une catégorie',
     'CATEGORY_TRAD_MODEL_TITLE'             =>  'Modèle de la catégorie',
     'CATEGORY_TRAD_TRANSLATE_TITLE'         =>  'Traduction de la catégorie',
     'CATEGORY_TRAD_NAME_DESCRIPTION'        =>  'Nom de la catégorie',
     
+    //diets
+    'DIETS_TITLE'                           =>  'Marre-Mitton - Régimes',
+    'DIETS_PRESENTATION'                    =>  'Ici, vous pouvez sélectionner un régime sur mesure pour la semaine.',
+    'DIETS_GENDER_QUESTION'                 =>  'Etes-vous de sexe masculin ou féminin ?',
+    'DIETS_MALE_ANSWER'                     =>  'masculin',
+    'DIETS_FEMALE_ANSWER'                   =>  'féminin',
+    'DIETS_TYPE_QUESTION'                   =>  'Sélectionnez votre type de régime : ',
+    'DIETS_TYPE_NORMAL'                     =>  'Régime normal',
+    'DIETS_TYPE_VEGETARIAN'                 =>  'Régime végétarien',
+    'DIETS_TYPE_VEGAN'                      =>  'Régime végan',
+    'DIETS_TYPE_PESCO_VEGETARIAN'           =>  'Régime pesco-végétarien',
+    'DIETS_TYPE_POLLOTARIAN'                =>  'Régime pollotarien',
+    'DIETS_TYPE_RESTRICTION'                =>  'Régime à restriction d\'énergie',
+    'DIETS_TYPE_LOW_CALORIES'               =>  'Régime à faibles calories',
+    'DIETS_NORMAL_FEEDBACK'                 =>  'Le régime par défaut. On mange de tout dans la limite de 2500 calories pour les hommes et 2000 calories pour les femmes par jour.',
+    'DIETS_VEGETARIAN_FEEDBACK'             =>  'Le régime végétarien exclut la consommation de chair animale en s\'autorisant tout de même la consommation de dérivés de l\'animal comme des oeufs ou du miel',
+    'DIETS_VEGAN_FEEDBACK'                  =>  'Le régime végan est identique au régime végétarien, à l\'exception que celui exclut même la consommation des dérivés animaux',
+    'DIETS_PESCO_VEGETARIAN_FEEDBACK'       =>  'Le régime pesco-végétarien est identique au régime végétarien à ceci qu\'il autorise la consommation de poissons',
+    'DIETS_POLLOTARIAN_FEEDBACK'            =>  'Le régime pollotarien est identique au régime végétarien à ceci qu\'il autorise la consommation de volaille',
+    'DIETS_RESTRICTION_FEEDBACK'            =>  'Le régime à restriction d\'énergie permet de manger de tout, mais dans la limite de 600 calories pendant 2 jours de la semaine',
+    'DIETS_LOW_CALORIES_FEEDBACK'           =>  'Le régime à faibles calories permet de manger de tout dans la limite de 800 calories par jour.',
+    'DIETS_SUBMIT'                          =>  'Créer le régime',
+
+    //diet
+    'DIET_TITLE'                            =>  'Marre-Mitton - Régime',
+
+    //dietTemplate
+    'DIET_TEMPLATE_HOME_LINK'               =>  'Retourner à l\'accueil',
+    'DIET_TEMPLATE_DOWNLOAD_LINK'           =>  'Télécharger le régime au format PDF',
 ];
