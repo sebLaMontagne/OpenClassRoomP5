@@ -1,1 +1,40 @@
-<?php var_dump($this) ?>
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-2 global-container">
+        <h2>Zone de détails</h2>
+    </div>
+    <div class="col-1"></div>
+<?php for($i=0; $i < 7; $i++) : ?>
+
+    <div class="col-1 global-container">
+        <h2><?= $this->_strings['DIET_DAY_'.$i] ?></h2>
+
+        <div class="row">
+            <div class="starter-container">
+                <h3 style="font-size: 1em; min-height: 38px;"><?= $this->starters[$i]->Name() ?></h3>
+                <div><img class="diet_dish_illustration" src="<?= 'Ressources/img/dishes/'.$this->starters[$i]->Image() ?>" /></div>
+                <p><?= $this->starters[$i]->Calories() ?> Cals</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="mainDish-container">
+                <h3 style="font-size: 1em; min-height: 38px;"><?= $this->dishes[$i]->Name() ?></h3>
+                <div><img class="diet_dish_illustration" src="<?= 'Ressources/img/dishes/'.$this->dishes[$i]->Image() ?>" /></div>
+                <p><?= $this->dishes[$i]->Calories() ?> Cals</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="mainDish-container">
+                <h3 style="font-size: 1em; min-height: 38px;"><?= $this->desserts[$i]->Name() ?></h3>
+                <div><img class="diet_dish_illustration" src="<?= 'Ressources/img/dishes/'.$this->desserts[$i]->Image() ?>" /></div>
+                <p><?= $this->desserts[$i]->Calories() ?> Cals</p>
+            </div>
+        </div>
+
+        <p class="final-Cal"><?= $this->_strings['DIET_TOTAL'] ?> : <?= $this->starters[$i]->Calories() + $this->dishes[$i]->Calories() + $this->desserts[$i]->Calories() ?> Cals </p>
+
+    </div>
+<?php endfor ?>
+</div>

@@ -343,19 +343,25 @@ $strings = [
     'DIETS_TYPE_VEGAN'                      =>  'Régime végan',
     'DIETS_TYPE_PESCO_VEGETARIAN'           =>  'Régime pesco-végétarien',
     'DIETS_TYPE_POLLOTARIAN'                =>  'Régime pollotarien',
-    'DIETS_TYPE_RESTRICTION'                =>  'Régime à restriction d\'énergie',
     'DIETS_TYPE_LOW_CALORIES'               =>  'Régime à faibles calories',
     'DIETS_NORMAL_FEEDBACK'                 =>  'Le régime par défaut. On mange de tout dans la limite de 2500 calories pour les hommes et 2000 calories pour les femmes par jour.',
     'DIETS_VEGETARIAN_FEEDBACK'             =>  'Le régime végétarien exclut la consommation de chair animale en s\'autorisant tout de même la consommation de dérivés de l\'animal comme des oeufs ou du miel',
     'DIETS_VEGAN_FEEDBACK'                  =>  'Le régime végan est identique au régime végétarien, à l\'exception que celui exclut même la consommation des dérivés animaux',
     'DIETS_PESCO_VEGETARIAN_FEEDBACK'       =>  'Le régime pesco-végétarien est identique au régime végétarien à ceci qu\'il autorise la consommation de poissons',
     'DIETS_POLLOTARIAN_FEEDBACK'            =>  'Le régime pollotarien est identique au régime végétarien à ceci qu\'il autorise la consommation de volaille',
-    'DIETS_RESTRICTION_FEEDBACK'            =>  'Le régime à restriction d\'énergie permet de manger de tout, mais dans la limite de 600 calories pendant 2 jours de la semaine',
     'DIETS_LOW_CALORIES_FEEDBACK'           =>  'Le régime à faibles calories permet de manger de tout dans la limite de 800 calories par jour.',
     'DIETS_SUBMIT'                          =>  'Créer le régime',
 
     //diet
     'DIET_TITLE'                            =>  'Marre-Mitton - Régime',
+    'DIET_DAY_0'                            =>  'Lundi',
+    'DIET_DAY_1'                            =>  'Mardi',
+    'DIET_DAY_2'                            =>  'Mercredi',
+    'DIET_DAY_3'                            =>  'Jeudi',
+    'DIET_DAY_4'                            =>  'Vendredi',
+    'DIET_DAY_5'                            =>  'Samedi',
+    'DIET_DAY_6'                            =>  'Dimanche',
+    'DIET_TOTAL'                            =>  'Total',
 
     //dietTemplate
     'DIET_TEMPLATE_HOME_LINK'               =>  'Retourner à l\'accueil',

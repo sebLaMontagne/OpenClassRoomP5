@@ -117,6 +117,7 @@ textarea{
 /*-------------------------------------------------HOME-LINK--------------------------------------------------------*/
 
 .home_link_container{
+    margin: 50px 0;
     display: flex; 
     align-items: space-around;
 }
@@ -357,6 +358,33 @@ textarea{
 }
 .dish_ingredient_illustration{
     float: left;
+}
+
+.global-container{
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 0 8px;
+}
+.starter-container{
+    margin: 25px 10px 5px 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.mainDish-container{
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.diet_dish_illustration{
+    width: 90%;
+    margin-bottom: 5px;
+}
+
+.final-Cal{
+    margin-top: 25px; 
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 /*-------------------------------------------------------------------------------------------------------------------*/

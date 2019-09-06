@@ -494,6 +494,34 @@ class DishManager extends Manager
         return $ingredients;
     }
 
+    public function getAllDishesByType($dishType)
+    {
+        $list = [];
+        $q = $this->_db->prepare('
+            SELECT * FROM dish
+            INNER JOIN dishlocal
+                ON dish.id = dishlocal.dish_id
+                AND dishlocal.lang = :lang
+            AND dish.type = :type
+        ');
+        $q->bindValue(':lang', $_GET['lang']);
+        $q->bindValue(':type', htmlspecialchars($dishType));
+        $q->execute();
+
+        while($a = $q->fetch(PDO::FETCH_ASSOC))
+        {
+            $a['author'] = $this->getAuthor($a['author']);
+            $a['ingredients'] = $this->getDishIngredients($a['dish_id']);
+            $a['steps'] = $this->getDishSteps($a['dish_id']);
+            $a['likes'] = $this->getLikes($a['dish_id']);
+            $a['dislikes'] = $this->getDislikes($a['dish_id']);
+            $a['comments'] = $this->getComments($a['dish_id']);
+
+            $list[] = new Dish($a);
+        }
+        return $list;
+    }
+
     public function confirmDish($id)
     {
         $q = $this->_db->prepare('UPDATE dishlocal SET isPublished = 1 WHERE id = :id');
