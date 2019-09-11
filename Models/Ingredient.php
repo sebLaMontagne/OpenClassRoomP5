@@ -17,6 +17,7 @@ class Ingredient
     private $_isFromAnimal;
     private $_isFruit;
     private $_isVegetable;
+    private $_isFlesh;
 
     public function Id()            { return $this->_id; }
     public function Name()          { return $this->_name; }
@@ -33,6 +34,7 @@ class Ingredient
     public function IsFromAnimal()  { return $this->_isFromAnimal; }
     public function IsFruit()       { return $this->_isFruit; }
     public function IsVegetable()   { return $this->_isVegetable; }
+    public function IsFlesh()       { return $this->_isFlesh; }
 
     private function setId($value)
     {
@@ -126,6 +128,13 @@ class Ingredient
             $this->_isVegetable = $data;
         }
     }
+    private function setIsFlesh($data)
+    {
+        if(preg_match('@^(0|1)$@', $data))
+        {
+            $this->_isFlesh = $data;
+        }
+    }
 
     private function setCalories()
     {
@@ -168,7 +177,6 @@ class Ingredient
             }
         }
     }
-
     public function __construct(array $data)
     {
         $this->hydrate($data);
@@ -177,5 +185,35 @@ class Ingredient
         {
             $this->setCalories();
         }
+    }
+
+    // super interessant
+    public function getJSONdata()
+    {
+        $var = get_object_vars($this);
+
+        // La référence doit servir pour les problèmes de récursivité
+        foreach ($var as &$value) 
+        {
+            // implique que les objets composant l'objet aient eux-même une méthode 'getJSONdata', via héritage c'est le plus simple
+            if(is_object($value) && method_exists($value,'getJSONData'))
+            {
+                $value = $value->getJSONData();
+            }
+            // En revanche cette fonction ne traite pas récursivement les arborescences : demande un foreach pour chaque niveau de profondeur de tableau
+            // L'affichage dynamique ne permet pas non plus de récupérer les strings des fichiers de langue : on privilégiera les strings en db pour les futurs projets
+            if(is_array($value))
+            {
+                foreach($value as &$el)
+                {
+                    if(is_object($el) && method_exists($el,'getJSONData'))
+                    {
+                        $el = $el->getJSONData();
+                    }
+                }
+            }
+        }
+
+        return $var;
     }
 }

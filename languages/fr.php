@@ -180,9 +180,10 @@ $strings = [
     'INGREDIENT_EDITOR_IS_POULTRY'          =>  'L\'ingrédient est-il de la volaille ?',
     'INGREDIENT_EDITOR_IS_FISH'             =>  'L\'ingrédient est-il du poisson ?',
     'INGREDIENT_EDITOR_IS_SEAFOOD'          =>  'L\'ingrédient est-il un fruit de mer ?',
-    'INGREDIENT_EDITOR_IS_FROM_ANIMAL'      =>  'L\'ingrédient provient-il d\'un animal ou d\'un de ses dérivés ?',
+    'INGREDIENT_EDITOR_IS_FROM_ANIMAL'      =>  'L\'ingrédient provient-il d\'un dérivé animal ?',
     'INGREDIENT_EDITOR_IS_FRUIT'            =>  'L\'ingrédient est-il un fruit ou d\'un de ses dérivés ?',
     'INGREDIENT_EDITOR_IS_VEGETABLE'        =>  'L\'ingrédient est-il un légume ou un de ses dérivés ?',
+    'INGREDIENT_EDITOR_IS_MEAT'             =>  'L\'ingrédient est-il de la viande ?',
     'INGREDIENT_EDITOR_YES'                 =>  'Oui',
     'INGREDIENT_EDITOR_NO'                  =>  'Non',
     
@@ -344,12 +345,11 @@ $strings = [
     'DIETS_TYPE_PESCO_VEGETARIAN'           =>  'Régime pesco-végétarien',
     'DIETS_TYPE_POLLOTARIAN'                =>  'Régime pollotarien',
     'DIETS_TYPE_LOW_CALORIES'               =>  'Régime à faibles calories',
-    'DIETS_NORMAL_FEEDBACK'                 =>  'Le régime par défaut. On mange de tout dans la limite de 2500 calories pour les hommes et 2000 calories pour les femmes par jour.',
+    'DIETS_NORMAL_FEEDBACK'                 =>  'Le régime par défaut. On mange de tout.',
     'DIETS_VEGETARIAN_FEEDBACK'             =>  'Le régime végétarien exclut la consommation de chair animale en s\'autorisant tout de même la consommation de dérivés de l\'animal comme des oeufs ou du miel',
     'DIETS_VEGAN_FEEDBACK'                  =>  'Le régime végan est identique au régime végétarien, à l\'exception que celui exclut même la consommation des dérivés animaux',
     'DIETS_PESCO_VEGETARIAN_FEEDBACK'       =>  'Le régime pesco-végétarien est identique au régime végétarien à ceci qu\'il autorise la consommation de poissons',
     'DIETS_POLLOTARIAN_FEEDBACK'            =>  'Le régime pollotarien est identique au régime végétarien à ceci qu\'il autorise la consommation de volaille',
-    'DIETS_LOW_CALORIES_FEEDBACK'           =>  'Le régime à faibles calories permet de manger de tout dans la limite de 800 calories par jour.',
     'DIETS_SUBMIT'                          =>  'Créer le régime',
 
     //diet
@@ -362,6 +362,11 @@ $strings = [
     'DIET_DAY_5'                            =>  'Samedi',
     'DIET_DAY_6'                            =>  'Dimanche',
     'DIET_TOTAL'                            =>  'Total',
+    'DIET_SEE_DETAILS'                      =>  'Voir détails',
+    'DIET_CHANGE'                           =>  'Plat aléatoire',
+    'DIET_DETAILS_TITLE'                    =>  'Zone de détails',
+    'DIET_UP'                               =>  'Plat plus lourd',
+    'DIET_DOWN'                             =>  'Plat moins lourd',
 
     //dietTemplate
     'DIET_TEMPLATE_HOME_LINK'               =>  'Retourner à l\'accueil',

@@ -36,11 +36,6 @@ $(function(){
                 $('.lead').css('display','none');
                 $('#restriction-feedback').css('display','block');
             break;
-
-            case "low_calories":
-                $('.lead').css('display','none');
-                $('#low-calories-feedback').css('display','block');
-            break;
         }
     });
 });

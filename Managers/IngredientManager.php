@@ -2,16 +2,17 @@
 
 class IngredientManager extends Manager
 {
-    public function saveIngredient($image, $baseCalories, $unitWeight, $lang, $name, $isPoultry, $isFish, $isSeaFood, $isFromAnimal, $isFruit, $isVegatable)
+    public function saveIngredient($image, $baseCalories, $unitWeight, $lang, $name, $isMeat, $isPoultry, $isFish, $isSeaFood, $isFromAnimal, $isFruit, $isVegatable)
     {
         $q = $this->_db->prepare('
-            INSERT INTO ingredient(image, base_calories, unit_weight, isPoultry, isFish, isSeafood, isFromAnimal, isFruit, isVegetable) 
-            VALUES(:image, :calories, :weight, :isPoultry, :isFish, :isSeafood, :isFromAnimal, :isFruit, :isVegetable)
+            INSERT INTO ingredient(image, base_calories, unit_weight, isFlesh, isPoultry, isFish, isSeafood, isFromAnimal, isFruit, isVegetable) 
+            VALUES(:image, :calories, :weight, :isMeat, :isPoultry, :isFish, :isSeafood, :isFromAnimal, :isFruit, :isVegetable)
         ');
 
         $q->bindValue(':image', htmlspecialchars($image));
         $q->bindValue(':calories', htmlspecialchars($baseCalories));
         $q->bindValue(':weight', htmlspecialchars($unitWeight));
+        $q->bindValue(':isMeat', htlspecialchars($isMeat));
         $q->bindValue(':isPoultry', htmlspecialchars($isPoultry));
         $q->bindValue(':isFish', htmlspecialchars($isFish));
         $q->bindValue(':isSeafood', htmlspecialchars($isSeaFood));

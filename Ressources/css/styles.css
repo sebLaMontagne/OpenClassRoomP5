@@ -360,13 +360,17 @@ textarea{
     float: left;
 }
 
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------DIET----------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
+
 .global-container{
     border: 2px solid black;
     border-radius: 5px;
     margin: 0 8px;
 }
 .starter-container{
-    margin: 25px 10px 5px 5px;
+    margin: 25px 5px 5px 5px;
     border: 1px solid black;
     border-radius: 5px;
 }
@@ -380,11 +384,26 @@ textarea{
     margin-bottom: 5px;
 }
 
+.diet_dish_title{
+    font-size: 1em; 
+    min-height: 38px;
+}
 .final-Cal{
-    margin-top: 25px; 
+    margin-top: 25px;
     font-size: 1.2em;
     font-weight: bold;
     text-decoration: underline;
+}
+
+button{
+    display: none;
+    margin: 10px auto;
+}
+
+.starter-container:hover button,
+.mainDish-container:hover button
+{
+    display: block;
 }
 
 /*-------------------------------------------------------------------------------------------------------------------*/

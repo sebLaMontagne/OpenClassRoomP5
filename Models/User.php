@@ -130,9 +130,37 @@ class User
             }
         }
     }
-
     public function __construct( array $data)
     {
         $this->hydrate($data);
+    }
+
+    // super interessant
+    public function getJSONdata()
+    {
+        $var = get_object_vars($this);
+
+        // La référence doit servir pour les problèmes de récursivité
+        foreach ($var as &$value) 
+        {
+            // implique que les objets composant l'objet aient eux-même une méthode 'getJSONdata', via héritage c'est le plus simple
+            if(is_object($value) && method_exists($value,'getJSONData'))
+            {
+                $value = $value->getJSONData();
+            }
+            // En revanche cette fonction ne traite pas récursivement les arborescences
+            if(is_array($value))
+            {
+                foreach($value as &$el)
+                {
+                    if(is_object($el) && method_exists($el,'getJSONData'))
+                    {
+                        $el = $el->getJSONData();
+                    }
+                }
+            }
+        }
+
+        return $var;
     }
 }

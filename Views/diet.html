@@ -1,40 +1,270 @@
-<div class="row">
-    <div class="col-1"></div>
-    <div class="col-2 global-container">
-        <h2>Zone de détails</h2>
-    </div>
-    <div class="col-1"></div>
-<?php for($i=0; $i < 7; $i++) : ?>
+<div class="row" id="main"></div>
 
-    <div class="col-1 global-container">
-        <h2><?= $this->_strings['DIET_DAY_'.$i] ?></h2>
+<script>
+// construit l'affichage de la page
+function displayDietPage()
+{
+    $('#main').empty().append('<div id="details" class="col-4 global-container">')
+    $('#details').append('<h2><?= $this->_strings["DIET_DETAILS_TITLE"] ?>')
+    
+    for(let i = 0; i < DAYS; i++)
+    {
+        $('#main').append('<div id="day-'+(i+1)+'" class="col-1 global-container">');
+        
+        switch(i)
+        {
+            case 0:
+                $('#day-'+(i+1)).append('<h2><?= $this->_strings["DIET_DAY_0"] ?>');
+            break;
+            case 1:
+                $('#day-'+(i+1)).append('<h2><?= $this->_strings["DIET_DAY_1"] ?>');
+            break;
+            case 2:
+                $('#day-'+(i+1)).append('<h2><?= $this->_strings["DIET_DAY_2"] ?>');
+            break;
+            case 3:
+                $('#day-'+(i+1)).append('<h2><?= $this->_strings["DIET_DAY_3"] ?>');
+            break;
+            case 4:
+                $('#day-'+(i+1)).append('<h2><?= $this->_strings["DIET_DAY_4"] ?>');
+            break;
+            case 5:
+                $('#day-'+(i+1)).append('<h2><?= $this->_strings["DIET_DAY_5"] ?>');
+            break;
+            case 6:
+                $('#day-'+(i+1)).append('<h2><?= $this->_strings["DIET_DAY_6"] ?>');
+            break;
+        }
 
-        <div class="row">
-            <div class="starter-container">
-                <h3 style="font-size: 1em; min-height: 38px;"><?= $this->starters[$i]->Name() ?></h3>
-                <div><img class="diet_dish_illustration" src="<?= 'Ressources/img/dishes/'.$this->starters[$i]->Image() ?>" /></div>
-                <p><?= $this->starters[$i]->Calories() ?> Cals</p>
-            </div>
-        </div>
+        $('#day-'+(i+1))
+            .append('<div id="day-'+(i+1)+'-starter" class="row">')
+            .append('<div id="starter-'+(i+1)+'" class="starter-container">')
+        $('#starter-'+(i+1))
+            .append('<h3 class="diet_dish_title">'+weekStarters[i]._name)
+            .append('<div><img class="diet_dish_illustration" src="Ressources/img/dishes/'+weekStarters[i]._image+'"/>')
+            .append('<p>'+weekStarters[i]._calories+' cals')
+            .append('<button id="d-'+i+'-1"><?= $this->_strings["DIET_SEE_DETAILS"] ?>')
+            .append('<button id="a-'+i+'-1"><?= $this->_strings["DIET_CHANGE"] ?>')
+            .append('<button id="m-'+i+'-1"><?= $this->_strings["DIET_UP"] ?>')
+            .append('<button id="l-'+i+'-1"><?= $this->_strings["DIET_DOWN"] ?>')
 
-        <div class="row">
-            <div class="mainDish-container">
-                <h3 style="font-size: 1em; min-height: 38px;"><?= $this->dishes[$i]->Name() ?></h3>
-                <div><img class="diet_dish_illustration" src="<?= 'Ressources/img/dishes/'.$this->dishes[$i]->Image() ?>" /></div>
-                <p><?= $this->dishes[$i]->Calories() ?> Cals</p>
-            </div>
-        </div>
+        $('#day-'+(i+1))
+            .append('<div id="day-'+(i+1)+'-dish" class="row">')
+            .append('<div id="dish-'+(i+1)+'" class="mainDish-container">')
+        $('#dish-'+(i+1))
+            .append('<h3 class="diet_dish_title">'+weekDishes[i]._name)
+            .append('<div><img class="diet_dish_illustration" src="Ressources/img/dishes/'+weekDishes[i]._image+'"/>')
+            .append('<p>'+weekDishes[i]._calories+' cals')
+            .append('<button id="d-'+i+'-2"><?= $this->_strings["DIET_SEE_DETAILS"] ?>')
+            .append('<button id="a-'+i+'-2"><?= $this->_strings["DIET_CHANGE"] ?>')
+            .append('<button id="m-'+i+'-2"><?= $this->_strings["DIET_UP"] ?>')
+            .append('<button id="l-'+i+'-2"><?= $this->_strings["DIET_DOWN"] ?>')
 
-        <div class="row">
-            <div class="mainDish-container">
-                <h3 style="font-size: 1em; min-height: 38px;"><?= $this->desserts[$i]->Name() ?></h3>
-                <div><img class="diet_dish_illustration" src="<?= 'Ressources/img/dishes/'.$this->desserts[$i]->Image() ?>" /></div>
-                <p><?= $this->desserts[$i]->Calories() ?> Cals</p>
-            </div>
-        </div>
 
-        <p class="final-Cal"><?= $this->_strings['DIET_TOTAL'] ?> : <?= $this->starters[$i]->Calories() + $this->dishes[$i]->Calories() + $this->desserts[$i]->Calories() ?> Cals </p>
+        $('#day-'+(i+1))
+            .append('<div id="day-'+(i+1)+'-dessert" class="row">')
+            .append('<div id="dessert-'+(i+1)+'" class="mainDish-container">')
+        $('#dessert-'+(i+1))
+            .append('<h3 class="diet_dish_title">'+weekDesserts[i]._name)
+            .append('<div><img class="diet_dish_illustration" src="Ressources/img/dishes/'+weekDesserts[i]._image+'"/>')
+            .append('<p>'+weekDesserts[i]._calories+' cals')
+            .append('<button id="d-'+i+'-3"><?= $this->_strings["DIET_SEE_DETAILS"] ?>')
+            .append('<button id="a-'+i+'-3"><?= $this->_strings["DIET_CHANGE"] ?>')
+            .append('<button id="m-'+i+'-3"><?= $this->_strings["DIET_UP"] ?>')
+            .append('<button id="l-'+i+'-3"><?= $this->_strings["DIET_DOWN"] ?>')
 
-    </div>
-<?php endfor ?>
-</div>
+
+        $('#day-'+(i+1))
+            .append('<p class="final-Cal"><?= $this->_strings["DIET_TOTAL"] ?> : '+(weekStarters[i]._calories + weekDishes[i]._calories + weekDesserts[i]._calories)+' Cals')
+    }
+    // Evènements
+    $('button').click(function()
+    {
+        var data = this.id.split('-');
+
+        if(data[0] == 'd')
+        {
+            if(data[2] == 1)
+            {
+                displayDishInfo(weekStarters[data[1]]);
+            }
+            else if(data[2] == 2)
+            {
+                displayDishInfo(weekDishes[data[1]]);
+            }
+            else if(data[2] == 3)
+            {
+                displayDishInfo(weekDesserts[data[1]]);
+            }
+        }
+        else if(data[0] == 'a')
+        {
+            changeEntry(data[2], data[1]);
+            displayDietPage();
+        }
+        else if(data[0] == 'm')
+        {
+            upEntry(data[2], data[1]);
+            displayDietPage();
+        }
+        else if(data[0] == 'l')
+        {
+            lowEntry(data[2], data[1]);
+            displayDietPage();
+        }
+    });
+}
+function displayDishInfo(data)
+{
+    $('#details').empty();
+    $('#details').append('<h2>'+data._name);
+    $('#details').append('<img class="diet_dish_illustration" src="Ressources/img/dishes/'+data._image+'" />');
+    $('#details').append('<p>'+data._calories+' Cals');
+    
+    $('#details').append('<div id="row-1" class="row">');
+    $('#row-1').append('<div id="column-1" class="col-6">');
+    $('#row-1').append('<div id="column-2" class="col-6">');
+    
+    $('#column-1').append('<h3><?= $this->_strings["DISH_EDITOR_DISH_TIME"] ?>');
+    $('#column-1').append('<p>'+data._preparationDuration+' mins');
+    
+    $('#column-2').append('<h3><?= $this->_strings["DISH_EDITOR_DISH_SHARES"] ?>');
+    $('#column-2').append('<p>'+data._shares+' parts');
+
+    $('#column-1').append('<h3><?= $this->_strings["DISH_INGREDIENTS_H3"] ?>');
+    $('#column-2').append('<h3><?= $this->_strings["DISH_STEPS_H3"] ?>');
+
+    for(let i = 0; i < data._ingredients.length; i++)
+    {
+        $('#column-1').append('<div class="row" id="row'+i+'">');
+        $('#row'+i).append('<p class="col-12 dish_ingredient"><img src="Ressources/img/ingredients/'+data._ingredients[i]._image+'" />'+data._ingredients[i]._name+' : '+data._ingredients[i]._quantity+' '+data._ingredients[i]._unit);
+    }
+
+    for(var key in data._steps)
+    {
+        $('#column-2').append('<p>'+data._steps[key]);
+    }
+}
+function changeEntry(list, day)
+{
+    if(list == 1)
+    {
+        weekStarters[day] = startersList[Math.floor(Math.random()*(startersList.length))];
+    }
+    else if(list == 2)
+    {
+        weekDishes[day] = dishesList[Math.floor(Math.random()*(dishesList.length))];
+    }
+    else if(list == 3)
+    {
+        weekDesserts[day] = dessertsList[Math.floor(Math.random()*(dessertsList.length))];
+    }
+}
+function upEntry(list, day)
+{
+    var candidate;
+
+    if(list == 1)
+    {
+        do
+        {
+            candidate = startersList[Math.floor(Math.random()*(startersList.length))];
+        }
+        while(candidate._calories < weekStarters[day]._calories);
+
+        weekStarters[day] = candidate;
+    }
+    else if(list == 2)
+    {
+        do
+        {
+            candidate = dishesList[Math.floor(Math.random()*(dishesList.length))];
+        }
+        while(candidate._calories < weekDishes[day]._calories);
+
+        weekDishes[day] = candidate;
+    }
+    else if(list == 3)
+    {
+        do
+        {
+            candidate = dessertsList[Math.floor(Math.random()*(dessertsList.length))];
+        }
+        while(candidate._calories < weekDesserts[day]._calories);
+
+        weekDesserts[day] = candidate;
+    }
+}
+function lowEntry(list, day)
+{
+    var candidate;
+
+    if(list == 1)
+    {
+        do
+        {
+            candidate = startersList[Math.floor(Math.random()*(startersList.length))];
+        }
+        while(candidate._calories > weekStarters[day]._calories);
+
+        weekStarters[day] = candidate;
+    }
+    else if(list == 2)
+    {
+        do
+        {
+            candidate = dishesList[Math.floor(Math.random()*(dishesList.length))];
+        }
+        while(candidate._calories > weekDishes[day]._calories);
+
+        weekDishes[day] = candidate;
+    }
+    else if(list == 3)
+    {
+        do
+        {
+            candidate = dessertsList[Math.floor(Math.random()*(dessertsList.length))];
+        }
+        while(candidate._calories > weekDesserts[day]._calories);
+
+        weekDesserts[day] = candidate;
+    }
+}
+
+//initialise les tableaux de plats à afficher
+function buildArrays()
+{
+    for(let i = 0; i < DAYS; i++)
+    {
+        weekStarters.push(startersList[Math.floor(Math.random()*(startersList.length))]);
+        weekDishes.push(dishesList[Math.floor(Math.random()*(dishesList.length))]);
+        weekDesserts.push(dessertsList[Math.floor(Math.random()*(dessertsList.length))]);
+    }
+}
+//debug
+function debug()
+{
+    console.log(startersList);
+    console.log(dishesList);
+    console.log(dessertsList);
+    console.log('----------');
+    console.log(weekStarters);
+    console.log(weekDishes);
+    console.log(weekDesserts);
+}
+
+// constants
+const DAYS = 7;
+// import db values
+var dishesList      = <?= json_encode($this->JSON_DishList) ?>;
+var startersList    = <?= json_encode($this->JSON_StarterDishList) ?>;
+var dessertsList    = <?= json_encode($this->JSON_DessertDishList) ?>;
+// build display values
+var weekStarters    = [];
+var weekDishes      = [];
+var weekDesserts    = [];
+
+buildArrays();
+displayDietPage();
+
+</script>

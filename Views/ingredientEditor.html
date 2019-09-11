@@ -25,6 +25,14 @@
 
     <hr class="commentary-bound" />
 
+    <p><?= $this->_strings['INGREDIENT_EDITOR_IS_MEAT'] ?></p>
+    <p>
+        <label for="isMeat"><?= $this->_strings['INGREDIENT_EDITOR_YES'] ?></label>
+        <input type="radio" id="isMeat" name="ingredient_isMeat" value="1" required />
+        <label for="isNotMeat"><?= $this->_strings['INGREDIENT_EDITOR_NO'] ?></label>
+        <input type="radio" id="isNotMeat" name="ingredient_isMeat" value="0" required />
+    </p>
+    
     <p><?= $this->_strings['INGREDIENT_EDITOR_IS_POULTRY'] ?></p>
     <p>
         <label for="isPoultry"><?= $this->_strings['INGREDIENT_EDITOR_YES'] ?></label>

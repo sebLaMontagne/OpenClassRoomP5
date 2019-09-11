@@ -24,6 +24,7 @@ class Dish
     private $_isFromAnimal;
     private $_isFruit;
     private $_isVegetable;
+    private $_isFlesh;
 
     public function Id()            { return $this->_id; }
     public function Name()          { return $this->_name; }
@@ -47,6 +48,7 @@ class Dish
     public function IsFromAnimal()  { return $this->_isFromAnimal; }
     public function IsFruit()       { return $this->_isFruit; }
     public function IsVegetable()   { return $this->_isVegetable; }
+    public function IsFlesh()       { return $this->_isFlesh; }
 
     private function setId($id)
     {
@@ -256,6 +258,18 @@ class Dish
             }
         }
     }
+    private function setIsFlesh()
+    {
+        $this->_isFlesh = 0;
+        foreach($this->_ingredients as $ingredient)
+        {
+            if($ingredient->IsFlesh())
+            {
+                $this->_isFlesh = 1;
+                break;
+            }
+        }
+    }
 
     private function hydrate(array $data)
     {
@@ -282,6 +296,36 @@ class Dish
             $this->setIsFromAnimal();
             $this->setIsFruit();
             $this->setIsVegetable();
+            $this->setIsFlesh();
         }
+    }
+
+    // super interessant
+    public function getJSONdata()
+    {
+        $var = get_object_vars($this);
+
+        // La référence doit servir pour les problèmes de récursivité
+        foreach ($var as &$value) 
+        {
+            // implique que les objets composant l'objet aient eux-même une méthode 'getJSONdata', via héritage c'est le plus simple
+            if(is_object($value) && method_exists($value,'getJSONData'))
+            {
+                $value = $value->getJSONData();
+            }
+            // En revanche cette fonction ne traite pas récursivement les arborescences
+            if(is_array($value))
+            {
+                foreach($value as &$el)
+                {
+                    if(is_object($el) && method_exists($el,'getJSONData'))
+                    {
+                        $el = $el->getJSONData();
+                    }
+                }
+            }
+        }
+
+        return $var;
     }
 }
