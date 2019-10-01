@@ -17,8 +17,7 @@ try
         exit(header('Location: home.fr'));
     }
 
-    //On déclare les controllers de l'application ici. Leur traitement est traité après
-    //dans un foreach
+    //On déclare les controllers de l'application ici. Leur traitement arrive après dans un foreach
 
     $controllers[] = new DefaultController;
     $controllers[] = new UserController;

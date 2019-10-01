@@ -6,16 +6,17 @@ class ViewModelRegister extends ViewModel
     public $user;
     private $_isUsernameFree;
     private $_isEmailFree;
+    private $_fileNewName;
 
     public function registerUser()
     {
-        $this->_isUsernameFree  =   $this->_userManager->isUsernameFree($_POST['registerName']);
-        $this->_isEmailFree     =   $this->_userManager->isEmailFree($_POST['registerEmail']);
+        $this->_isUsernameFree  =   $this->userManager->isUsernameFree($_POST['registerName']);
+        $this->_isEmailFree     =   $this->userManager->isEmailFree($_POST['registerEmail']);
 
         if($this->_isUsernameFree && $this->_isEmailFree)
         { 
             $this->saveUserAvatar();
-            $this->userManager->saveUser($_POST['registerName'], $_POST['registerEmail'], $_POST['registerPassword'], $fileNewName, $_GET['lang']);
+            $this->userManager->saveUser($_POST['registerName'], $_POST['registerEmail'], $_POST['registerPassword'], $this->_fileNewName, $_GET['lang']);
 
             $this->_title = $this->_strings['REGISTER_CONFIRM_REGISTRATION_TITLE'];
         }
@@ -55,10 +56,10 @@ class ViewModelRegister extends ViewModel
         $uploadFileDirectory = 'Ressources/img/avatars';
         do
         {
-            $fileNewName = uniqid().'.'.strtolower(pathinfo($_FILES['registerAvatar']['name'], PATHINFO_EXTENSION));
-            move_uploaded_file($_FILES['registerAvatar']['tmp_name'], $uploadFileDirectory.'/'.$fileNewName);
+            $this->_fileNewName = uniqid().'.'.strtolower(pathinfo($_FILES['registerAvatar']['name'], PATHINFO_EXTENSION));
+            move_uploaded_file($_FILES['registerAvatar']['tmp_name'], $uploadFileDirectory.'/'.$this->_fileNewName);
 
-        }while(file_exists($uploadFileDirectory.$fileNewName));
+        }while(file_exists($uploadFileDirectory.$this->_fileNewName));
     }
 
     public function __construct()
@@ -66,5 +67,6 @@ class ViewModelRegister extends ViewModel
         parent::__construct();
         $this->_view        =   'Views/register.html';
         $this->userManager  =   new UserManager;
+
     }
 }

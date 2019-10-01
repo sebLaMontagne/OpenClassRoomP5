@@ -47,7 +47,7 @@
 <?php endforeach ?>
                 </select>
                 <span> : </span>
-                <input class="dishEditor_number" type="number" name="quantityIngredient1" value="0" />
+                <input class="dishEditor_number" type="number" name="quantityIngredient1" value="0" min="0" step="1" />
                 <select class="dishEditor_unity" name="ingredientUnit1" required>
                     <option value="">--<?= $this->_strings['DISH_EDITOR_CHOOSE_UNIT'] ?>--</option>
                     <option value="g"><?= $this->_strings['DISH_EDITOR_UNIT_GRAM'] ?></option>
@@ -58,8 +58,8 @@
                 </select>
             </div>
             
-            <button type="button" id="addIngredient"><?= $this->_strings['DISH_EDITOR_ADD_INGREDIENT'] ?></button>
-            <button type="button" id="removeIngredient" disabled><?= $this->_strings['DISH_EDITOR_REMOVE_INGREDIENT'] ?></button>
+            <button type="button" id="addIngredient" style="display: inline"><?= $this->_strings['DISH_EDITOR_ADD_INGREDIENT'] ?></button>
+            <button type="button" id="removeIngredient" style="display: inline" disabled><?= $this->_strings['DISH_EDITOR_REMOVE_INGREDIENT'] ?></button>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 display-2-columns" id="stepContainer">
@@ -67,8 +67,8 @@
             <div style="position: relative" id="step1">
                 <textarea name="step1" placeholder="<?= $this->_strings['DISH_EDITOR_STEP_PLACEHOLDER'] ?>" required></textarea>          
             </div>
-            <button type="button" id="addStep"><?= $this->_strings['DISH_EDITOR_ADD_STEP'] ?></button>
-            <button type="button" id="removeStep" disabled><?= $this->_strings['DISH_EDITOR_REMOVE_STEP'] ?></button>
+            <button type="button" id="addStep" style="display: inline"><?= $this->_strings['DISH_EDITOR_ADD_STEP'] ?></button>
+            <button type="button" id="removeStep" style="display: inline" disabled><?= $this->_strings['DISH_EDITOR_REMOVE_STEP'] ?></button>
         </div>
     </div>
 

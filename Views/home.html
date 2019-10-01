@@ -4,15 +4,11 @@
         <p><?= $this->_strings['HOME_DESCRIPTION_2'] ?></p>
         <div class="row home_link_container">
             <div class="col-6"><a class="link home_link" href="diets.<?= $_GET['lang'] ?>"><?= $this->_strings['HOME_DIETS_LINK'] ?></a></div>
-            <div class="col-6">
 
-<?php if(empty($_SESSION['username'])) : ?>
-                <a class="link home_link" href="register.<?= $_GET['lang'] ?>"><?= $this->_strings['HOME_DIETS_SHARE_LINK'] ?></a>
-<?php else : ?>
-                <a class="link home_link" href="dishEditor.<?= $_GET['lang'] ?>"><?= $this->_strings['HOME_DIETS_SHARE_LINK'] ?></a>
+<?php if((!empty($_SESSION['isCooker']) && $_SESSION['isCooker']) || (!empty($_SESSION['isAdmin']) && $_SESSION['isAdmin'])) : ?>
+            <div class="col-6"><a class="link home_link" href="dishEditor.<?= $_GET['lang'] ?>"><?= $this->_strings['HOME_DIETS_SHARE_LINK'] ?></a></div>
 <?php endif ?>
-
-            </div>
+            
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="margin-top: 2em">

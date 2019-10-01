@@ -154,8 +154,9 @@ class ArticleManager extends Manager
     }
     private function getCategory($id)
     {
-        $q = $this->_db->prepare('SELECT * FROM category INNER JOIN categorylocal ON category.id = categorylocal.category_id WHERE lang = :lang');
+        $q = $this->_db->prepare('SELECT * FROM category INNER JOIN categorylocal ON category.id = categorylocal.category_id WHERE lang = :lang AND categorylocal.category_id = :id');
         $q->bindValue(':lang', $_GET['lang']);
+        $q->bindValue(':id', htmlspecialchars($id));
         $q->execute();
 
         if($a = $q->fetch())
@@ -233,6 +234,8 @@ class ArticleManager extends Manager
     {
         $q = $this->_db->query('SELECT * FROM article');
 
+        $data = [];
+        
         while($a = $q->fetch(PDO::FETCH_ASSOC))
         {
             $data[] = $a;

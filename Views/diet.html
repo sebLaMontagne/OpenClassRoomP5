@@ -236,11 +236,46 @@ function buildArrays()
 {
     for(let i = 0; i < DAYS; i++)
     {
-        weekStarters.push(startersList[Math.floor(Math.random()*(startersList.length))]);
-        weekDishes.push(dishesList[Math.floor(Math.random()*(dishesList.length))]);
-        weekDesserts.push(dessertsList[Math.floor(Math.random()*(dessertsList.length))]);
+        do{
+            weekStarters[i] = startersList[Math.floor(Math.random()*(startersList.length))];
+        }while(!isUniqDish(i, weekStarters[i], weekStarters));
+        
+        do{
+            weekDishes[i] = dishesList[Math.floor(Math.random()*(dishesList.length))];
+        }while(!isUniqDish(i, weekDishes[i], weekDishes));
+
+        do{
+            weekDesserts[i] = dessertsList[Math.floor(Math.random()*(dessertsList.length))];
+        }while(!isUniqDish(i, weekDesserts[i], weekDesserts));
     }
 }
+
+//vérifie si un plat existe déjà dans le tableau
+function isUniqDish(id, dish, dishList)
+{
+    var answer = true;
+    if(id != 0)
+    {
+        for(let i = 0; i < id; i++)
+        {
+            if(dish._id == dishList[i]._id)
+            {
+                answer = false;
+            }
+
+            // // debugs
+            // console.log('---');
+            // console.log('id = '+id);
+            // console.log('i = '+i);
+            // console.log('dish._id = '+dish._id);
+            // console.log('dishList[i]._id = '+dishList[i]._id);
+            // console.log('answer = '+answer);
+        }
+    }
+    
+    return answer;
+}
+
 //debug
 function debug()
 {
@@ -251,6 +286,24 @@ function debug()
     console.log(weekStarters);
     console.log(weekDishes);
     console.log(weekDesserts);
+
+    for(let i = 0; i < DAYS; i++)
+    {
+        for(let j = 0; j < DAYS; j++)
+        {
+            if(i != j)
+            {
+                if(weekStarters[i]._id == weekStarters[j]._id)
+                {
+                    console.log(j+' == '+i);
+                }
+                else
+                {
+                    console.log(j+' != '+i);
+                }
+            }
+        }
+    }
 }
 
 // constants
@@ -266,5 +319,6 @@ var weekDesserts    = [];
 
 buildArrays();
 displayDietPage();
+//debug();
 
 </script>

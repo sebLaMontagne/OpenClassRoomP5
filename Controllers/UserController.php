@@ -24,7 +24,7 @@ class UserController extends Controller
             filter_var($_POST['registerEmail'], FILTER_VALIDATE_EMAIL) &&
             isset($_FILES['registerAvatar']))
         {
-            $viewModel->registerUser();   
+            $viewModel->registerUser();
         }
         //Connexion
         elseif( isset($_POST['connectName']) && 

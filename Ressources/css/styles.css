@@ -373,11 +373,13 @@ textarea{
     margin: 25px 5px 5px 5px;
     border: 1px solid black;
     border-radius: 5px;
+    min-height: 350px;
 }
 .mainDish-container{
     margin: 5px;
     border: 1px solid black;
     border-radius: 5px;
+    min-height: 370px;
 }
 .diet_dish_illustration{
     width: 90%;
@@ -386,7 +388,7 @@ textarea{
 
 .diet_dish_title{
     font-size: 1em; 
-    min-height: 38px;
+    min-height: 57px;
 }
 .final-Cal{
     margin-top: 25px;

@@ -12,7 +12,7 @@ class IngredientManager extends Manager
         $q->bindValue(':image', htmlspecialchars($image));
         $q->bindValue(':calories', htmlspecialchars($baseCalories));
         $q->bindValue(':weight', htmlspecialchars($unitWeight));
-        $q->bindValue(':isMeat', htlspecialchars($isMeat));
+        $q->bindValue(':isMeat', htmlspecialchars($isMeat));
         $q->bindValue(':isPoultry', htmlspecialchars($isPoultry));
         $q->bindValue(':isFish', htmlspecialchars($isFish));
         $q->bindValue(':isSeafood', htmlspecialchars($isSeaFood));

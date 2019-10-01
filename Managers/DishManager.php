@@ -333,7 +333,7 @@ class DishManager extends Manager
     {
         $q = $this->_db->prepare('
             SELECT * FROM dish 
-            INNER JOIN dishLocal 
+            INNER JOIN dishlocal 
             ON dish.id = dishlocal.dish_id 
             WHERE dishlocal.isPublished = 1
             AND dishlocal.lang = :lang
@@ -364,7 +364,7 @@ class DishManager extends Manager
     {
         $q = $this->_db->prepare('
             SELECT * FROM dish 
-            INNER JOIN dishLocal 
+            INNER JOIN dishlocal 
             ON dish.id = dishlocal.dish_id 
             WHERE dishlocal.isPublished = 1 AND lang = :lang
         ');
@@ -394,7 +394,7 @@ class DishManager extends Manager
     {
         $q = $this->_db->prepare('
             SELECT * FROM dish 
-            INNER JOIN dishLocal 
+            INNER JOIN dishlocal 
             ON dish.id = dishlocal.dish_id
             WHERE dishlocal.isPublished = 0
             ');

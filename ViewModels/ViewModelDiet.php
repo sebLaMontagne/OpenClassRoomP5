@@ -40,7 +40,7 @@ class ViewModelDiet extends ViewModel
     }
     private function setPescoVegetarianRestrictions()
     {
-        $this->dietRestrictions['Flesh']        = 1;
+        $this->dietRestrictions['Flesh']        = 0;
         $this->dietRestrictions['Poultry']      = 0;
         $this->dietRestrictions['Fish']         = 1;
         $this->dietRestrictions['Seafood']      = 0;
@@ -50,7 +50,7 @@ class ViewModelDiet extends ViewModel
     }
     private function setPollotarianRestrictions()
     {
-        $this->dietRestrictions['Flesh']        = 1;
+        $this->dietRestrictions['Flesh']        = 0;
         $this->dietRestrictions['Poultry']      = 1;
         $this->dietRestrictions['Fish']         = 0;
         $this->dietRestrictions['Seafood']      = 0;
@@ -65,25 +65,23 @@ class ViewModelDiet extends ViewModel
         $startersList = $this->dishManager->getAllDishesByType('starter');
         $dessertsList = $this->dishManager->getAllDishesByType('dessert');
 
-        // supprimer des tableaux tous les plats ne respectant pas les restrictions
-
         foreach($dishesList as $dish)
         {
-            if($this->isDishValid($dish))
+            if($this->isDishValid($dish) && count($this->JSON_DishList) < 100)
             {
                 $this->JSON_DishList[] = $dish->getJSONdata();
             }
         }
         foreach($startersList as $dish)
         {
-            if($this->isDishValid($dish))
+            if($this->isDishValid($dish) && count($this->JSON_StarterDishList) < 100)
             {
                 $this->JSON_StarterDishList[] = $dish->getJSONdata();
             }
         }
         foreach($dessertsList as $dish)
         {
-            if($this->isDishValid($dish))
+            if($this->isDishValid($dish) && count($this->JSON_DessertDishList) < 100)
             {
                 $this->JSON_DessertDishList[] = $dish->getJSONdata();
             }
