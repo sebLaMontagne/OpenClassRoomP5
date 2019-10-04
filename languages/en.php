@@ -281,6 +281,7 @@ $strings = [
     'MAILEDITOR_MSG_TYPE_WRITER_PROMOTION'  =>  'Promotion to writer title',
     'MAILEDITOR_MSG_TYPE_TRANSLATOR_PROMOTION'  =>  'Promotion to translator title',
     'MAILEDITOR_MSG_TYPE_OTHER'             =>  'Other',
+    'MAILEDITOR_MSG_TYPE_DEBAN'             =>  'Ask for deban',
     'MAILEDITOR_SUBMIT'                     =>  'Send',
     'MAILEDITOR_SEND_FEEDBACK'              =>  'Message successfully send',
     'MAILEDITOR_NOT_SEND_FEEDBACK'          =>  'You have reached the message limit that you can send (max 3). Wait for administrators to finish your previous queries',
@@ -296,6 +297,7 @@ $strings = [
     'BACKMESSAGES_COOKER_PROMOTION'         =>  'Cooker promotion',
     'BACKMESSAGES_WRITER_PROMOTION'         =>  'Writer promotion',
     'BACKMESSAGES_TRANSLATOR_PROMOTION'     =>  'Translator promotion',
+    'BACKUSERS_PROMOTE_LINK'                =>  'Promote user',
     'BACKMESSAGES_DEBAN'                    =>  'Deban request',
     'BACKMESSAGES_CONSULT_LINK'             =>  'Consult',
 

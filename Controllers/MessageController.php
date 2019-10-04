@@ -10,9 +10,8 @@ class MessageController extends Controller
         }
 
         $viewModel = new ViewModelMessage;
-
         if(!empty($_POST['msg_type']) && !empty($_POST['msg_content']))
-        {
+        {        
             $viewModel->saveMessage();
         }
 

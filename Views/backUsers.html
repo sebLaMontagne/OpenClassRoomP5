@@ -17,22 +17,22 @@
     <?php if($user->isAdmin()) : ?>
         <p class="user_title"><?= $this->_strings['BACKUSERS_ADMIN'] ?></p>
     <?php else : ?>
-    <p class="user_title">
-        <?php if($user->isCooker()) : ?>
-        <span><?= $this->_strings['BACKUSERS_COOKER'] ?></span>
-        <?php elseif($user->isWriter()) : ?>
-        <span><?= $this->_strings['BACKUSERS_WRITER'] ?></span>
-        <?php elseif($user->isTranslator()) : ?>
-        <span><?= $this->_strings['BACKUSERS_TRANSLATOR'] ?></span>
-        <?php else : ?>
-        <span><?= $this->_strings['BACKUSERS_GOURMET'] ?></span>
+
+        <?php if($user->isCooker()) : ?> 
+        <p><?= $this->_strings['BACKUSERS_COOKER'] ?></p>
         <?php endif ?>
 
-        <?php if($user->isBanned()) : ?>
-        <span><?= $this->_strings['BACKUSERS_BANNED'] ?></span>
+        <?php if($user->isWriter()) : ?> 
+        <p><?= $this->_strings['BACKUSERS_WRITER'] ?></p>
         <?php endif ?>
-    </p>
-        
+
+        <?php if($user->isTranslator()) : ?> 
+        <p><?= $this->_strings['BACKUSERS_TRANSLATOR'] ?></p>
+        <?php endif ?>
+
+        <?php if($user->isBanned()) : ?> 
+        <p class="text-danger"><?= $this->_strings['BACKUSERS_BANNED'] ?></p>
+        <?php endif ?>
     <?php endif ?>
     </div>
 </div>
