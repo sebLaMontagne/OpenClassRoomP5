@@ -99,7 +99,7 @@ class UserController extends Controller
         $viewModel = new ViewModelBackUsers;
         $viewModel->promoteCooker($_GET['id']);
 
-        if($_GET['return'] == 'messages')
+        if($_GET['return'] == 'message')
         {
             $viewModel->deleteMessage($_GET['message']);
             exit(header('location: backMessages.'.$_GET['lang']));
@@ -132,7 +132,7 @@ class UserController extends Controller
         $viewModel = new ViewModelBackUsers;
         $viewModel->promoteWriter($_GET['id']);
 
-        if($_GET['return'] == 'messages')
+        if($_GET['return'] == 'message')
         {
             $viewModel->deleteMessage($_GET['message']);
             exit(header('location: backMessages.'.$_GET['lang']));
@@ -165,7 +165,7 @@ class UserController extends Controller
         $viewModel = new ViewModelBackUsers;
         $viewModel->promoteTranslator($_GET['id']);
 
-        if($_GET['return'] == 'messages')
+        if($_GET['return'] == 'message')
         {
             $viewModel->deleteMessage($_GET['message']);
             exit(header('location: backMessages.'.$_GET['lang']));

@@ -300,7 +300,6 @@ class Dish
         }
     }
 
-    // super interessant
     public function getJSONdata()
     {
         $var = get_object_vars($this);

@@ -135,7 +135,6 @@ class User
         $this->hydrate($data);
     }
 
-    // super interessant
     public function getJSONdata()
     {
         $var = get_object_vars($this);
